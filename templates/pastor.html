@@ -1,10 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content  %}
 
-</body>
-</html>
+<div class="wrapper">
+ <div class="content-wrapper">
+
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Pastor</h2>
+                <div class="d-grid gap-2 d-md-block">
+                 <button class="btn btn-primary" style=”float:right" type="button">Button</button>
+              </div>
+              </div>
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Title </th>
+                    <th>Surname</th>
+                    <th>First Name</th>
+                    <th>Contact Number</th>
+                    <th>Email Address  </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for paslist in paslist %}
+                  <tr>
+                    <td> {{ paslist.id  }}</td>
+                    <td> {{ paslist.title  }}</td>
+                    <td><a  href="{% url 'ctac:pastor_details_url' paslist.slug %}" class="link-black text-sm"> {{ paslist.surname }}</a></td>
+                    <td> {{ paslist.first_name }}</td>
+                    <td> {{ paslist.phone_number  }}</td>
+
+                    <td>{{ paslist.email_address  }}</td>
+
+
+                  </tr>
+                  {% endfor %}
+                  <tr>
+
+                  </tbody>
+                </table>
+              {% if paslist.has_previous %}
+<a href="?page={{paslist.previous_page_number }}">Previous Page</a> &nbsp; &nbsp;
+{% endif%}
+{% if paslist.has_next %}
+<a href="?page={{paslist.next_page_number }}">Next Page</a>
+{% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ </div>
+</div>
+
+
+
+ {% endblock %}
+
+
+
+

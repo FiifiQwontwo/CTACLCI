@@ -4,7 +4,7 @@ from .models import *
 from rest_framework import status, viewsets
 from rest_framework.response import Response
 from .serializers import *
-
+from django.core.paginator import Paginator, EmptyPage
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models import Count
@@ -13,14 +13,18 @@ from django.db.models import Count
 #
 # # Create your views here.
 
-def index(request):
-    return render(request, 'index.html')
-
 
 def list_pastor(request):
-    paslist = Pastor.objects.all()
+    paslist = Pastor.objects.all().order_by('created_at')
+    paspage =Paginator(paslist,10)
+
+    page_num = request.GET.get('page',1)
+    try:
+        page = paspage.page(page_num)
+    except EmptyPage:
+        page=paspage(1)
     context = {
-        'paslist': paslist
+        'paslist': page,
 
     }
     return render(request, 'pastor.html', context)
@@ -32,6 +36,13 @@ def list_pastor(request):
 #
 def list_shepherd(request):
     sheplist = Shepherd.objects.all()
+    shpage = Paginator(sheplist, 10)
+
+    page_num = request.GET.get('page', 1)
+    try:
+        page = shpage.page(page_num)
+    except EmptyPage:
+        page = shpage(1)
     context = {
         'sheplist': sheplist
     }
@@ -41,8 +52,15 @@ def list_shepherd(request):
 #
 #
 def list_ministry(request):
-    minlist = Ministry.objects.all()
-    context = {'minlist': minlist}
+    minlist = Ministry.objects.all().order_by('created_at')
+    mispage = Paginator(minlist, 10)
+
+    page_num = request.GET.get('page', 1)
+    try:
+        page = mispage.page(page_num)
+    except EmptyPage:
+        page = mispage(1)
+    context = {'minlist': page}
     return render(request, 'ministry.html', context)
 
 
@@ -50,7 +68,14 @@ def list_ministry(request):
 
 def list_chapel(request):
     chap = Chapel.objects.all()
-    context = {'chap': chap}
+    chapage = Paginator(chap, 10)
+
+    page_num = request.GET.get('page', 1)
+    try:
+        page = chapage.page(page_num)
+    except EmptyPage:
+        page = chapage(1)
+    context = {'chap': page}
     return render(request, 'chapel.html', context)
 
 
@@ -64,25 +89,61 @@ def list_service(request):
 def list_area(request):
     area = AreaResidence.objects.all()
     new_area = area.count()
-    context = {'area': area,
+    areapage = Paginator(area, 10)
+
+    page_num = request.GET.get('page', 1)
+    try:
+        page = areapage.page(page_num)
+    except EmptyPage:
+        page = areapage(1)
+    context = {'area': page,
                'new_area': new_area}
     return render(request, 'area.html', context)
 
 
 def list_chapel_heads(request):
     heads = ChapelHeads.objects.all()
-    context = {'head': heads}
+    cheadpage = Paginator(heads, 10)
+
+    page_num = request.GET.get('page', 1)
+    try:
+        page = cheadpage.page(page_num)
+    except EmptyPage:
+        page = cheadpage(1)
+    context = {'head': page}
     return render(request, 'chapelheads.html', context)
 
 
 def list_member(request):
     memblist = Member.objects.all()
-    mem = memblist.count()
+    memcount = memblist.count()
+    membs = Paginator(memblist, 10)
+
+    page_num = request.GET.get('page', 1)
+    try:
+        page = membs.page(page_num)
+    except EmptyPage:
+        page = membs(1)
     context = {
-        'memblist': memblist,
-        'mem': mem
+        'memblist': page,
+        'memcount': memcount
     }
     return render(request, 'member.html', context)
+
+
+def index(request):
+    memcount = Member.objects.all().count()
+    shecounts = Shepherd.objects.all().count()
+    new_area = AreaResidence.objects.all().count()
+    mini_count =Ministry.objects.all().count()
+    context = {
+        'memcount': memcount,
+        'shecounts': shecounts,
+        'new_area': new_area,
+        'mini_count':mini_count
+
+    }
+    return render(request, 'index.html', context)
 
 
 #
@@ -90,7 +151,8 @@ def list_member(request):
 # # details
 def pastor_details(request, slug):
     pas_details = get_object_or_404(Pastor, slug=slug)
-    return render(request, 'tems/pastor.html', {'pas_details': pas_details})
+    context = {'pas_details': pas_details}
+    return render(request, 'tems/pastor.html',context )
 
 
 #
@@ -103,14 +165,10 @@ def ministry_details(request, slug):
     mindetails = get_object_or_404(Ministry, slug=slug)
     return render(request, 'tems/ministry.html', {'mindetails': mindetails})
 
-
-#
 #
 def member_details(request, slug):
     membdetails = get_object_or_404(Member, slug=slug)
-    context = {
-        'membdetails': membdetails
-    }
+    context = {'membdetails': membdetails}
     return render(request, 'tems/member.html', context)
 
 
@@ -166,7 +224,7 @@ def create_ministry(request):
     context = {
         'ministry_create': ministry_create
     }
-    return render(request, 'create/ministry.html', context)
+    return render(request, 'create/member.html', context)
 
 
 #
@@ -191,7 +249,7 @@ def create_chapel(request):
     if chapel_create.is_valid():
         chapel_create.save(commit=False)
         chapel_create.save()
-        message.success(request, 'Chapel Successfully Created')
+        messages.success(request, 'Chapel Successfully Created')
         return redirect('ctac:urls_list_chapel')
     context = {
         'chapel_create': chapel_create
@@ -412,7 +470,7 @@ class ShepherdViewSet(viewsets.ModelViewSet):
 
 
 class MemberViewSet(viewsets.ModelViewSet):
-    queryset = Shepherd.objects.all()
+    queryset = Member.objects.all()
     serializer_class = MemberSerializer
 
     def create(self, request, *args, **kwargs):
@@ -421,3 +479,15 @@ class MemberViewSet(viewsets.ModelViewSet):
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+
+# class Attendance(viewsets.ModelViewSet):
+#     queryset = AttendanceMember.objects.get()
+#     serializer_class = AttendanceSerializer
+#
+#     def create(self, request, *args, **kwargs):
+#         serializer = self.get_serializer(data=request.data, many=isinstance(request.data, list))
+#         serializer.is_valid(raise_exception=True)
+#         self.perform_create(serializer)
+#         headers = self.get_success_headers(serializer.data)
+#         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)

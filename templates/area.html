@@ -1,10 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content  %}
 
-</body>
-</html>
+<div class="wrapper">
+ <div class="content-wrapper">
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Area of Residence</h2>
+                <div class="col-md-12">
+{#                 <button type="button" class="btn btn-block btn-secondary btn-lg">Secondary</button>#}
+                </div>
+              </div>
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Area </th>
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for area in area %}
+                  <tr>
+                    <td> {{ area.id }}</td>
+                    <td> {{ area.area_residence }}</td>
+
+                  </tr>
+                  {% endfor %}
+                  <tr>
+
+                  </tbody>
+                </table>
+
+              {% if area.has_previous %}
+<a href="?page={{area.previous_page_number }}">Previous Page</a> &nbsp; &nbsp;
+{% endif%}
+{% if area.has_next %}
+<a href="?page={{area.next_page_number }}">Next Page</a>
+{% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ </div>
+</div>
+
+
+  {% endblock %}

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import *
+from ctac.views import *
 
 app_name = 'ctac'
 
@@ -42,6 +42,8 @@ urlpatterns = [
     path('add_osofo/', PastorViewSet.as_view({'post': 'create', }), name='new_osofo_api'),
     path('add_shepherd/', ShepherdViewSet.as_view({'post': 'create'}), name='new_shepherd_api'),
     path('shepherd_list_api/', ShepherdViewSet.as_view({'get': 'list'}), name='sheperd_list_api'),
+    # path('api_attendance/', Attendance.as_view({'get':'list'}), name ='attendance_list'),
+    # path('new_attendance/', Attendance.as_view({'post':'create'}), name = 'new_attendance'),
 
     path('member_list_api/', MemberViewSet.as_view({'get': 'list', }), name='member_list_api'),
     path('add_member_api/', MemberViewSet.as_view({'post': 'create', }), name='new_member_api'),

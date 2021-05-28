@@ -1,10 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content  %}
 
-</body>
-</html>
+<div class="wrapper">
+ <div class="content-wrapper">
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Chapel</h2>
+                <div class="col-md-12">
+{#                 <button type="button" class="btn btn-block btn-secondary btn-lg">Secondary</button>#}
+                </div>
+              </div>
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Chapel Name</th>
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for chap in chap %}
+                  <tr>
+                    <td> {{ chap.id }}</td>
+                    <td> {{ chap.chapel_name }}</td>
+
+                  </tr>
+                  {% endfor %}
+                  <tr>
+
+                  </tbody>
+                </table>
+
+               {% if chap.has_previous %}
+<a href="?page={{chap.previous_page_number }}">Previous Page</a> &nbsp; &nbsp;
+{% endif%}
+{% if chap.has_next %}
+<a href="?page={{chap.next_page_number }}">Next Page</a>
+{% endif %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ </div>
+</div>
+
+
+  {% endblock %}

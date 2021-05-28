@@ -29,8 +29,8 @@ class MemberSerializer(serializers.ModelSerializer):
                   'online_service', 'ministries', 'chapel', 'shepherd', 'chapel_head', 'state', 'services',
                   'bacenta_leader',)
 
-
-class AttendanceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Attendance
-        fields = ('present_in', 'date', 'member', 'chapel', 'shepherd', 'services',)
+#
+# class AttendanceSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = AttendanceMember
+#         fields = ('present_in', 'date', 'member', 'chapel', 'shepherd', 'services',)

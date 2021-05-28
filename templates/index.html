@@ -1,10 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content  %}
+<div class="content-wrapper">
+  <div class="wrapper">
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{memcount}}</h3>
 
-</body>
-</html>
+                <p>Members</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <a href="{% url 'ctac:urls_member_list' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+
+              <div class="inner">
+                <a href="{% url 'ctac:urls_shepherd_list' %}">
+                <h3>{{ shecounts }}<sup style="font-size: 20px"></sup></h3> </a>
+
+                <p>Shepherds</p>
+              </div>
+              <div class="icon">
+                 <i class="fas fa-arrow-circle-right"></i>
+              </div>
+              <a href="{% url 'ctac:urls_shepherd_list' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{ new_area }}</h3>
+
+                <p>Residences</p>
+              </div>
+              <div class="icon">
+                <i class="far fa-building"></i>
+              </div>
+              <a href="{% url 'ctac:urls_areas_list' %}" class="small-box-footer">More info<i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{ mini_count }}</h3>
+
+                <p>Ministries</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-arrow-circle-right"></i>
+              </div>
+              <a href="{% url 'ctac:urls_ministry_list' %}" class="small-box-footer">More info </a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+      </div>
+</section>
+</div>
+</div>
+
+{% endblock %}

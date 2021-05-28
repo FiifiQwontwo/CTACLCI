@@ -1,10 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content  %}
 
-</body>
-</html>
+<div class="wrapper">
+ <div class="content-wrapper">
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Members</h2>
+                <div class="col-md-12">
+{#                 <button type="button" class="btn btn-block btn-secondary btn-lg">Secondary</button>#}
+                </div>
+              </div>
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th> # </th>
+                    <th>Surname</th>
+                    <th>First Name</th>
+                    <th>Gender</th>
+                    <th>Contact Number</th>
+                    <th>Whatsapp Number </th>
+                    <th>Area of Residence </th>
+                    <th>Shepherd </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for memblist in memblist %}
+                  <tr>
+                    <td>{{ memblist.id }}</td>
+                    <td><a href="{% url 'ctac:member_details_url' memblist.slug %}" class="link-black text-sm"> {{ memblist.surname }}</a></td>
+                    <td> {{ memblist.first_name }}</td>
+                    <td>{{ memblist.sex}}</td>
+                    <td> {{ memblist.contact_number }}</td>
+                    <td>{{ memblist.whatsapp_number }}</td>
+                  <td>{{ memblist.area_of_residence }}</td>
+                  <td>{{ memblist.shepherd }}</td>
+                  </tr>
+                  {% endfor %}
+                  <tr>
+
+                  </tbody>
+                </table>
+              {% if memblist.has_previous %}
+<a href="?page={{memblist.previous_page_number }}">Previous Page</a> &nbsp; &nbsp;
+{% endif%}
+{% if memblist.has_next %}
+<a href="?page={{memblist.next_page_number }}">Next Page</a>
+{% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ </div>
+</div>
+
+
+  {% endblock %}

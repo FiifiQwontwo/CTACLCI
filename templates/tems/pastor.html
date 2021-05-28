@@ -1,10 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content  %}
+  <div class="content-wrapper">
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Pastor Details</h1>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><b> PERSONAL DETAILS</b></h3>
+        </div>
+        <div class="card-body">
+          <table class="col-12">
+            <tbody>
+
+            <tr>
+                <div class="post clearfix">
+              <td width="50%">Title</td>
+              <td width="50%" style="text-align: left; font-weight: 600;">{{ pas_details.title|lower|capfirst }}</td>
+                 </div>
+            </tr>
+
+            <tr>
+              <td width="50%">Surname</td>
+              <td width="50%" style="text-align: left; font-weight: bold;">{{ pas_details.surname|lower|capfirst }}</td>
+            </tr>
+            {% if pas_details.second_name %}
+            <tr>
+               <td width="50%">Middle Name</td>
+              <td width="50%" style="text-align: left; font-weight: bold;">{{ pas_details.second_name|lower|capfirst }}</td>
+            </tr>
+            {% endif %}
+             <tr>
+               <td width="50%">First Name</td>
+              <td width="50%" style="text-align: left; font-weight: bold;">{{ pas_details.first_name|lower|capfirst}}</td>
+            </tr>
+             <tr>
+               <td width="50%">Gender</td>
+              <td width="50%" style="text-align: left; font-weight: bold;">{{ pas_details.sex|lower|capfirst}}</td>
+            </tr>
+            </tbody>
+          </table>
+
+
+      </div>
+
+ </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><b> ADDRESS DETAILS</b></h3>
+        </div>
+        <div class="card-body">
+          <table class="col-12">
+             {% if pas_details.phone_number %}
+           <tr>
+             <td width="50%">Phone Number</td>
+           <td width="50%" style="text-align: left; font-weight: bold;">{{ pas_details.phone_number}}</td>
+           </tr>
+            {% endif %}
+
+          {% if pas_details.email_address %}
+           <tr>
+             <td width="50%">Email</td>
+           <td width="50%" style="text-align: left; font-weight: bold;">{{ pas_details.email_address}}</td>
+           </tr>
+            {% endif %}
+        </table>
+        </div>
+      </div>
+  </section>
+  </div>
+{% endblock %}

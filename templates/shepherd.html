@@ -1,10 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content  %}
 
-</body>
-</html>
+<div class="wrapper">
+ <div class="content-wrapper">
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Shepherds</h2>
+              </div>
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Surname</th>
+                    <th>First Name</th>
+                    <th>Gender</th>
+                    <th>Type</th>
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for sheplist in sheplist %}
+                  <tr>
+                    <td>{{ sheplist.id}}</td>
+                    <td><a href="{% url 'ctac:shepherd_details_url' sheplist.slug %}"> {{ sheplist.surname }}</a></td>
+                    <td> {{ sheplist.first_name }}</td>
+                    <td>{{ sheplist.sex}}</td>
+                    <td> {{ sheplist.type }}</td>
+
+                  </tr>
+                  {% endfor %}
+                  <tr>
+
+                  </tbody>
+                </table>
+              {% if sheplist.has_previous %}
+<a href="?page={{sheplist.previous_page_number }}">Previous Page</a> &nbsp; &nbsp;
+{% endif%}
+{% if sheplist.has_next %}
+<a href="?page={{sheplist.next_page_number }}">Next Page</a>
+{% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ </div>
+</div>
+
+
+  {% endblock %}
