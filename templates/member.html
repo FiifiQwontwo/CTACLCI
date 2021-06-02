@@ -2,6 +2,8 @@
 {% load static %}
 {% block content  %}
 
+
+
 <div class="wrapper">
  <div class="content-wrapper">
     <section class="content">
@@ -47,10 +49,10 @@
                   </tbody>
                 </table>
               {% if memblist.has_previous %}
-<a href="?page={{memblist.previous_page_number }}">Previous Page</a> &nbsp; &nbsp;
+<a href="?page={{memblist.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a> &nbsp; &nbsp;
 {% endif%}
 {% if memblist.has_next %}
-<a href="?page={{memblist.next_page_number }}">Next Page</a>
+<a href="?page={{memblist.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
 {% endif %}
               </div>
             </div>
@@ -63,3 +65,4 @@
 
 
   {% endblock %}
+

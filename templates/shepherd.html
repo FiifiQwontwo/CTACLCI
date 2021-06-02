@@ -28,7 +28,7 @@
                   {% for sheplist in sheplist %}
                   <tr>
                     <td>{{ sheplist.id}}</td>
-                    <td><a href="{% url 'ctac:shepherd_details_url' sheplist.slug %}"> {{ sheplist.surname }}</a></td>
+                    <td><a href="{% url 'ctac:shepherd_details_url' sheplist.slug %}" class="link-black text-sm"> {{ sheplist.surname }}</a></td>
                     <td> {{ sheplist.first_name }}</td>
                     <td>{{ sheplist.sex}}</td>
                     <td> {{ sheplist.type }}</td>
