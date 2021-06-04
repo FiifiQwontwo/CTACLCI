@@ -520,7 +520,7 @@ def export_members_xls(request):
     # Sheet body, remaining rows
     font_style = xlwt.XFStyle()
 
-    rows = Member.objects.all().values_list('first_name', 'second_name', 'surname','sex','contact_number','occupation','area_of_residence','nearest_landmark','chapel','chapel_head','shepherd')
+    rows = Member.objects.all().values_list('first_name', 'second_name', 'surname','sex','occupation','area_of_residence','nearest_landmark','chapel','chapel_head','shepherd')
     for row in rows:
         row_num += 1
     for col_num in range(len(row)):
