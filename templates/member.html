@@ -9,10 +9,19 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-12">
+          <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h2 class="card-title">Members    <a href="{% url 'ctac:export_members_xls' %}">Export all Members</a></h2>
+                <h2 class="card-title col-md-12">
+                  <div class="row">
+                    <div class="col-md-6">
+                      Members
+                    </div>
+                    <div class="col-md-6 text-right">
+                       Export data <a href="{% url 'ctac:export_members_xls' %}" style="">  <i class="fas fa-file-excel"></i></a>
+                    </div>
+                  </div>
+                </h2>
                 <div class="col-md-12">
 {#                 <button type="button" class="btn btn-block btn-secondary btn-lg">Secondary</button>#}
                 </div>
