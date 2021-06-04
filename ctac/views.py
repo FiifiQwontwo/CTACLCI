@@ -512,7 +512,7 @@ def export_members_xls(request):
     font_style.font.bold = True
 
     columns = ['First Name', 'Second name','Last Name', 'Gender', 'Occupation', 'Area_of_Residence',
-               'nearest_landmark','contact_number','chapel','chapel_head','shepherd']
+               'nearest_landmark','contact_number','chapel','chapel_head','shepherd',]
 
     for col_num in range(len(columns)):
         ws.write(row_num, col_num, columns[col_num], font_style)
