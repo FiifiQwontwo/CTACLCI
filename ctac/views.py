@@ -8,6 +8,8 @@ from django.core.paginator import Paginator, EmptyPage
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models import Count
+import  xlwt
+from django.http import HttpResponse
 
 
 #
@@ -491,3 +493,70 @@ class MemberViewSet(viewsets.ModelViewSet):
 #         self.perform_create(serializer)
 #         headers = self.get_success_headers(serializer.data)
 #         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+
+
+
+
+def export_members_xls(request):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="Members.xls"'
+
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Members')
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['First Name', 'Second name','Last Name', 'Gender', 'Occupation', 'Area_of_Residence',
+               'nearest_landmark','contact_number','chapel','chapel_head','shepherd']
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+
+    rows = Member.objects.all().values_list('first_name', 'second_name', 'surname','sex','contact_number','occupation','area_of_residence','nearest_landmark','chapel','chapel_head','shepherd')
+    for row in rows:
+        row_num += 1
+    for col_num in range(len(row)):
+        ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
+    return response
+
+
+
+def export_shepherd_xls(request):
+    responses = HttpResponse(content_type='application/ms-excel')
+    responses['Content-Disposition'] = 'attachment; filename="Shepherds.xls"'
+
+    wba = xlwt.Workbook(encoding='utf-8')
+    wsa = wba.add_sheet('Shepherds')
+
+    # Sheet header, first row
+    row_nums = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['First Name', 'Second name','Last Name', 'Gender', 'type']
+
+    for col_num in range(len(columns)):
+        wsa.write(row_nums, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+
+    rows = Shepherd.objects.all().values_list('first_name', 'second_name', 'surname','sex','type')
+    for row in rows:
+        row_nums += 1
+    for col_num in range(len(row)):
+        wsa.write(row_nums, col_num, row[col_num], font_style)
+
+    wba.save(responses)
+    return responses
