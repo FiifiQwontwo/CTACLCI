@@ -38,7 +38,7 @@ def list_pastor(request):
 #
 def list_shepherd(request):
     sheplist = Shepherd.objects.all()
-    shpage = Paginator(sheplist, 10)
+    shpage = Paginator(sheplist,20)
 
     page_num = request.GET.get('page', 1)
     try:
@@ -560,3 +560,37 @@ def export_shepherd_xls(request):
 
     wba.save(responses)
     return responses
+
+
+def export_pastor_xls(request):
+    responsed = HttpResponse(content_type='application/ms-excel')
+    responsed['Content-Disposition'] = 'attachment; filename="Pastor.xls"'
+
+    wad = xlwt.Workbook(encoding='utf-8')
+    wa = wad.add_sheet('Pastor')
+
+    # Sheet header, first row
+    row_nums = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['Title','First Name', 'Second name','Last Name', 'Gender', 'Phone']
+
+    for col_num in range(len(columns)):
+        wa.write(row_nums, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+
+    rows = Pastor.objects.all().values_list('title','first_name', 'second_name', 'surname','sex','phone_number')
+    for row in rows:
+        row_nums += 1
+    for col_num in range(len(row)):
+        wa.write(row_nums, col_num, row[col_num], font_style)
+
+    wad.save(responsed)
+    return responsed
+
+
+

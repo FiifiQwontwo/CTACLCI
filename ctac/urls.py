@@ -48,7 +48,9 @@ urlpatterns = [
     path('member_list_api/', MemberViewSet.as_view({'get': 'list', }), name='member_list_api'),
     path('add_member_api/', MemberViewSet.as_view({'post': 'create', }), name='new_member_api'),
 
-    path('export/xls/', export_members_xls, name='export_members_xls'),
+    path('export_member/xls/', export_members_xls, name='export_members_xls'),
     path('export_shepherd/xls/', export_shepherd_xls, name='export_shepherd_xls'),
+    path('export_pastor/xls/', export_pastor_xls, name='export_pastor_xls'),
+    # path('export_chapelheads/xls/', export_chapel_heads_xls, name='export_chapelheads_xls'),
 
 ]
