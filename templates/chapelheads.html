@@ -42,10 +42,10 @@
                 </table>
 
               {% if heads.has_previous %}
-<a href="?page={{heads.previous_page_number }}">Previous Page</a> &nbsp; &nbsp;
+<a href="?page={{heads.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a> &nbsp; &nbsp;
 {% endif%}
 {% if heads.has_next %}
-<a href="?page={{heads.next_page_number }}">Next Page</a>
+<a href="?page={{heads.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
 {% endif %}
               </div>
             </div>

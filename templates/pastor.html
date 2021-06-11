@@ -52,10 +52,10 @@
                   </tbody>
                 </table>
               {% if paslist.has_previous %}
-<a href="?page={{paslist.previous_page_number }}">Previous Page</a> &nbsp; &nbsp;
+<a href="?page={{paslist.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a> &nbsp; &nbsp;
 {% endif%}
 {% if paslist.has_next %}
-<a href="?page={{paslist.next_page_number }}">Next Page</a>
+<a href="?page={{paslist.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
 {% endif %}
               </div>
             </div>
