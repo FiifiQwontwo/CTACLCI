@@ -30,7 +30,7 @@ class MemberSerializer(serializers.ModelSerializer):
                   'bacenta_leader',)
 
 #
-# class AttendanceSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = AttendanceMember
-#         fields = ('present_in', 'date', 'member', 'chapel', 'shepherd', 'services',)
+class AttendanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AttendanceMember
+        fields = ('present_in', 'date', 'member', 'chapel', 'shepherd', 'services',)

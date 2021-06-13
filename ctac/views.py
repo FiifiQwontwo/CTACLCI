@@ -369,6 +369,7 @@ def chapel_update(request, slug):
     return render(request, 'update/chapel.html', context)
 
 
+
 def chapel_heads_update(request, slug):
     update_heads_chapel = get_object_or_404(Chapel, slug=slug)
     updateheadschapel = CreateChapelForm(request.POST or None, instance=update_heads_chapel)
@@ -379,6 +380,7 @@ def chapel_heads_update(request, slug):
         'updateheadschapel': updateheadschapel
     }
     return render(request, 'update/chapelheads.html', context)
+
 
 
 def area_update(request, slug):
@@ -447,6 +449,7 @@ class MinistryViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
+
 class PastorViewSet(viewsets.ModelViewSet):
     queryset = Pastor.objects.all()
     serializer_class = PastorSerializer
@@ -457,6 +460,8 @@ class PastorViewSet(viewsets.ModelViewSet):
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+
 
 
 class ShepherdViewSet(viewsets.ModelViewSet):
@@ -471,6 +476,8 @@ class ShepherdViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
+
+
 class MemberViewSet(viewsets.ModelViewSet):
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
@@ -483,16 +490,16 @@ class MemberViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
-# class Attendance(viewsets.ModelViewSet):
-#     queryset = AttendanceMember.objects.get()
-#     serializer_class = AttendanceSerializer
-#
-#     def create(self, request, *args, **kwargs):
-#         serializer = self.get_serializer(data=request.data, many=isinstance(request.data, list))
-#         serializer.is_valid(raise_exception=True)
-#         self.perform_create(serializer)
-#         headers = self.get_success_headers(serializer.data)
-#         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+class Attendance(viewsets.ModelViewSet):
+    queryset = AttendanceMember.objects.all()
+    serializer_class = AttendanceSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data, many=isinstance(request.data, list))
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
 
