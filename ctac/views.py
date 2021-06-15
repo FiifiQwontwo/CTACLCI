@@ -302,96 +302,95 @@ def create_chapel_heads(request):
 
 #
 # update
-# def member_update(request, slug):
-#     update_member = get_object_or_404(Member, slug=slug)
-#     updatemember = CreateMemberForm(request.POST or None, instance=update_member)
-#     if updatemember.is_valid():
-#         updatemember.save()
-#         return redirect('ctac:urls_details_member')
-#     context = {
-#         'updatemember': updatemember
-#     }
-#     return render(request, 'update/member.html', context)
+def member_update(request, slug):
+    update_member = get_object_or_404(Member, slug=slug)
+    updatemember = CreateMemberForm(request.POST or None, instance=update_member)
+    if updatemember.is_valid():
+        updatemember.save()
+        return redirect('ctac:urls_details_member')
+    context = {
+        'updatemember': updatemember
+    }
+    return render(request, 'update/member.html', context)
 
 
-#
-# def pastor_update(request, slug):
-#     update_pastor = get_object_or_404(Pastor, slug=slug)
-#     updatepastor = CreatePastorForm(request.POST or None, instance=update_pastor)
-#     if updatepastor.is_valid():
-#         updatepastor.save()
-#         return redirect('ctac:urls_details_pastor')
-#     context = {
-#         'updatepastor': updatepastor
-#     }
-#     return render(request, 'update/pastor.html', context)
+def pastor_update(request, slug):
+    update_pastor = get_object_or_404(Pastor, slug=slug)
+    updatepastor = CreatePastorForm(request.POST or None, instance=update_pastor)
+    if updatepastor.is_valid():
+        updatepastor.save()
+        return redirect('ctac:urls_details_pastor')
+    context = {
+        'updatepastor': updatepastor
+    }
+    return render(request, 'update/pastor.html', context)
 
 
-#
+def ministrty_update(request, slug):
+    update_ministry = get_object_or_404(Ministry, slug=slug)
+    updateministry = CreateMinistryForm(request.POST or None, instance=update_ministry)
+    if updateministry.is_valid():
+        updateministry.save()
+        return redirect('ctac:urls_details_ministry')
+    context = {
+        'updateministry': updateministry
+    }
+    return render(request, 'update/ministry.html', context)
 
-# def ministrty_update(request, slug):
-#     update_ministry = get_object_or_404(Ministry, slug=slug)
-#     updateministry = CreateMinistryForm(request.POST or None, instance=update_ministry)
-#     if updateministry.is_valid():
-#         updateministry.save()
-#         return redirect('ctac:urls_details_ministry')
-#     context = {
-#         'updateministry': updateministry
-#     }
-#     return render(request, 'update/ministry.html', context)
-#
 
 #
 #
 
-# def shepherd_update(request, slug):
-#     update_shepherd = get_object_or_404(Shepherd, slug=slug)
-#     updateshepherd = CreateShepherdForm(request.POST or None, instance=update_shepherd)
-#     if updateshepherd.is_valid():
-#         updateshepherd.save()
-#         return redirect('ctac:urls_details_pastor')
-#     context = {
-#         'updateshepherd': updateshepherd
-#     }
-#     return render(request, 'update/shepherd.html', context)
-#
+def shepherd_update(request, slug):
+    update_shepherd = get_object_or_404(Shepherd, slug=slug)
+    updateshepherd = CreateShepherdForm(request.POST or None, instance=update_shepherd)
+    if updateshepherd.is_valid():
+        updateshepherd.save()
+        return redirect('ctac:urls_details_pastor')
+    context = {
+        'updateshepherd': updateshepherd
+    }
+    return render(request, 'update/shepherd.html', context)
+
 #
 # #
 #
 
-# def chapel_update(request, slug):
-#     update_chapel = get_object_or_404(Chapel, slug=slug)
-#     updatechapel = CreateChapelForm(request.POST or None, instance=update_chapel)
-#     if updatechapel.is_valid():
-#         updatechapel.save()
-#         return redirect('ctac:chapel_details_urls')
-#     context = {
-#         'updatechapel': updatechapel
-#     }
-#     return render(request, 'update/chapel.html', context)
-# def chapel_heads_update(request, slug):
-#     update_heads_chapel = get_object_or_404(Chapel, slug=slug)
-#     updateheadschapel = CreateChapelForm(request.POST or None, instance=update_heads_chapel)
-#     if updateheadschapel.is_valid():
-#         updateheadschapel.save()
-#         return redirect('ctac:chapel_details_urls')
-#     context = {
-#         'updateheadschapel': updateheadschapel
-#     }
-#     return render(request, 'update/chapelheads.html', context)
-#
+def chapel_update(request, slug):
+    update_chapel = get_object_or_404(Chapel, slug=slug)
+    updatechapel = CreateChapelForm(request.POST or None, instance=update_chapel)
+    if updatechapel.is_valid():
+        updatechapel.save()
+        return redirect('ctac:chapel_details_urls')
+    context = {
+        'updatechapel': updatechapel
+    }
+    return render(request, 'update/chapel.html', context)
 
 
-# def area_update(request, slug):
-#     update_area = get_object_or_404(Chapel, slug=slug)
-#     areaupdate = CreateChapelForm(request.POST or None, instance=update_area)
-#     if areaupdate.is_valid():
-#         areaupdate.save()
-#         return redirect('ctac:urls_areas_list')
-#     context = {
-#         'areaupdate': areaupdate
-#     }
-#     return render(request, 'update/area.html', context)
+def chapel_heads_update(request, slug):
+    update_heads_chapel = get_object_or_404(Chapel, slug=slug)
+    updateheadschapel = CreateChapelForm(request.POST or None, instance=update_heads_chapel)
+    if updateheadschapel.is_valid():
+        updateheadschapel.save()
+        return redirect('ctac:chapel_details_urls')
+    context = {
+        'updateheadschapel': updateheadschapel
+    }
+    return render(request, 'update/chapelheads.html', context)
+
+
+
+def area_update(request, slug):
+    update_area = get_object_or_404(Chapel, slug=slug)
+    areaupdate = CreateChapelForm(request.POST or None, instance=update_area)
+    if areaupdate.is_valid():
+        areaupdate.save()
+        return redirect('ctac:urls_areas_list')
+    context = {
+        'areaupdate': areaupdate
+    }
+    return render(request, 'update/area.html', context)
 
 
 # def services_update(request,slug):

@@ -21,11 +21,11 @@ class ChapelHeadsAdmin(admin.ModelAdmin):
 
 
 class ShepherdAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('surname',)}
+    prepopulated_fields = {'slug': ('surname', 'first_name')}
 
 
 class PastorAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('surname',)}
+    prepopulated_fields = {'slug': ('surname', 'first_name')}
 
 
 class AreaResidenceAdmin(admin.ModelAdmin):
@@ -33,7 +33,7 @@ class AreaResidenceAdmin(admin.ModelAdmin):
 
 
 class MemberAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('surname',)}
+    prepopulated_fields = {'slug': ('surname', 'first_name')}
 
 
 admin.site.register(Member, MemberAdmin)
