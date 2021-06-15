@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import *
-from .models import *
+from . models import *
 from rest_framework import status, viewsets
 from rest_framework.response import Response
 from .serializers import *
@@ -8,7 +8,7 @@ from django.core.paginator import Paginator, EmptyPage
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models import Count
-import  xlwt
+import xlwt
 from django.http import HttpResponse
 
 
@@ -18,13 +18,13 @@ from django.http import HttpResponse
 
 def list_pastor(request):
     paslist = Pastor.objects.all().order_by('created_at')
-    paspage =Paginator(paslist,10)
+    paspage = Paginator(paslist, 10)
 
-    page_num = request.GET.get('page',1)
+    page_num = request.GET.get('page', 1)
     try:
         page = paspage.page(page_num)
     except EmptyPage:
-        page=paspage(1)
+        page = paspage(1)
     context = {
         'paslist': page,
 
@@ -38,7 +38,7 @@ def list_pastor(request):
 #
 def list_shepherd(request):
     sheplist = Shepherd.objects.all()
-    shpage = Paginator(sheplist,20)
+    shpage = Paginator(sheplist, 20)
 
     page_num = request.GET.get('page', 1)
     try:
@@ -137,12 +137,12 @@ def index(request):
     memcount = Member.objects.all().count()
     shecounts = Shepherd.objects.all().count()
     new_area = AreaResidence.objects.all().count()
-    mini_count =Ministry.objects.all().count()
+    mini_count = Ministry.objects.all().count()
     context = {
         'memcount': memcount,
         'shecounts': shecounts,
         'new_area': new_area,
-        'mini_count':mini_count
+        'mini_count': mini_count
 
     }
     return render(request, 'index.html', context)
@@ -154,7 +154,7 @@ def index(request):
 def pastor_details(request, slug):
     pas_details = get_object_or_404(Pastor, slug=slug)
     context = {'pas_details': pas_details}
-    return render(request, 'tems/pastor.html',context )
+    return render(request, 'tems/pastor.html', context)
 
 
 #
@@ -168,6 +168,8 @@ def ministry_details(request, slug):
     return render(request, 'tems/ministry.html', {'mindetails': mindetails})
 
 #
+
+
 def member_details(request, slug):
     membdetails = get_object_or_404(Member, slug=slug)
     context = {'membdetails': membdetails}
@@ -300,99 +302,96 @@ def create_chapel_heads(request):
 
 #
 # update
-def member_update(request, slug):
-    update_member = get_object_or_404(Member, slug=slug)
-    updatemember = CreateMemberForm(request.POST or None, instance=update_member)
-    if updatemember.is_valid():
-        updatemember.save()
-        return redirect('ctac:urls_details_member')
-    context = {
-        'updatemember': updatemember
-    }
-    return render(request, 'update/member.html', context)
+# def member_update(request, slug):
+#     update_member = get_object_or_404(Member, slug=slug)
+#     updatemember = CreateMemberForm(request.POST or None, instance=update_member)
+#     if updatemember.is_valid():
+#         updatemember.save()
+#         return redirect('ctac:urls_details_member')
+#     context = {
+#         'updatemember': updatemember
+#     }
+#     return render(request, 'update/member.html', context)
 
 
 #
-def pastor_update(request, slug):
-    update_pastor = get_object_or_404(Pastor, slug=slug)
-    updatepastor = CreatePastorForm(request.POST or None, instance=update_pastor)
-    if updatepastor.is_valid():
-        updatepastor.save()
-        return redirect('ctac:urls_details_pastor')
-    context = {
-        'updatepastor': updatepastor
-    }
-    return render(request, 'update/pastor.html', context)
+# def pastor_update(request, slug):
+#     update_pastor = get_object_or_404(Pastor, slug=slug)
+#     updatepastor = CreatePastorForm(request.POST or None, instance=update_pastor)
+#     if updatepastor.is_valid():
+#         updatepastor.save()
+#         return redirect('ctac:urls_details_pastor')
+#     context = {
+#         'updatepastor': updatepastor
+#     }
+#     return render(request, 'update/pastor.html', context)
 
 
 #
 
-def ministrty_update(request, slug):
-    update_ministry = get_object_or_404(Ministry, slug=slug)
-    updateministry = CreateMinistryForm(request.POST or None, instance=update_ministry)
-    if updateministry.is_valid():
-        updateministry.save()
-        return redirect('ctac:urls_details_ministry')
-    context = {
-        'updateministry': updateministry
-    }
-    return render(request, 'update/ministry.html', context)
-
-
+# def ministrty_update(request, slug):
+#     update_ministry = get_object_or_404(Ministry, slug=slug)
+#     updateministry = CreateMinistryForm(request.POST or None, instance=update_ministry)
+#     if updateministry.is_valid():
+#         updateministry.save()
+#         return redirect('ctac:urls_details_ministry')
+#     context = {
+#         'updateministry': updateministry
+#     }
+#     return render(request, 'update/ministry.html', context)
 #
-#
-
-def shepherd_update(request, slug):
-    update_shepherd = get_object_or_404(Shepherd, slug=slug)
-    updateshepherd = CreateShepherdForm(request.POST or None, instance=update_shepherd)
-    if updateshepherd.is_valid():
-        updateshepherd.save()
-        return redirect('ctac:urls_details_pastor')
-    context = {
-        'updateshepherd': updateshepherd
-    }
-    return render(request, 'update/shepherd.html', context)
-
 
 #
 #
 
-def chapel_update(request, slug):
-    update_chapel = get_object_or_404(Chapel, slug=slug)
-    updatechapel = CreateChapelForm(request.POST or None, instance=update_chapel)
-    if updatechapel.is_valid():
-        updatechapel.save()
-        return redirect('ctac:chapel_details_urls')
-    context = {
-        'updatechapel': updatechapel
-    }
-    return render(request, 'update/chapel.html', context)
+# def shepherd_update(request, slug):
+#     update_shepherd = get_object_or_404(Shepherd, slug=slug)
+#     updateshepherd = CreateShepherdForm(request.POST or None, instance=update_shepherd)
+#     if updateshepherd.is_valid():
+#         updateshepherd.save()
+#         return redirect('ctac:urls_details_pastor')
+#     context = {
+#         'updateshepherd': updateshepherd
+#     }
+#     return render(request, 'update/shepherd.html', context)
+#
+#
+# #
+#
+
+# def chapel_update(request, slug):
+#     update_chapel = get_object_or_404(Chapel, slug=slug)
+#     updatechapel = CreateChapelForm(request.POST or None, instance=update_chapel)
+#     if updatechapel.is_valid():
+#         updatechapel.save()
+#         return redirect('ctac:chapel_details_urls')
+#     context = {
+#         'updatechapel': updatechapel
+#     }
+#     return render(request, 'update/chapel.html', context)
+# def chapel_heads_update(request, slug):
+#     update_heads_chapel = get_object_or_404(Chapel, slug=slug)
+#     updateheadschapel = CreateChapelForm(request.POST or None, instance=update_heads_chapel)
+#     if updateheadschapel.is_valid():
+#         updateheadschapel.save()
+#         return redirect('ctac:chapel_details_urls')
+#     context = {
+#         'updateheadschapel': updateheadschapel
+#     }
+#     return render(request, 'update/chapelheads.html', context)
+#
 
 
-
-def chapel_heads_update(request, slug):
-    update_heads_chapel = get_object_or_404(Chapel, slug=slug)
-    updateheadschapel = CreateChapelForm(request.POST or None, instance=update_heads_chapel)
-    if updateheadschapel.is_valid():
-        updateheadschapel.save()
-        return redirect('ctac:chapel_details_urls')
-    context = {
-        'updateheadschapel': updateheadschapel
-    }
-    return render(request, 'update/chapelheads.html', context)
-
-
-
-def area_update(request, slug):
-    update_area = get_object_or_404(Chapel, slug=slug)
-    areaupdate = CreateChapelForm(request.POST or None, instance=update_area)
-    if areaupdate.is_valid():
-        areaupdate.save()
-        return redirect('ctac:urls_areas_list')
-    context = {
-        'areaupdate': areaupdate
-    }
-    return render(request, 'update/area.html', context)
+# def area_update(request, slug):
+#     update_area = get_object_or_404(Chapel, slug=slug)
+#     areaupdate = CreateChapelForm(request.POST or None, instance=update_area)
+#     if areaupdate.is_valid():
+#         areaupdate.save()
+#         return redirect('ctac:urls_areas_list')
+#     context = {
+#         'areaupdate': areaupdate
+#     }
+#     return render(request, 'update/area.html', context)
 
 
 # def services_update(request,slug):
@@ -449,7 +448,6 @@ class MinistryViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
-
 class PastorViewSet(viewsets.ModelViewSet):
     queryset = Pastor.objects.all()
     serializer_class = PastorSerializer
@@ -462,8 +460,6 @@ class PastorViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
-
-
 class ShepherdViewSet(viewsets.ModelViewSet):
     queryset = Shepherd.objects.all()
     serializer_class = ShepherdSerializer
@@ -474,8 +470,6 @@ class ShepherdViewSet(viewsets.ModelViewSet):
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-
-
 
 
 class MemberViewSet(viewsets.ModelViewSet):
@@ -502,9 +496,6 @@ class Attendance(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
-
-
-
 def export_members_xls(request):
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="Members.xls"'
@@ -518,8 +509,8 @@ def export_members_xls(request):
     font_style = xlwt.XFStyle()
     font_style.font.bold = True
 
-    columns = ['First Name', 'Second name','Last Name', 'Gender', 'Occupation', 'Area_of_Residence',
-               'nearest_landmark','contact_number','chapel','chapel_head','shepherd',]
+    columns = ['First Name', 'Second name', 'Last Name', 'Gender', 'Occupation', 'Area_of_Residence',
+               'nearest_landmark', 'contact_number', 'chapel', 'chapel_head', 'shepherd']
 
     for col_num in range(len(columns)):
         ws.write(row_num, col_num, columns[col_num], font_style)
@@ -527,7 +518,13 @@ def export_members_xls(request):
     # Sheet body, remaining rows
     font_style = xlwt.XFStyle()
 
-    rows = Member.objects.all().values_list('first_name', 'second_name', 'surname','sex','occupation','area_of_residence','nearest_landmark','chapel','chapel_head','shepherd')
+    rows = Member.objects.all().values_list('first_name',
+                                            'second_name',
+                                            'surname',
+                                            'sex',
+                                            'occupation',
+                                            'area_of_residence', 'nearest_landmark', 'chapel', 'chapel_head',
+                                            'shepherd')
     for row in rows:
         row_num += 1
     for col_num in range(len(row)):
@@ -535,7 +532,6 @@ def export_members_xls(request):
 
     wb.save(response)
     return response
-
 
 
 def export_shepherd_xls(request):
@@ -551,7 +547,7 @@ def export_shepherd_xls(request):
     font_style = xlwt.XFStyle()
     font_style.font.bold = True
 
-    columns = ['First Name', 'Second name','Last Name', 'Gender', 'type']
+    columns = ['First Name', 'Second name', 'Last Name', 'Gender', 'type']
 
     for col_num in range(len(columns)):
         wsa.write(row_nums, col_num, columns[col_num], font_style)
@@ -559,7 +555,7 @@ def export_shepherd_xls(request):
     # Sheet body, remaining rows
     font_style = xlwt.XFStyle()
 
-    rows = Shepherd.objects.all().values_list('first_name', 'second_name', 'surname','sex','type')
+    rows = Shepherd.objects.all().values_list('first_name', 'second_name', 'surname', 'sex', 'type')
     for row in rows:
         row_nums += 1
     for col_num in range(len(row)):
@@ -582,7 +578,7 @@ def export_pastor_xls(request):
     font_style = xlwt.XFStyle()
     font_style.font.bold = True
 
-    columns = ['Title','First Name', 'Second name','Last Name', 'Gender', 'Phone']
+    columns = ['Title', 'First Name', 'Second name', 'Last Name', 'Gender', 'Phone']
 
     for col_num in range(len(columns)):
         wa.write(row_nums, col_num, columns[col_num], font_style)
@@ -590,7 +586,12 @@ def export_pastor_xls(request):
     # Sheet body, remaining rows
     font_style = xlwt.XFStyle()
 
-    rows = Pastor.objects.all().values_list('title','first_name', 'second_name', 'surname','sex','phone_number')
+    rows = Pastor.objects.all().values_list('title',
+                                            'first_name',
+                                            'second_name',
+                                            'surname',
+                                            'sex',
+                                            'phone_number')
     for row in rows:
         row_nums += 1
     for col_num in range(len(row)):
@@ -598,6 +599,3 @@ def export_pastor_xls(request):
 
     wad.save(responsed)
     return responsed
-
-
-

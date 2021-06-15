@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content  %}
+
 <form method="post" novalidate>
   {% csrf_token %}
 
@@ -19,7 +23,9 @@
         </td>
       </tr>
     {% endfor %}
+    <button type="submit">Submit</button>
   </table>
 
-  <button type="submit">Submit</button>
+
 </form>
+{% endblock %}
