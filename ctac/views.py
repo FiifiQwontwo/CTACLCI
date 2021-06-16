@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import *
-from . models import *
+from .models import *
 from rest_framework import status, viewsets
 from rest_framework.response import Response
 from .serializers import *
@@ -10,6 +10,8 @@ from django.db.models import Q
 from django.db.models import Count
 import xlwt
 from django.http import HttpResponse
+import requests
+import json
 
 
 #
@@ -166,6 +168,7 @@ def shepherd_details(request, slug):
 def ministry_details(request, slug):
     mindetails = get_object_or_404(Ministry, slug=slug)
     return render(request, 'tems/ministry.html', {'mindetails': mindetails})
+
 
 #
 
@@ -352,6 +355,7 @@ def shepherd_update(request, slug):
     }
     return render(request, 'update/shepherd.html', context)
 
+
 #
 # #
 #
@@ -378,7 +382,6 @@ def chapel_heads_update(request, slug):
         'updateheadschapel': updateheadschapel
     }
     return render(request, 'update/chapelheads.html', context)
-
 
 
 def area_update(request, slug):
@@ -598,3 +601,13 @@ def export_pastor_xls(request):
 
     wad.save(responsed)
     return responsed
+
+
+def ipcalls(request):
+    response = requests.get('https://ipstack.com/json/')
+    geodata = response.json()
+    return render(request, 'ips.html', {
+        'ip': geodata['ip'],
+        'country': geodata['country_name']
+    }
+                  )
