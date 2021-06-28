@@ -25,7 +25,7 @@ class ShepherdAdmin(admin.ModelAdmin):
 
 
 class PastorAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('surname', 'first_name')}
+    prepopulated_fields = {'slug': ('surname',)}
 
 
 class AreaResidenceAdmin(admin.ModelAdmin):
@@ -45,3 +45,4 @@ admin.site.register(Pastor, PastorAdmin)
 admin.site.register(Shepherd, ShepherdAdmin)
 admin.site.register(AreaResidence, AreaResidenceAdmin)
 admin.site.register(AttendanceMember)
+admin.site.register(Names)

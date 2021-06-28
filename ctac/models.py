@@ -273,3 +273,8 @@ class AttendanceMember(models.Model):
 
     def __str__(self):
         return self.present_in
+
+
+class Names(models.Model):
+    fname = models.CharField(max_length=50)
+    surname = models.CharField(max_length=50)

@@ -52,6 +52,6 @@ urlpatterns = [
     path('export_shepherd/xls/', export_shepherd_xls, name='export_shepherd_xls'),
     path('export_pastor/xls/', export_pastor_xls, name='export_pastor_xls'),
     # path('export_chapelheads/xls/', export_chapel_heads_xls, name='export_chapelheads_xls'),
-    path('x_ip_calls/', ipcalls, name='ipslocation'),
+   # path('x_ip_calls/', ipcalls, name='ipslocation'),
 
 ]
