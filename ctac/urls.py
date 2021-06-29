@@ -28,7 +28,7 @@ urlpatterns = [
     path('add_member/', create_member, name='add_member_url'),
     path('add_chapel/', create_chapel, name='add_chapel_url'),
     path('add_area/', create_area_residences, name='add_area_url'),
-    path('add_chapel_head/', create_chapel_heads, name='heads_chapel'),
+    path('add_chapel_head/', create_chapel_heads, name='add_heads_chapel'),
     path('add_services/', create_services, name='new_services'),
 
     # update
@@ -51,7 +51,7 @@ urlpatterns = [
     path('export_member/xls/', export_members_xls, name='export_members_xls'),
     path('export_shepherd/xls/', export_shepherd_xls, name='export_shepherd_xls'),
     path('export_pastor/xls/', export_pastor_xls, name='export_pastor_xls'),
-    # path('export_chapelheads/xls/', export_chapel_heads_xls, name='export_chapelheads_xls'),
+    #path('export_chapelheads/xls/', export_chapel_heads_xls, name='export_chapelheads_xls'),
    # path('x_ip_calls/', ipcalls, name='ipslocation'),
 
 ]
