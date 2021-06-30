@@ -33,8 +33,9 @@ class AreaResidenceAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('area_residence',)}
 
 
-class MemberAdmin(admin.ModelAdmin, ImportExportModelAdmin):
+class MemberAdmin(ImportExportModelAdmin):
     prepopulated_fields = {'slug': ('surname', 'first_name')}
+    pass
 
 
 admin.site.register(Member, MemberAdmin)
