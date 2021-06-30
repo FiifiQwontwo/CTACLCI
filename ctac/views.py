@@ -615,7 +615,7 @@ def ipcalls(request):
                   )
 
 
-def export(request):
+def export_member(request):
     member_resource = MemberResource()
     dataset = member_resource.export()
     response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
@@ -627,7 +627,7 @@ def simple_upload(request):
     if request.method == 'POST':
         mem_resource = MemberResource()
         datasets = Dataset()
-        new_persons = request.FILES['myfile']
+        new_persons = request.FILES['new_persons']
 
         imported_data = datasets.load(new_members.read())
         result = mem_resource.import_data(datasets, dry_run=True)  # Test the data import

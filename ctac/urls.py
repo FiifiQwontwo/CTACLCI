@@ -1,5 +1,5 @@
 from django.urls import path
-from . views import *
+from .views import *
 
 app_name = 'ctac'
 
@@ -42,8 +42,8 @@ urlpatterns = [
     path('add_osofo/', PastorViewSet.as_view({'post': 'create', }), name='new_osofo_api'),
     path('add_shepherd/', ShepherdViewSet.as_view({'post': 'create'}), name='new_shepherd_api'),
     path('shepherd_list_api/', ShepherdViewSet.as_view({'get': 'list'}), name='sheperd_list_api'),
-    path('api_attendance/', Attendance.as_view({'get':'list'}), name ='attendance_list'),
-    path('new_attendance/', Attendance.as_view({'post':'create'}), name = 'new_attendance'),
+    path('api_attendance/', Attendance.as_view({'get': 'list'}), name='attendance_list'),
+    path('new_attendance/', Attendance.as_view({'post': 'create'}), name='new_attendance'),
 
     path('member_list_api/', MemberViewSet.as_view({'get': 'list', }), name='member_list_api'),
     path('add_member_api/', MemberViewSet.as_view({'post': 'create', }), name='new_member_api'),
@@ -51,10 +51,9 @@ urlpatterns = [
     path('export_member/xls/', export_members_xls, name='export_members_xls'),
     path('export_shepherd/xls/', export_shepherd_xls, name='export_shepherd_xls'),
     path('export_pastor/xls/', export_pastor_xls, name='export_pastor_xls'),
-    #path('export_chapelheads/xls/', export_chapel_heads_xls, name='export_chapelheads_xls'),
-   # path('x_ip_calls/', ipcalls, name='ipslocation'),
-
-
+    # path('export_chapelheads/xls/', export_chapel_heads_xls, name='export_chapelheads_xls'),
+    path('uploads_dz0uio63/', simple_upload, name='upload'),
+    path('exmem2300zia/', export_member, name='memex'),
+    # path('x_ip_calls/', ipcalls, name='ipslocation'),
 
 ]
-
