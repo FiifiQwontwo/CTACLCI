@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'rest_framework',
     'ctac.apps.CtacConfig',
-    'corsheaders'
+    'corsheaders',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +141,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+IMPORT_EXPORT_USE_TRANSACTIONS = True

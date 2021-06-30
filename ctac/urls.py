@@ -54,4 +54,7 @@ urlpatterns = [
     #path('export_chapelheads/xls/', export_chapel_heads_xls, name='export_chapelheads_xls'),
    # path('x_ip_calls/', ipcalls, name='ipslocation'),
 
+
+
 ]
+

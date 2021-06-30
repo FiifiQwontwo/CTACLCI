@@ -12,6 +12,8 @@ import xlwt
 from django.http import HttpResponse
 import requests
 import json
+from .resources import *
+from tablib import Dataset
 
 
 #
@@ -611,3 +613,26 @@ def ipcalls(request):
         'country': geodata['country_name']
     }
                   )
+
+
+def export(request):
+    member_resource = MemberResource()
+    dataset = member_resource.export()
+    response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="member.xls"'
+    return response
+
+
+def simple_upload(request):
+    if request.method == 'POST':
+        mem_resource = MemberResource()
+        datasets = Dataset()
+        new_persons = request.FILES['myfile']
+
+        imported_data = datasets.load(new_members.read())
+        result = mem_resource.import_data(datasets, dry_run=True)  # Test the data import
+
+        if not result.has_errors():
+            mem_resource.import_data(datasets, dry_run=False)  # Actually import now
+
+    return render(request, 'import.html')
