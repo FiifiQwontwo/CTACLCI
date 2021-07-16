@@ -2,11 +2,19 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+# from account.views import
+
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('ctac.urls')),
     path('account/', include('account.urls')),
+    path('sentry-debug/', trigger_error),
+    # path('')
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

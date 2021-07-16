@@ -42,7 +42,7 @@ def list_pastor(request):
 #
 def list_shepherd(request):
     sheplist = Shepherd.objects.all()
-    shpage = Paginator(sheplist, 20)
+    shpage = Paginator(sheplist, 10)
 
     page_num = request.GET.get('page', 1)
     try:
