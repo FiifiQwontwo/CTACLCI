@@ -4,8 +4,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 # from account.views import
 
-def trigger_error(request):
-    division_by_zero = 1 / 0
+# def trigger_error(request):
+#     division_by_zero = 1 / 0
 
 
 urlpatterns = [
@@ -13,7 +13,7 @@ urlpatterns = [
     path('', include('ctac.urls')),
     path('account/', include('account.urls')),
     # path('sentry-debug/', trigger_error),
-    # path('')
+    path('', include('search.urls')),
 
 ]
 
