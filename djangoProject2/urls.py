@@ -9,7 +9,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('mews/', admin.site.urls),
     path('', include('ctac.urls')),
     path('account/', include('account.urls')),
     # path('sentry-debug/', trigger_error),
