@@ -13,7 +13,7 @@ def search(request):
 
         if query == '':
 
-            query = 'None'
+            query = 'results'
 
         results = Member.objects.filter(Q(surname__icontains=query) | Q(first_name__icontains=query) | Q(second_name__icontains=query) )
 

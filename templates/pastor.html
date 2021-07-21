@@ -2,10 +2,8 @@
 {% load static %}
 {% block title %}CTAC | Pastors {% endblock %}
 {% block content  %}
-
 <div class="wrapper">
  <div class="content-wrapper">
-
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -13,19 +11,17 @@
             <div class="card">
               <div class="card-header">
                <h2 class="card-title col-md-12">
-                  <div class="row">
+                  <div class="row mb-2">
                      <div class="col-sm-6">
-
                       <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a></li>
                         <li class="breadcrumb-item active"><i class="fas fa-users"></i> </li>
                       </ol>
                     </div>
-
                     <div class="col-md-6 text-right">
-                      add Pastor <a href="{% url 'ctac:new_pastor_url' %}"> <i class="fas fa-user-plus"></i></a>
-                      &nbsp;
-                       Export data <a href="{% url 'ctac:export_pastor_xls' %}" style="">  <i class="fas fa-file-excel"></i></a>
+                       <a href="{% url 'ctac:new_pastor_url' %}"> <i class="fas fa-user-plus"></i></a>
+                      &nbsp;<b>|</b>
+                        <a href="{% url 'ctac:export_pastor_xls' %}" style="">  <i class="fas fa-file-excel"></i></a>
                     </div>
                   </div>
                 </h2>
@@ -49,14 +45,10 @@
                     <td><a  href="{% url 'ctac:pastor_details_url' paslist.slug %}" class="link-black text-sm"> {{ paslist.surname }}</a></td>
                     <td> {{ paslist.first_name }}</td>
                     <td> {{ paslist.phone_number  }}</td>
-
                     <td>{{ paslist.email_address  }}</td>
-
-
                   </tr>
                   {% endfor %}
                   <tr>
-
                   </tbody>
                 </table>
               {% if paslist.has_previous %}
@@ -74,9 +66,6 @@
     </section>
  </div>
 </div>
-
-
-
  {% endblock %}
 
 

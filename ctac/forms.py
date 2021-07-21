@@ -72,3 +72,14 @@ class CreateMemberForm(forms.ModelForm):
                   'micro_area_name',
                   'nearest_landmark', 'phone_usage', 'online_service', 'services',
                   'ministries', 'chapel', 'shepherd', 'chapel_head', 'state', 'bacenta_leader',)
+
+
+class CreateAttendanceForm(forms.ModelForm):
+    class Meta:
+        model = AttendanceMember
+        fields = ('present_in',
+                  'date',
+                  'member',
+                  'chapel',
+                  'shepherd',
+                  'services',)

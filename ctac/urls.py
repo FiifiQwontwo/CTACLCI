@@ -30,6 +30,7 @@ urlpatterns = [
     path('add_area/', create_area_residences, name='add_area_url'),
     path('add_chapel_head/', create_chapel_heads, name='add_heads_chapel'),
     path('add_services/', create_services, name='new_services'),
+    path('newats/', create_attendance, name='new_attendance_urls'),
 
     # update
     path('update_members/<slug:slug>', member_update, name='member_update_url'),
@@ -54,6 +55,6 @@ urlpatterns = [
     # path('export_chapelheads/xls/', export_chapel_heads_xls, name='export_chapelheads_xls'),
     path('uploads_dz0uio63/', simple_upload, name='upload'),
     path('exmem2300zia/', export_member, name='memex'),
-    # path('x_ip_calls/', ipcalls, name='ipslocation'),
+    path('x_ip_calls/', ipcalls, name='ipslocation'),
 
 ]

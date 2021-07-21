@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'ctac.apps.CtacConfig',
     'corsheaders',
     'import_export',
-    'search',
+    # 'search',
 ]
 
 MIDDLEWARE = [

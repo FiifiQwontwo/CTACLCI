@@ -305,6 +305,19 @@ def create_chapel_heads(request):
     return render(request, 'create/chapel_heads.html', context)
 
 
+def create_attendance(request):
+    attend = CreateAttendanceForm(request.POST or None, request.FILES)
+    if attend.is_valid():
+        attend.save(commit=False)
+        attend.save()
+        messages.success(request, 'Added a New attendee')
+        return redirect('ctac:home')
+    context = {
+        'attend': attend
+    }
+    return render(request, 'create/attendance.html', context)
+
+
 #
 # update
 def member_update(request, slug):
@@ -357,10 +370,6 @@ def shepherd_update(request, slug):
     }
     return render(request, 'update/shepherd.html', context)
 
-
-#
-# #
-#
 
 def chapel_update(request, slug):
     update_chapel = get_object_or_404(Chapel, slug=slug)
