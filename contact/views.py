@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .forms import ContactForm
 from django.contrib import messages
+from ctac.urls import *
 
 
 # Create your views here.
