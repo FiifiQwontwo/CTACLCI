@@ -275,6 +275,3 @@ class AttendanceMember(models.Model):
         return self.present_in
 
 
-class Names(models.Model):
-    fname = models.CharField(max_length=50)
-    surname = models.CharField(max_length=50)

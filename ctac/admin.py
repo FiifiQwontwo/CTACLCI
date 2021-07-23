@@ -47,4 +47,4 @@ admin.site.register(Pastor, PastorAdmin)
 admin.site.register(Shepherd, ShepherdAdmin)
 admin.site.register(AreaResidence, AreaResidenceAdmin)
 admin.site.register(AttendanceMember)
-admin.site.register(Names)
+
