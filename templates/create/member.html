@@ -15,11 +15,13 @@
                         <ol class="breadcrumb float-sm-left">
                           <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a>
                           </li>
-                          <li class="breadcrumb-item active"><i class="fas fa-users"></i></li>
+                            <li class="breadcrumb-item "><a href="{% url 'ctac:urls_member_list' %}"><i
+                      class="fas fa-users"></i></a></li>
+                          <li class="breadcrumb-item active"><i class="fas fa-user-plus"></i></li>
                         </ol>
                       </div>
                       <div class="col-md-6 text-right">
-                        <a href="{% url 'ctac:new_shepherd_url' %}"> <i class="fas fa-user-plus"></i></a>&nbsp;<b>|</b>
+{#                        <a href="{% url 'ctac:new_shepherd_url' %}"> <i class="fas fa-user-plus"></i></a>&nbsp;<b>|</b>#}
                         &nbsp;
                         <a href="{% url 'ctac:export_shepherd_xls' %}" style=""> <i class="fas fa-file-excel"></i></a>
                       </div>
