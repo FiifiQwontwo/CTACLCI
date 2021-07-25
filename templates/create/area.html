@@ -2,84 +2,62 @@
 {% block title %}CTAC | Add Area {% endblock %}
 {% load static %}
 {% block content %}
+  <div class="content-wrapper">
+    <div class="wrapper">
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h2 class="card-title col-md-12">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <ol class="breadcrumb float-sm-left">
+                          <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a>
+                          </li>
+                          <li class="breadcrumb-item "><a href="{% url 'ctac:urls_member_list' %}"><i class="fas fa-house-user"></i></a></li>
 
+                          <li class="breadcrumb-item active"><i class="fas fa-laptop-house"></i></li>
+                        </ol>
+                      </div>
+                      <div class="col-md-6 text-right">
+                        <a href="{% url 'ctac:export_shepherd_xls' %}" style=""> <i class="fas fa-file-excel"></i></a>
+                      </div>
+                    </div>
 
-{#    <!-- Main content -->#}
-{#  <div class="content-wrapper">#}
-{#    <section class="content">#}
-{#      <div class="container-fluid">#}
-{#        <div class="row">#}
-{#          <!-- left column -->#}
-{#          <div class="col-md-6">#}
-{#            <!-- general form elements -->#}
-{#            <div class="card card-primary">#}
-{#              <div class="card-header">#}
-{#                <h3 class="card-title">New Area of Residence</h3>#}
-{#                {{ form.non_field_errors }}#}
-{#              </div>#}
-{#              <!-- /.card-header -->#}
-{#              <!-- form start -->#}
-{#              <form method="POST" role="form">#}
-{#                {% csrf_token %}#}
-{#                <div class="card-body">#}
-{#                  <div class="form-group">#}
-{#                    {{ form.area_residence.errors }}#}
-{#                    <label for="{{ form.area_residence.id_for_label }}">Area</label>#}
-{#                     {{form.area_residence}}#}
-{#                  </div>#}
-{##}
-{#                  <div class="form-group">#}
-{#                    <label for="exampleInputFile">File input</label>#}
-{#                    <div class="input-group">#}
-{#                      <div class="custom-file">#}
-{#                        <input type="file" class="custom-file-input" id="exampleInputFile">#}
-{#                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>#}
-{#                      </div>#}
-{#                      <div class="input-group-append">#}
-{#                        <span class="input-group-text" id="">Upload</span>#}
-{#                      </div>#}
-{#                    </div>#}
-{#                  </div>#}
-{#                  <div class="form-check">#}
-{#                    <input type="checkbox" class="form-check-input" id="exampleCheck1">#}
-{#                    <label class="form-check-label" for="exampleCheck1">Check me out</label>#}
-{#                  </div>#}
-{#                </div>#}
-{#                <!-- /.card-body -->#}
-{##}
-{#                <div class="card-footer">#}
-{##}
-{#                  <button type="submit" class="btn btn-primary">Submit</button>#}
-{#                </div>#}
-{#                </div>#}
-{#              </form>#}
-{#            </div>#}
-{#          </div>#}
-{#        </div>#}
-{#      </div>#}
-{#    </section>#}
-{#  </div>#}
-
-
-<body>
-    <h1>Add Arera</h1>
-    <div class="content-wrapper">
-      <div class="container1">
-        <form method="post">
-            {% csrf_token %}
-            <div class="form1">
-                <label>Enter your Area name :</label>
-                {{form.arearesidences}}
+                  </h2>
+                </div>
+              </div>
             </div>
-
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-
+          </div>
+        </div>
+      </section>
     </div>
-    </div>
-</body>
-</html>
+  </div>
 
 {% endblock %}
+
+{##}
+{#<body>#}
+{#    <h1>Add Arera</h1>#}
+{#    <div class="content-wrapper">#}
+{#      <div class="container1">#}
+{#        <form method="post">#}
+{#            {% csrf_token %}#}
+{#            <div class="form1">#}
+{#                <label>Enter your Area name :</label>#}
+{#                {{form.arearesidences}}#}
+{#            </div>#}
+{##}
+{##}
+{#            <button type="submit" class="btn btn-primary">Submit</button>#}
+{#        </form>#}
+{##}
+{#    </div>#}
+{#    </div>#}
+{#</body>#}
+{#</html>#}
+{##}
+{#{% endblock %}#}
 {##}

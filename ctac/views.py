@@ -663,3 +663,37 @@ def pie_chart(request):
         'labels': labels,
         'data': data,
     })
+
+def export_area_xls(request):
+    responsed = HttpResponse(content_type='application/ms-excel')
+    responsed['Content-Disposition'] = 'attachment; filename="Residence.xls"'
+
+    wad = xlwt.Workbook(encoding='utf-8')
+    wa = wad.add_sheet('AreaResidence')
+
+    # Sheet header, first row
+    row_nums = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['area residence', 'created at', 'updated at']
+
+    for col_num in range(len(columns)):
+        wa.write(row_nums, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+
+    rows = Pastor.objects.all().values_list('area_residence',
+                                            'created_at',
+                                            'updated_at',
+                                            )
+    row = []
+    for row in rows:
+        row_nums += 1
+    for col_num in range(len(row)):
+        wa.write(row_nums, col_num, row[col_num], font_style)
+
+    wad.save(responsed)
+    return responsed
