@@ -538,6 +538,7 @@ def export_members_xls(request):
                                             'occupation',
                                             'area_of_residence', 'nearest_landmark', 'chapel', 'chapel_head',
                                             'shepherd')
+    row = []
     for row in rows:
         row_num += 1
     for col_num in range(len(row)):
@@ -569,6 +570,7 @@ def export_shepherd_xls(request):
     font_style = xlwt.XFStyle()
 
     rows = Shepherd.objects.all().values_list('first_name', 'second_name', 'surname', 'sex', 'type')
+    row = []
     for row in rows:
         row_nums += 1
     for col_num in range(len(row)):
@@ -605,6 +607,7 @@ def export_pastor_xls(request):
                                             'surname',
                                             'sex',
                                             'phone_number')
+    row = []
     for row in rows:
         row_nums += 1
     for col_num in range(len(row)):
