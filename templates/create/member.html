@@ -1,31 +1,61 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content  %}
+{% block content %}
+  <div class="content-wrapper">
+    <div class="wrapper">
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h2 class="card-title col-md-12">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <ol class="breadcrumb float-sm-left">
+                          <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a>
+                          </li>
+                          <li class="breadcrumb-item active"><i class="fas fa-users"></i></li>
+                        </ol>
+                      </div>
+                      <div class="col-md-6 text-right">
+                        <a href="{% url 'ctac:new_shepherd_url' %}"> <i class="fas fa-user-plus"></i></a>&nbsp;<b>|</b>
+                        &nbsp;
+                        <a href="{% url 'ctac:export_shepherd_xls' %}" style=""> <i class="fas fa-file-excel"></i></a>
+                      </div>
+                    </div>
+                    <form method="post" novalidate>
+                      {% csrf_token %}
 
-<form method="post" novalidate>
-  {% csrf_token %}
+                      {{ member_create.non_field_errors }}
 
-  {{ member_create.non_field_errors }}
+                      {% for hidden_field in member_create.hidden_fields %}
+                        {{ hidden_field.errors }}
+                        {{ hidden_field }}
+                      {% endfor %}
 
-  {% for hidden_field in member_create.hidden_fields %}
-    {{ hidden_field.errors }}
-    {{ hidden_field }}
-  {% endfor %}
+                      <table border="1">
+                        {% for field in member_create.visible_fields %}
+                          <tr>
+                            <th>{{ field.label_tag }}</th>
+                            <td>
+                              {{ field.errors }}
+                              {{ field }}
+                              {{ field.help_text }}
+                            </td>
+                          </tr>
+                        {% endfor %}
+                        <button type="submit">Submit</button>
+                      </table>
+                    </form>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 
-  <table border="1">
-    {% for field in member_create.visible_fields %}
-      <tr>
-        <th>{{ field.label_tag }}</th>
-        <td>
-          {{ field.errors }}
-          {{ field }}
-          {{ field.help_text }}
-        </td>
-      </tr>
-    {% endfor %}
-    <button type="submit">Submit</button>
-  </table>
-
-
-</form>
 {% endblock %}
