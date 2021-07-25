@@ -1,63 +1,66 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}CTAC | Areas{% endblock %}
-{% block content  %}
+{% block content %}
 
-<div class="wrapper">
- <div class="content-wrapper">
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-            <div class="row">
-              <div class="col-sm-6">
-                      <ol class="breadcrumb float-sm-left">
-                        <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item active"><i class="fas fa-house-user"></i> </li>
-                      </ol>
-                    </div>
-                       <div class="col-md-6 text-right">
-                      <a href="{% url 'ctac:add_area_url' %}"> <i class="fas fa-house-user"></i></a>
-                      &nbsp;
-                       </div>
-            </div>
-              <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Area </th>
+  <div class="wrapper">
+    <div class="content-wrapper">
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-left">
+                      <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a></li>
+                      <li class="breadcrumb-item active"><i class="fas fa-house-user"></i></li>
+                    </ol>
+                  </div>
+                  <div class="col-md-6 text-right">
+                    <a href="{% url 'ctac:add_area_url' %}"> <i class="fas fa-house-user"></i></a> &nbsp;<b>|</b>
 
-                  </tr>
-                  </thead>
-                  <tbody>
-                  {% for area in area %}
-                  <tr>
-                    <td> {{ area.id }}</td>
-                    <td> {{ area.area_residence }}</td>
+                    <a href="{% url 'ctac:export_area_xls' %}" style=""> <i class="fas fa-file-excel"></i></a>
+                  </div>
 
-                  </tr>
-                  {% endfor %}
-                  <tr>
+                </div>
+                <div class="card-body">
+                  <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Area</th>
 
-                  </tbody>
-                </table>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for area in area %}
+                      <tr>
+                        <td> {{ area.id }}</td>
+                        <td> {{ area.area_residence }}</td>
 
-              {% if area.has_previous %}
-<a href="?page={{area.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a> &nbsp; &nbsp;
-{% endif%}
-{% if area.has_next %}
-<a href="?page={{area.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
-{% endif %}
+                      </tr>
+                    {% endfor %}
+                    <tr>
+
+                    </tbody>
+                  </table>
+
+                  {% if area.has_previous %}
+                    <a href="?page={{ area.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a>
+                    &nbsp; &nbsp;
+                  {% endif %}
+                  {% if area.has_next %}
+                    <a href="?page={{ area.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
+                  {% endif %}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
- </div>
-</div>
+      </section>
+    </div>
+  </div>
 
 
-  {% endblock %}
+{% endblock %}

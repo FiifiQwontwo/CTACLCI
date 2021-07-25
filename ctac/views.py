@@ -685,7 +685,7 @@ def export_area_xls(request):
     # Sheet body, remaining rows
     font_style = xlwt.XFStyle()
 
-    rows = Pastor.objects.all().values_list('area_residence',
+    rows = AreaResidence.objects.all().values_list('area_residence',
                                             'created_at',
                                             'updated_at',
                                             )
