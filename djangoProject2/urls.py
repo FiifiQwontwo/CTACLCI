@@ -13,8 +13,8 @@ urlpatterns = [
     path('', include('ctac.urls')),
     path('account/', include('account.urls')),
     # path('sentry-debug/', trigger_error),
-    path('', include('search.urls')),
-    path('contact', include('contact.urls')),
+    path('search/', include('search.urls')),
+    path('contact/', include('contact.urls')),
 
 ]
 
