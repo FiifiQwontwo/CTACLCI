@@ -14,6 +14,7 @@ import requests
 import json
 from .resources import *
 from tablib import Dataset
+import requests
 
 
 #
@@ -664,6 +665,7 @@ def pie_chart(request):
         'data': data,
     })
 
+
 def export_area_xls(request):
     responsed = HttpResponse(content_type='application/ms-excel')
     responsed['Content-Disposition'] = 'attachment; filename="Residence.xls"'
@@ -686,9 +688,9 @@ def export_area_xls(request):
     font_style = xlwt.XFStyle()
 
     rows = AreaResidence.objects.all().values_list('area_residence',
-                                            'created_at',
-                                            'updated_at',
-                                            )
+                                                   'created_at',
+                                                   'updated_at',
+                                                   )
     row = []
     for row in rows:
         row_nums += 1
@@ -697,3 +699,28 @@ def export_area_xls(request):
 
     wad.save(responsed)
     return responsed
+
+#
+# def send_sms(request, contactnumber, sms):
+#     endPoint = 'https://api.mnotify.com/api/sms/quick'
+#     apiKey = 'KeQAdN74Bquug7OBX0pDzAdGEFGqi8i3n8DAWLFxc92th'
+#     sms = 'Your profile has been created on LCI CTAC Sakumono'
+#
+#     a = Member.objects.get(contactnumber=contact_number(request))
+#
+#
+#
+# data = {
+#     'recipient[]': ['0249706365', '0203698970'],
+#     'sender': 'mNotify',
+#     'message': 'API messaging is fun!',
+#     'is_schedule': False,
+#     'schedule_date': ''
+# }
+# url = endPoint + '?key=' + apiKey
+# response = requests.post(url, data)
+# data = response.json()
+
+
+def red(request):
+    return render(request, 'as.html')

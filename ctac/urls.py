@@ -57,5 +57,6 @@ urlpatterns = [
     path('exmem2300zia/', export_member, name='memex'),
     path('x_ip_calls/', ipcalls, name='ipslocation'),
     path('export_area/xls/', export_area_xls, name='export_area_xls'),
+    path('conta/', red, name='contact'),
 
 ]
