@@ -50,7 +50,7 @@
                     <td>{{ memblist.sex}}</td>
                     <td> {{ memblist.contact_number }}</td>
                     <td>{{ memblist.whatsapp_number }}</td>
-                  <td>{{ memblist.area_of_residence }}</td>
+                  <td>{{ memblist.area_of_residence|lower|capfirst }}</td>
                   <td>{{ memblist.shepherd }}</td>
                   </tr>
                   {% endfor %}
