@@ -134,6 +134,7 @@ class Service(models.Model):
 
 class ChapelHeads(models.Model):
     chapel_heads = models.CharField(max_length=100)
+    chapel = models.ForeignKey(Chapel, default=1,  on_delete=models.CASCADE)
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
