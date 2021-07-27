@@ -87,8 +87,8 @@ def list_chapel(request):
 
 
 def list_service(request):
-    services = Service.objects.all()
-    context = {'new': services}
+    service = Service.objects.all()
+    context = {'service': service}
     return render(request, 'services.html', context)
 
 
