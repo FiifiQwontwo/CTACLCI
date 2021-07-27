@@ -92,7 +92,7 @@
             {% if membdetails.details_of_owner %}
            <tr>
              <td width="50%">Details of Owner</td>
-           <td width="50%" style="text-align: left; font-weight: bold;">{{ membdetails.details_of_owner}}</td>
+           <td width="50%" style="text-align: left; font-weight: bold;">{{ membdetails.details_of_owner|lower|capfirst}}</td>
            </tr>
             {% endif %}
 
@@ -113,7 +113,7 @@
           {% if membdetails.area_of_residence %}
            <tr>
              <td width="50%">Area of Residence</td>
-           <td width="50%" style="text-align: left; font-weight: bold;">{{ membdetails.area_of_residence}}</td>
+           <td width="50%" style="text-align: left; font-weight: bold;">{{ membdetails.area_of_residence|lower|capfirst}}</td>
            </tr>
             {% endif %}
 
