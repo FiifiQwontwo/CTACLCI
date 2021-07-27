@@ -37,7 +37,7 @@
                     {% for area in area %}
                       <tr>
                         <td> {{ area.id }}</td>
-                        <td> {{ area.area_residence }}</td>
+                        <td> {{ area.area_residence|lower|capfirst }}</td>
 
                       </tr>
                     {% endfor %}

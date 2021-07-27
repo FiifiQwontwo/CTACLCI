@@ -679,7 +679,7 @@ def export_area_xls(request):
     font_style = xlwt.XFStyle()
     font_style.font.bold = True
 
-    columns = ['area residence', 'created at', 'updated at']
+    columns = ['area residence']
 
     for col_num in range(len(columns)):
         wa.write(row_nums, col_num, columns[col_num], font_style)
@@ -687,9 +687,8 @@ def export_area_xls(request):
     # Sheet body, remaining rows
     font_style = xlwt.XFStyle()
 
-    rows = AreaResidence.objects.all().values_list('area_residence',
-                                                   'created_at',
-                                                   'updated_at',
+    rows = AreaResidence.objects.all().values_list('area_residence'
+
                                                    )
     row = []
     for row in rows:
