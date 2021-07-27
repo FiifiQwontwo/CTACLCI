@@ -111,7 +111,6 @@ def list_area(request):
 def list_chapel_heads(request):
     heads = ChapelHeads.objects.all()
     cheadpage = Paginator(heads, 10)
-
     page_num = request.GET.get('page', 1)
     try:
         page = cheadpage.page(page_num)
