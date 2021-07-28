@@ -1,176 +1,184 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}CTAC | Dashboard{% endblock %}
-{% block content  %}
-<div class="content-wrapper">
-  <div class="wrapper">
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>{{memcount}}</h3>
-
-                <p>Members</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-users"></i>
-              </div>
-              <a href="{% url 'ctac:urls_member_list' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-
-              <div class="inner">
-                <a href="{% url 'ctac:urls_shepherd_list' %}">
-                <h3>{{ shecounts }}<sup style="font-size: 20px"></sup></h3> </a>
-
-                <p>Shepherds</p>
-              </div>
-              <div class="icon">
-                 <i class="fas fa-arrow-circle-right"></i>
-              </div>
-              <a href="{% url 'ctac:urls_shepherd_list' %}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>{{ new_area }}</h3>
-
-                <p>Residences</p>
-              </div>
-              <div class="icon">
-                <i class="far fa-building"></i>
-              </div>
-              <a href="{% url 'ctac:urls_areas_list' %}" class="small-box-footer">More info<i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>{{ mini_count }}</h3>
-
-                <p>Ministries</p>
-              </div>
-              <div class="icon">
-              <i class="fas fa-church"></i>
-              </div>
-              <a href="{% url 'ctac:urls_ministry_list' %}" class="small-box-footer">More info </a>
-            </div>
-          </div>
-
-          <div class="container-fluid mt-0">
+{% block content %}
+  <div class="content-wrapper">
+    <div class="wrapper">
+      <section class="content">
+        <div class="container-fluid">
+          <!-- Small boxes (Stat box) -->
           <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header border-transparent">
-                <h3 class="card-title">Latest  Attendance</h3>
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-info">
+                <div class="inner">
+                  <h3>{{ memcount }}</h3>
 
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
+                  <p>Members</p>
                 </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body p-0">
-                <div class="table-responsive">
-                  <table class="table m-0">
-                    <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Member</th>
-                      <th>Service Date</th>
-                      <th>Service Attended</th>
-                       <th>Present_in</th>
-                       <th>Shepherd</th>
-                      <th>Chapel</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>Call of Duty IV</td>
-                      <td><span class="badge badge-success">Shipped</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                      <td>Samsung Smart TV</td>
-                      <td><span class="badge badge-warning">Pending</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                      <td>iPhone 6 Plus</td>
-                      <td><span class="badge badge-danger">Delivered</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                      <td>Samsung Smart TV</td>
-                      <td><span class="badge badge-info">Processing</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                      <td>Samsung Smart TV</td>
-                      <td><span class="badge badge-warning">Pending</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                      <td>iPhone 6 Plus</td>
-                      <td><span class="badge badge-danger">Delivered</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>Call of Duty IV</td>
-                      <td><span class="badge badge-success">Shipped</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                      </td>
-                    </tr>
-                    </tbody>
-                  </table>
+                <div class="icon">
+                  <i class="fas fa-users"></i>
                 </div>
-                <!-- /.table-responsive -->
+                <a href="{% url 'ctac:urls_member_list' %}" class="small-box-footer">More info <i
+                        class="fas fa-arrow-circle-right"></i></a>
               </div>
-{#              CARD END#}
             </div>
-</div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-success">
+
+                <div class="inner">
+                  <a href="{% url 'ctac:urls_shepherd_list' %}">
+                    <h3>{{ shecounts }}<sup style="font-size: 20px"></sup></h3></a>
+
+                  <p>Shepherds</p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-arrow-circle-right"></i>
+                </div>
+                <a href="{% url 'ctac:urls_shepherd_list' %}" class="small-box-footer">More info <i
+                        class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-warning">
+                <div class="inner">
+                  <h3>{{ new_area }}</h3>
+
+                  <p>Residences</p>
+                </div>
+                <div class="icon">
+                  <i class="far fa-building"></i>
+                </div>
+                <a href="{% url 'ctac:urls_areas_list' %}" class="small-box-footer">More info<i
+                        class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-danger">
+                <div class="inner">
+                  <h3>{{ mini_count }}</h3>
+
+                  <p>Ministries</p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-church"></i>
+                </div>
+                <a href="{% url 'ctac:urls_ministry_list' %}" class="small-box-footer">More info </a>
+              </div>
+            </div>
+
+            <div class="container-fluid mt-0">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header border-transparent">
+                      <h3 class="card-title">Latest Attendance</h3>
+
+                      <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                          <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                          <i class="fas fa-times"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                      <div class="table-responsive">
+                        <table class="table m-0">
+                          <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Member</th>
+                            <th>Service Date</th>
+                            <th>Service Attended</th>
+                            <th>Present_in</th>
+                            <th>Shepherd</th>
+                            <th>Chapel</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                            <td>Call of Duty IV</td>
+                            <td><span class="badge badge-success">Shipped</span></td>
+                            <td>
+                              <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                            <td>Samsung Smart TV</td>
+                            <td><span class="badge badge-warning">Pending</span></td>
+                            <td>
+                              <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                            <td>iPhone 6 Plus</td>
+                            <td><span class="badge badge-danger">Delivered</span></td>
+                            <td>
+                              <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                            <td>Samsung Smart TV</td>
+                            <td><span class="badge badge-info">Processing</span></td>
+                            <td>
+                              <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                            <td>Samsung Smart TV</td>
+                            <td><span class="badge badge-warning">Pending</span></td>
+                            <td>
+                              <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                            <td>iPhone 6 Plus</td>
+                            <td><span class="badge badge-danger">Delivered</span></td>
+                            <td>
+                              <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                            <td>Call of Duty IV</td>
+                            <td><span class="badge badge-success">Shipped</span></td>
+                            <td>
+                              <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                            </td>
+                          </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="card-footer clearfix">
+                        <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
+                        <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
+                      </div>
+                      <!-- /.table-responsive -->
+                    </div>
+                    {#              CARD END#}
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-</section>
-</div>
-</div>
+      </section>
+    </div>
+  </div>
 
 {% endblock %}
