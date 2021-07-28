@@ -92,6 +92,12 @@ def list_service(request):
     return render(request, 'services.html', context)
 
 
+def list_attendance(request):
+    att = AttendanceMember.objects.all()
+    context = {'att': att}
+    return render(request, 'attendance.html', context)
+
+
 # withcount
 def list_area(request):
     area = AreaResidence.objects.all()
@@ -697,6 +703,7 @@ def export_area_xls(request):
 
     wad.save(responsed)
     return responsed
+
 
 #
 # def send_sms(request, contactnumber, sms):
