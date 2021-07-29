@@ -45,9 +45,9 @@
                   {% for memblist in memblist %}
                   <tr>
                     <td>{{ memblist.id }}</td>
-                    <td><a href="{% url 'ctac:member_details_url' memblist.slug %}" class="link-black text-sm"> {{ memblist.surname }}</a></td>
-                    <td> {{ memblist.first_name }}</td>
-                    <td>{{ memblist.sex}}</td>
+                    <td><a href="{% url 'ctac:member_details_url' memblist.slug %}" class="link-black text-sm"> {{ memblist.surname|lower|capfirst }}</a></td>
+                    <td> {{ memblist.first_name|lower|capfirst }}</td>
+                    <td>{{ memblist.sex|lower|capfirst}}</td>
                     <td> {{ memblist.contact_number }}</td>
                     <td>{{ memblist.whatsapp_number }}</td>
                   <td>{{ memblist.area_of_residence|lower|capfirst }}</td>
