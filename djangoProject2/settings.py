@@ -86,6 +86,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+
+            'libraries': {
+                "phone_conversion": "ctac.templates_filter.phone_conversion",
+            },
         },
     },
 ]
