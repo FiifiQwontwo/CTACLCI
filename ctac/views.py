@@ -93,7 +93,7 @@ def list_service(request):
 
 
 def list_attendance(request):
-    att = AttendanceMember.objects.all()
+    att = AttendanceMember.objects.all().order_by('created_at')
     context = {'att': att}
     return render(request, 'attendance.html', context)
 

@@ -92,10 +92,10 @@
                     <!-- /.card-header -->
                     <div class="card-body ">
                       <div class="table-responsive">
-                       <table id="example2" class="table table-bordered table-hover">
+                        <table id="example2" class="table table-bordered table-hover">
                           <thead>
                           <tr>
-                            <th>#</th>
+                            <th> #</th>
                             <th>Member</th>
                             <th>Service Date</th>
                             <th>Service Attended</th>
@@ -105,23 +105,26 @@
                           </tr>
                           </thead>
                           <tbody>
-                           {% for att in att %}
-                  <tr>
-                    <td>{{ att.id }}</td>
-                    <td> {{ att.member }}</td>
-                    <td> {{ att.date  }}</td>
-                    <td>{{ att.services }}</td>
-                    <td> {{att.present_in }}</td>
-                    <td> {{att.shepherd }}</td>
-                    <td>{{att.chapel }}</td>
-                  </tr>
-                  {% endfor %}
+                          {% for att in att %}
+                            <tr>
+                              <td>{{ att.id }}</td>
+                              <td> {{ att.member }}</td>
+                              <td> {{ att.date }}</td>
+                              <td>{{ att.services }}</td>
+                              <td> {{ att.present_in }}</td>
+                              <td> {{ att.shepherd }}</td>
+                              <td>{{ att.chapel }}</td>
+                            </tr>
+                          {% endfor %}
+                          <tr>
                           </tbody>
                         </table>
                       </div>
                       <div class="card-footer clearfix">
-                        <a href="{% url 'ctac:new_attendance_urls' %}" class="btn btn-sm btn-info float-left"> New Attendance</a>
-                        <a href="{% url 'ctac:urls_attendance' %}" class="btn btn-sm btn-secondary float-right">View All Attendance</a>
+                        <a href="{% url 'ctac:new_attendance_urls' %}" class="btn btn-sm btn-info float-left"> New
+                          Attendance</a>
+                        <a href="{% url 'ctac:urls_attendance' %}" class="btn btn-sm btn-secondary float-right">View All
+                          Attendance</a>
                       </div>
 
                     </div>
@@ -129,9 +132,9 @@
                   </div>
                 </div>
               </div>
-              </div>
             </div>
           </div>
+        </div>
       </section>
     </div>
   </div>

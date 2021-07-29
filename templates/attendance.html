@@ -19,10 +19,8 @@
                       </ol>
                     </div>
                     <div class="col-md-6 text-right">
-                        <a href="{% url 'ctac:add_member_url' %}"> <i class="fas fa-user-plus"></i></a>
-                      &nbsp;<b>|</b>
-                        <a href="{% url 'ctac:export_members_xls' %}" style="">  <i class="fas fa-file-excel"></i></a>
-                    </div>
+                        <a href="{% url 'ctac:new_attendance_urls' %}"> <i class="fas fa-calendar-plus"></i></a>
+                  </div>
                   </div>
                 </h2>
 
@@ -55,11 +53,11 @@
                   <tr>
                   </tbody>
                 </table>
-              {% if memblist.has_previous %}
-<a href="?page={{memblist.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a> &nbsp; &nbsp;
+              {% if att.has_previous %}
+<a href="?page={{att.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a> &nbsp; &nbsp;
 {% endif%}
-{% if memblist.has_next %}
-<a href="?page={{memblist.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
+{% if att.has_next %}
+<a href="?page={{att.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
 {% endif %}
               </div>
             </div>
