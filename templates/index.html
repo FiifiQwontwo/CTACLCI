@@ -113,14 +113,12 @@
                             <td>{{ att.shepherd }}</td>
                             <td>{{ att.chapel }}</td>
                           </tr>
-
-
                           </tbody>
                         </table>
                       </div>
                       <div class="card-footer clearfix">
-                        <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
-                        <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
+                        <a href="{% url 'ctac:new_attendance_urls' %}" class="btn btn-sm btn-info float-left"> New Attendance</a>
+                        <a href="{% url 'ctac:urls_attendance' %}" class="btn btn-sm btn-secondary float-right">View All Attendance</a>
                       </div>
 
                     </div>
