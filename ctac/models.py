@@ -3,11 +3,20 @@ import string
 import random
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from datetime import date
 
 
 # Create your models here.
 ##############
 # author fiifi Qwontwo Ahwireng###
+
+
+def no_future(value):
+    today = date.today()
+    if value > today:
+        raise ValidationError('attendance date cannot be in the future.')
+
 
 Gender = {
     ('Male', 'Male'),
@@ -263,7 +272,7 @@ class Member(models.Model):
 
 class AttendanceMember(models.Model):
     present_in = models.CharField(choices=Attendance, max_length=20)
-    date = models.DateField()
+    date = models.DateField(help_text="Enter the date of purchase", validators=[no_future])
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
     chapel = models.ForeignKey(Chapel, on_delete=models.CASCADE)
     shepherd = models.ForeignKey(Shepherd, on_delete=models.CASCADE)
