@@ -13,7 +13,7 @@ urlpatterns = [
     path('areas/', list_area, name='urls_areas_list'),
     path('chapel_heads/', list_chapel_heads, name='urls_head_list'),
     path('members/', list_member, name='urls_member_list'),
-    path('ats/', list_attendance, name='urls_attendance'),
+    path('gh/', list_attendance, name='urls_attendance'),
     # details
     path('pastors/<slug:slug>', pastor_details, name='pastor_details_url'),
     path('shepherds/<slug:slug>', shepherd_details, name='shepherd_details_url'),

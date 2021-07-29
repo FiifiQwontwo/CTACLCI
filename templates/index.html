@@ -90,9 +90,9 @@
                       </div>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body p-0">
+                    <div class="card-body ">
                       <div class="table-responsive">
-                        <table class="table m-0">
+                       <table id="example2" class="table table-bordered table-hover">
                           <thead>
                           <tr>
                             <th>#</th>
@@ -105,14 +105,17 @@
                           </tr>
                           </thead>
                           <tbody>
-                          <tr>
-                            <td>{{ att.id }}</td>
-                            <td>{{ att.Member}}</td>
-                            <td>{{ att.date }}</td>
-                            <td>{{ att.present_in }}</td>
-                            <td>{{ att.shepherd }}</td>
-                            <td>{{ att.chapel }}</td>
-                          </tr>
+                           {% for att in att %}
+                  <tr>
+                    <td>{{ att.id }}</td>
+                    <td> {{ att.member }}</td>
+                    <td> {{ att.date  }}</td>
+                    <td>{{ att.services }}</td>
+                    <td> {{att.present_in }}</td>
+                    <td> {{att.shepherd }}</td>
+                    <td>{{att.chapel }}</td>
+                  </tr>
+                  {% endfor %}
                           </tbody>
                         </table>
                       </div>

@@ -1,10 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CTAC | Attendance {% endblock %}
+{% block content  %}
+<div class="wrapper">
+ <div class="content-wrapper">
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title col-md-12">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <ol class="breadcrumb float-sm-left">
+                        <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a></li>
+                        <li class="breadcrumb-item active"><i class="fas fa-users"></i> </li>
+                      </ol>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="{% url 'ctac:add_member_url' %}"> <i class="fas fa-user-plus"></i></a>
+                      &nbsp;<b>|</b>
+                        <a href="{% url 'ctac:export_members_xls' %}" style="">  <i class="fas fa-file-excel"></i></a>
+                    </div>
+                  </div>
+                </h2>
 
-</body>
-</html>
+              </div>
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th> # </th>
+                    <th>Member</th>
+                    <th>Service Date</th>
+                    <th>Service Attended</th>
+                    <th>Present_in</th>
+                    <th>Shepherd</th>
+                    <th>Chapel</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for att in att %}
+                  <tr>
+                    <td>{{ att.id }}</td>
+                    <td> {{ att.member }}</td>
+                    <td> {{ att.date  }}</td>
+                    <td>{{ att.services }}</td>
+                    <td> {{att.present_in }}</td>
+                    <td> {{att.shepherd }}</td>
+                    <td>{{att.chapel }}</td>
+                  </tr>
+                  {% endfor %}
+                  <tr>
+                  </tbody>
+                </table>
+              {% if memblist.has_previous %}
+<a href="?page={{memblist.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a> &nbsp; &nbsp;
+{% endif%}
+{% if memblist.has_next %}
+<a href="?page={{memblist.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
+{% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ </div>
+</div>
+  {% endblock %}
+

@@ -656,21 +656,6 @@ def simple_upload(request):
     return render(request, 'import.html')
 
 
-def pie_chart(request):
-    labels = []
-    data = []
-
-    queryset = AttendanceMember.objects.order_by('-chapels')[:7]
-    for attendancemember in queryset:
-        labels.append(attendancemember.chapel)
-        data.append(attendancemember.present_in)
-
-    return render(request, 'index.html', {
-        'labels': labels,
-        'data': data,
-    })
-
-
 def export_area_xls(request):
     responsed = HttpResponse(content_type='application/ms-excel')
     responsed['Content-Disposition'] = 'attachment; filename="Residence.xls"'
