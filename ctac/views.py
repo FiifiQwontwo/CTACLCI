@@ -542,12 +542,11 @@ def export_members_xls(request):
        'ctac_member.second_name, ctac_member.surname,'
        'ctac_member.sex,ctac_member.occupation,ctac_arearesidence.area_residence,'
        'ctac_member.nearest_landmark, ctac_chapel.chapel_name, ctac_chapelheads.chapel_heads,'
-       'ctac_shepherd.surname from((((ctac_member'
+       'ctac_shepherd.surname from((((ctac_member',
        'join ctac_arearesidence on((ctac_arearesidence.id = ctac_member.area_of_residence_id)))'
        'join ctac_chapel on((ctac_chapel.id=ctac_member.chapel_id)))'
        'join ctac_chapelheads on((ctac_chapelheads.id =ctac_member.chapel_head_id)))'
        'join ctac_shepherd on((ctac_shepherd.id =ctac_member.shepherd_id)))')
-    row = []
     for row in rows:
         row_num += 1
     for col_num in range(len(row)):
