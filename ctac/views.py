@@ -92,12 +92,6 @@ def list_service(request):
     return render(request, 'services.html', context)
 
 
-def list_attendance(request):
-    att = AttendanceMember.objects.all().order_by('created_at')
-    context = {'att': att}
-    return render(request, 'attendance.html', context)
-
-
 # withcount
 def list_area(request):
     area = AreaResidence.objects.all()
@@ -143,16 +137,25 @@ def list_member(request):
     return render(request, 'member.html', context)
 
 
+def list_attendance(request):
+    att = AttendanceMember.objects.all().order_by('created_at')
+    context = {'att': att}
+    return render(request, 'attendance.html', context)
+
+
 def index(request):
     memcount = Member.objects.all().count()
     shecounts = Shepherd.objects.all().count()
     new_area = AreaResidence.objects.all().count()
     mini_count = Ministry.objects.all().count()
+    att = AttendanceMember.objects.all().order_by('-id')[:10]
+
     context = {
         'memcount': memcount,
         'shecounts': shecounts,
         'new_area': new_area,
-        'mini_count': mini_count
+        'mini_count': mini_count,
+        'att': att,
 
     }
     return render(request, 'index.html', context)
@@ -538,15 +541,15 @@ def export_members_xls(request):
     font_style = xlwt.XFStyle()
 
     rows = Member.objects.raw(
-       ' select  ctac_member.first_name,'
-       'ctac_member.second_name, ctac_member.surname,'
-       'ctac_member.sex,ctac_member.occupation,ctac_arearesidence.area_residence,'
-       'ctac_member.nearest_landmark, ctac_chapel.chapel_name, ctac_chapelheads.chapel_heads,'
-       'ctac_shepherd.surname from((((ctac_member',
-       'join ctac_arearesidence on((ctac_arearesidence.id = ctac_member.area_of_residence_id)))'
-       'join ctac_chapel on((ctac_chapel.id=ctac_member.chapel_id)))'
-       'join ctac_chapelheads on((ctac_chapelheads.id =ctac_member.chapel_head_id)))'
-       'join ctac_shepherd on((ctac_shepherd.id =ctac_member.shepherd_id)))')
+        ' select  ctac_member.first_name,'
+        'ctac_member.second_name, ctac_member.surname,'
+        'ctac_member.sex,ctac_member.occupation,ctac_arearesidence.area_residence,'
+        'ctac_member.nearest_landmark, ctac_chapel.chapel_name, ctac_chapelheads.chapel_heads,'
+        'ctac_shepherd.surname from((((ctac_member',
+        'join ctac_arearesidence on((ctac_arearesidence.id = ctac_member.area_of_residence_id)))'
+        'join ctac_chapel on((ctac_chapel.id=ctac_member.chapel_id)))'
+        'join ctac_chapelheads on((ctac_chapelheads.id =ctac_member.chapel_head_id)))'
+        'join ctac_shepherd on((ctac_shepherd.id =ctac_member.shepherd_id)))')
     for row in rows:
         row_num += 1
     for col_num in range(len(row)):
