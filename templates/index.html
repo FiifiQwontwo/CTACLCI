@@ -106,12 +106,13 @@
                           {% for att in att %}
                             <tr>
 
-                              <td> {{ att.member }}</td>
+                              <td> {{ att.member|lower|capfirst }}</td>
                               <td> {{ att.date }}</td>
                               <td>{{ att.services }}</td>
-                              <td> {{ att.present_in }}</td>
+                              <td> {{ att.present_in|lower|capfirst }}</td>
                               <td> {{ att.shepherd }}</td>
                               <td>{{ att.chapel }}</td>
+
                             </tr>
                           {% endfor %}
                           <tr>
