@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load templates_filter %}
+{#{% load templates_filter %}#}
 {% block title %}CTAC | Members {% endblock %}
 {% block content  %}
 <div class="wrapper">
@@ -49,8 +49,8 @@
                     <td><a href="{% url 'ctac:member_details_url' memblist.slug %}" class="link-black text-sm"> {{ memblist.surname|lower|capfirst }}</a></td>
                     <td> {{ memblist.first_name|lower|capfirst }}</td>
                     <td>{{ memblist.sex|lower|capfirst}}</td>
-                    <td> {{ memblist.contact_number|phone_conversion }}</td>
-                    <td>{{ memblist.whatsapp_number|phone_conversion  }}</td>
+                    <td> {{ memblist.contact_number }}</td>
+                    <td>{{ memblist.whatsapp_number}}</td>
                   <td>{{ memblist.area_of_residence|lower|capfirst }}</td>
                   <td>{{ memblist.shepherd }}</td>
                   </tr>

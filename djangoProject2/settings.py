@@ -86,11 +86,11 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-
-            'libraries': {
-                'templates_filter': 'ctac.templatetags.templates_filter',
-
-            }
+            #
+            # 'libraries': {
+            #     'templates_filter': 'ctac.templatetags.templates_filter',
+            #
+            # }
 
 
         },
