@@ -87,6 +87,11 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
 
+            'libraries': {
+                'templates_filter': 'ctac.templatetags.templates_filter',
+
+            }
+
 
         },
     },
