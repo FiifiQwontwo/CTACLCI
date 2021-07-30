@@ -1,4 +1,5 @@
 from django import template
+
 register = template.Library()
 
 
@@ -9,3 +10,6 @@ def phone_conversion(number):
     second = number[3:6]
     third = number[6:10]
     return '(' + first + ')' + ' ' + second + '-' + third
+
+
+register.filter('phone_conversion', phone_conversion)
