@@ -45,7 +45,7 @@
                             </td>
                           </tr>
                         {% endfor %}
-                        <button type="submit">Submit</button>
+
                       </table>
                     </form>
                   </h2>
@@ -58,7 +58,7 @@
     </div>
   </div>
 
-{% endblock %}
+
 
  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -78,7 +78,7 @@
         <div class="col-md-6">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">General</h3>
+              <h3 class="card-title">Personal Details</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -87,20 +87,20 @@
             </div>
             <div class="card-body">
               <div class="form-group">
-                <label for="inputName">Project Name</label>
-                <input type="text" id="inputName" class="form-control">
+                <label for="inputName">First Name</label>
+                <input type="text" id="inputName" class="form-control" name="member_create.second_name">
               </div>
 
               <div class="form-group">
-                <label for="inputName">Project Name</label>
-                <input type="text" id="inputName" class="form-control">
+                <label for="inputName">Middle Name</label>
+                <input type="text" id="inputName" class="form-control" name="member_create.second_name">
               </div>
               <div class="form-group">
-                <label for="inputDescription">Project Description</label>
-                <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                <label for="inputDescription">Surname</label>
+                 <input type="text" id="inputName" class="form-control" name="member_create.surname">
               </div>
               <div class="form-group">
-                <label for="inputStatus">Status</label>
+                <label for="inputStatus">Sex</label>
                 <select class="form-control custom-select">
                   <option selected disabled>Select one</option>
                   <option>On Hold</option>
@@ -157,3 +157,5 @@
         </div>
       </div>
     </section>
+ </div>
+{% endblock %}
