@@ -16,7 +16,8 @@
                         <ol class="breadcrumb float-sm-left">
                           <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a>
                           </li>
-                          <li class="breadcrumb-item "><a href="{% url 'ctac:urls_areas_list' %}"><i class="fas fa-house-user"></i></a></li>
+                          <li class="breadcrumb-item "><a href="{% url 'ctac:urls_areas_list' %}"><i
+                                  class="fas fa-house-user"></i></a></li>
 
                           <li class="breadcrumb-item active"><i class="fas fa-laptop-house"></i></li>
                         </ol>
@@ -25,7 +26,18 @@
                         <a href="{% url 'ctac:export_area_xls' %}" style=""> <i class="fas fa-file-excel"></i></a>
                       </div>
                     </div>
-
+                    <div class="card card-primary">
+                      <div class="card-header">
+                        <h3 class="card-title">Area of Residence</h3>
+                        <div class="card-body">
+                          <div class="form-group">
+                            <label for="inputName">Area</label>
+                            <input type="text" id="inputName" class="form-control" name="member_create.second_name">
+                          </div>
+                          <input type="submit" value =Submit>
+                        </div>
+                      </div>
+                    </div>
                   </h2>
                 </div>
               </div>
@@ -34,6 +46,7 @@
         </div>
       </section>
     </div>
+  </div>
   </div>
 
 {% endblock %}
