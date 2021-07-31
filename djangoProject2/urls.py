@@ -3,6 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 # from account.views import
+from django.conf.urls import handler404, handler500, handler403, handler400
 
 # def trigger_error(request):
 #     division_by_zero = 1 / 0
@@ -20,7 +21,7 @@ urlpatterns = [
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# handler404 = 'ctac.views.error_404'
-# handler500 = 'ctac.views.handler500'
-# handler403 = 'ctac.views.error_403'
-# handler400 = 'ctac.views.error_400'
+handler404 = 'ctac.views.error_404'
+handler500 = 'ctac.views.handler500'
+handler403 = 'ctac.views.error_403'
+handler400 = 'ctac.views.error_400'

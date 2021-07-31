@@ -719,3 +719,13 @@ def export_area_xls(request):
 
 def red(request):
     return render(request, 'as.html')
+
+
+def error_404(request):
+    data = {}
+    return render(request, 'pages/examples/404.html', data)
+
+
+def error_500(request):
+    data = {}
+    return render(request, 'pages/examples/404.html', data)
