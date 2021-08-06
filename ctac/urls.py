@@ -1,5 +1,9 @@
-from django.urls import path
+from django.urls import path, include
 from .views import *
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register('area_api',AreaViewSet)
 
 app_name = 'ctac'
 
@@ -59,5 +63,6 @@ urlpatterns = [
     path('x_ip_calls/', ipcalls, name='ipslocation'),
     path('export_area/xls/', export_area_xls, name='export_area_xls'),
     path('conta/', red, name='contact'),
+    path('', include(router.urls)),
 
 ]

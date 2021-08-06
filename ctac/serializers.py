@@ -34,3 +34,10 @@ class AttendanceSerializer(serializers.ModelSerializer):
     class Meta:
         model = AttendanceMember
         fields = ('present_in', 'date', 'member', 'chapel', 'shepherd', 'services',)
+
+
+class AreaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AreaResidence
+        fields = ('id', 'area_residence',
+                  )

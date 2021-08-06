@@ -736,3 +736,8 @@ def error_404(request):
 def error_500(request):
     data = {}
     return render(request, 'pages/examples/404.html', data)
+
+
+class AreaViewSet(viewsets.ModelViewSet):
+    serializer_class = AreaSerializer
+    queryset = AreaResidence.objects.all()
