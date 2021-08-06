@@ -143,7 +143,7 @@ def list_attendance(request):
     return render(request, 'attendance.html', context)
 
 
-def index(request):
+def index(request, chapel__slug=None):
     memcount = Member.objects.all().count()
     shecounts = Shepherd.objects.all().count()
     new_area = AreaResidence.objects.all().count()
@@ -158,6 +158,13 @@ def index(request):
         'att': att,
 
     }
+
+    chapel_page = None
+    member = None
+    if chapel__slug != None:
+        chapel_page = get_object_or_404(Chapel, slug=chapel__slug)
+        member = Member.objects.filter(chapel=chapel_page, availabe=True)
+
     return render(request, 'index.html', context)
 
 

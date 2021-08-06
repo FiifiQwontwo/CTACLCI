@@ -5,6 +5,7 @@ app_name = 'ctac'
 
 urlpatterns = [
     path('', index, name='home'),
+    path('chapel/<slug:chapel__slug>', index, name='memberbychapel'),
     path('pastors/', list_pastor, name='urls_pastor_list'),
     path('shepherds/', list_shepherd, name='urls_shepherd_list'),
     path('ministries/', list_ministry, name='urls_ministry_list'),

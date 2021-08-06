@@ -5,6 +5,7 @@ from django.utils.text import slugify
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from datetime import date
+from django.urls import reverse
 
 
 # Create your models here.
@@ -61,10 +62,13 @@ class Chapel(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
 
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(rand_slug() + "-" + self.chapel_name)
-        super(Chapel, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if not self.slug:
+    #         self.slug = slugify(rand_slug() + "-" + self.chapel_name)
+    #     super(Chapel, self).save(*args, **kwargs)
+
+    def get_url(self):
+        return reverse('ctac:memberbychapel', args=[self.slug])
 
     def __str__(self):
         return self.chapel_name
@@ -143,7 +147,7 @@ class Service(models.Model):
 
 class ChapelHeads(models.Model):
     chapel_heads = models.CharField(max_length=100)
-    chapel = models.ForeignKey(Chapel, default=1,  on_delete=models.CASCADE)
+    chapel = models.ForeignKey(Chapel, default=1, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -198,6 +202,7 @@ class Shepherd(models.Model):
     first_name = models.CharField(max_length=150)
     second_name = models.CharField(max_length=50, blank=True)
     surname = models.CharField(max_length=70)
+    phone = models.CharField(max_length=12, blank = True)
     sex = models.CharField(choices=Gender, max_length=20)
     type = models.CharField('Type of Shepherd', choices=Types_of_Shepherd, max_length=30)
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
@@ -283,5 +288,3 @@ class AttendanceMember(models.Model):
 
     def __str__(self):
         return self.present_in
-
-

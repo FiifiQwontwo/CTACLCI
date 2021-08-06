@@ -32,16 +32,20 @@
         <a href="{% url 'ctac:contact' %}" class="nav-link">Contact Us </a>
         {#        add contact details #}
       </li>
-      <form action="{% url 'search:search_results' %}" method="get" class="form-inline ml-3 ">
-        <div class="input-group input-group-sm">
-          <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-navbar" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
+      <i class="btn button4 nav-item dropdown " type="button" name="button">Chapels<i aria-hidden="true">
+        <a
+                class="navbar-link text-light text-uppercase font-weight-bold px-1 dropdown-toggle" href=""
+                data-toggle="dropdown"></a>
+        <div class=" dropdown-menu">
+          <a class="dropdown-item" href="{% url 'ctac:home' %}">All Chapels</a>
+          {% for chapel in links %}
+            <a class="dropdown-item" href="{{ chapel.get_url }}">{{ chapel.chapel_name }}</a>
+          {% endfor %}
         </div>
-      </form>
+
+      </i> </button>
+      </i>
+
 
     </ul>
 
