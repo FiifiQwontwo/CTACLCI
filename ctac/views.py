@@ -15,6 +15,7 @@ import json
 from .resources import *
 from tablib import Dataset
 import requests
+from rest_framework.authentication import TokenAuthentication
 
 
 #
@@ -468,6 +469,7 @@ def area_update(request, slug):
 class MinistryViewSet(viewsets.ModelViewSet):
     queryset = Ministry.objects.all()
     serializer_class = MinistrySerializer
+    authentication_classes = (TokenAuthentication,)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data, many=isinstance(request.data, list))
@@ -477,9 +479,11 @@ class MinistryViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
+
 class PastorViewSet(viewsets.ModelViewSet):
     queryset = Pastor.objects.all()
     serializer_class = PastorSerializer
+    authentication_classes = (TokenAuthentication,)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data, many=isinstance(request.data, list))
@@ -492,6 +496,7 @@ class PastorViewSet(viewsets.ModelViewSet):
 class ShepherdViewSet(viewsets.ModelViewSet):
     queryset = Shepherd.objects.all()
     serializer_class = ShepherdSerializer
+    authentication_classes = (TokenAuthentication,)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data, many=isinstance(request.data, list))
@@ -504,6 +509,7 @@ class ShepherdViewSet(viewsets.ModelViewSet):
 class MemberViewSet(viewsets.ModelViewSet):
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
+    authentication_classes = (TokenAuthentication,)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data, many=isinstance(request.data, list))
@@ -516,6 +522,7 @@ class MemberViewSet(viewsets.ModelViewSet):
 class Attendance(viewsets.ModelViewSet):
     queryset = AttendanceMember.objects.all()
     serializer_class = AttendanceSerializer
+    authentication_classes = (TokenAuthentication,)
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data, many=isinstance(request.data, list))
@@ -741,3 +748,4 @@ def error_500(request):
 class AreaViewSet(viewsets.ModelViewSet):
     serializer_class = AreaSerializer
     queryset = AreaResidence.objects.all()
+    authentication_classes = (TokenAuthentication,)

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'account.apps.AccountConfig',
     'rest_framework',
+    'rest_framework.authtoken',
     'ctac.apps.CtacConfig',
     'corsheaders',
     'import_export',
@@ -167,3 +168,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 IMPORT_EXPORT_USE_TRANSACTIONS = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
