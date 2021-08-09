@@ -8,6 +8,7 @@ from django.core.paginator import Paginator, EmptyPage
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models import Count
+# from django.contrib.auth.models import User
 import xlwt
 from django.http import HttpResponse
 import requests
@@ -749,3 +750,8 @@ class AreaViewSet(viewsets.ModelViewSet):
     serializer_class = AreaSerializer
     queryset = AreaResidence.objects.all()
     authentication_classes = (TokenAuthentication,)
+
+
+# class UserViewSet(viewsets.ModelViewSet):
+#     serializer_class = UserSerializer
+#     queryset = User.objects.all()

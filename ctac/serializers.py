@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import *
+# from django.contrib.auth.models import User
 
 
 class MinistrySerializer(serializers.ModelSerializer):
@@ -28,6 +29,13 @@ class MemberSerializer(serializers.ModelSerializer):
                   'marital_status', 'area_of_residence', 'micro_area_name', 'nearest_landmark', 'phone_usage',
                   'online_service', 'ministries', 'chapel', 'shepherd', 'chapel_head', 'state', 'services',
                   'bacenta_leader',)
+
+
+# class UserSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ('id', 'username', 'password')
+
 
 #
 class AttendanceSerializer(serializers.ModelSerializer):

@@ -1,15 +1,44 @@
 from django.db import models
-from django.contrib.auth.models import PermissionsMixin
-from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.models import PermissionsMixin, AbstractBaseUser, BaseUserManager
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
+
 
 # Create your models here.
 #
+class UserManager(BaseUserManager):
+    def create_user(self, email, username, password, alias=None):
+        if not email:
+            raise
+        ValueError("Please Enter An Email Address")
+        if not username:
+            raise
+        ValueError('Please Enter a Valid Username')
+        if not password:
+            raise
+        ValueError('Please Enter a Password')
+        if not alias:
+            alias = username
+        user = self.model(email=self.normalize_email(email),
+                          username=username,
+                          alias=alias)
+        user.set_password(password)
+        user.save()
+        return user
+
+
+def create_superuser(self, email, username, password, alias=None):
+    self.create_user(email, username, password, alias)
+    user.is_staff()
+    user.is_superuser = True
+    user.save()
+    return user
+
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
-    first_name = models.CharField(_('first name'), max_length=30, blank=True)
-    last_name = models.CharField(_('last name'), max_length=30, blank=True)
+    username = models.CharField(_('user name'), max_length=30, unique=True)
+    alias = models.CharField(_('alias'), max_length=30, blank=True)
     date_joined = models.DateTimeField(_('date joined'), auto_now_add=True)
     is_active = models.BooleanField(_('active'), default=True)
     is_staff = models.BooleanField(_('staff'), default=True)
@@ -18,27 +47,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username', 'alias']
 
-    class Meta:
-        verbose_name = _('user')
-        verbose_name_plural = _('users')
-
-    def get_full_name(self):
-        '''
-        Returns the first_name plus the last_name, with a space in between.
-        '''
-        full_name = '%s %s' % (self.first_name, self.last_name)
-        return full_name.strip()
+    def __str__(self):
+        return
+    "@{}".format(self.username)
 
     def get_short_name(self):
-        '''
-        Returns the short name for the user.
-        '''
-        return self.first_name
+        return self.alias
 
-    # def email_user(self, subject, message, from_email=None, **kwargs):
-    #     '''
-    #     Sends an email to this User.
-    #     '''
-    #     send_mail(subject, message, from_email, [self.email], **kwargs)
+    def get_long_name(self):
+        return "{} @{}".format(self.alias, self.username)
+
