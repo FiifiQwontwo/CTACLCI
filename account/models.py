@@ -50,8 +50,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['username', 'alias']
 
     def __str__(self):
-        return
-    "@{}".format(self.username)
+        return "@{}".format(self.username)
 
     def get_short_name(self):
         return self.alias
