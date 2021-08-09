@@ -4,6 +4,10 @@ from django import forms
 from django.contrib.auth import *
 
 
+class User(AbstractUser):
+    pass
+
+
 class PassChangeForm(PasswordChangeForm):
 
     def __init__(self, *args, **kwargs):
@@ -60,7 +64,5 @@ class SignUpForm(UserCreationForm):
                              widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email Address'}))
 
     class Meta:
-
         fields = ('username', 'email', 'password1', 'password2',)
         model = get_user_model()
-
