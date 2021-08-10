@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account',
     'rest_framework',
     'rest_framework.authtoken',
     'ctac.apps.CtacConfig',
@@ -173,4 +172,4 @@ REST_FRAMEWORK = {
     )
 }
 
-AUTH_USER_MODEL = "[account].account"
+
