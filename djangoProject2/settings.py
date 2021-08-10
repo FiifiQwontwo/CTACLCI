@@ -173,4 +173,4 @@ REST_FRAMEWORK = {
     )
 }
 
-AUTH_USER_MODEL = "[account].User"
+AUTH_USER_MODEL = "[account].account"

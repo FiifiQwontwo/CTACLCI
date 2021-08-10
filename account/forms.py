@@ -61,7 +61,8 @@ class EditUserForm(UserChangeForm):
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(label="",
-                             widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email Address'}))
+                             widget=forms.TextInput(
+                                 attrs={'class': 'form-control', 'placeholder': 'Email Address', 'type': 'email'}))
 
     class Meta:
         fields = ('username', 'email', 'password1', 'password2',)
