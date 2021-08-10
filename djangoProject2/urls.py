@@ -14,7 +14,6 @@ from django.conf.urls import handler404, handler500, handler403, handler400
 urlpatterns = [
     path('mews/', admin.site.urls),
     path('', include('ctac.urls')),
-    path('account/', include('account.urls')),
     # path('sentry-debug/', trigger_error),
     path('search/', include('search.urls')),
     path('contact/', include('contact.urls')),
