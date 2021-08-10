@@ -32,21 +32,6 @@
         <a href="{% url 'ctac:contact' %}" class="nav-link">Contact Us </a>
         {#        add contact details #}
       </li>
-      <i class="btn button4 nav-item dropdown " type="button" name="button">Chapels<i aria-hidden="true">
-        <a
-                class="navbar-link text-light text-uppercase font-weight-bold px-1 dropdown-toggle" href=""
-                data-toggle="dropdown"></a>
-        <div class=" dropdown-menu">
-          <a class="dropdown-item" href="{% url 'ctac:home' %}">All Chapels</a>
-          {% for chapel in links %}
-            <a class="dropdown-item" href="{{ chapel.get_url }}">{{ chapel.chapel_name }}</a>
-          {% endfor %}
-        </div>
-
-      </i> </button>
-      </i>
-
-
     </ul>
 
     <ul class="navbar-nav ml-auto">
