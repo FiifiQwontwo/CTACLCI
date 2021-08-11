@@ -15,10 +15,10 @@ def login_user(request):
             if 'next' in request.POST:
                 return redirect(request.POST.get('next'))
             else:
-                return redirect('CTAC:chapels')
+                return redirect('ctac:home')
         else:
             messages.error(request, ("Error Logging In - Please Try Again"))
-            return redirect('Accounts:login')
+            return redirect('users:login')
     else:
         return render(request, "login.html", {})
 
