@@ -45,6 +45,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,7 +57,6 @@ INSTALLED_APPS = [
     'ctac.apps.CtacConfig',
     'corsheaders',
     'import_export',
-    # 'search',
     'contact',
 ]
 
