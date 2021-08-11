@@ -17,7 +17,8 @@ urlpatterns = [
     # path('sentry-debug/', trigger_error),
     path('search/', include('search.urls')),
     path('contact/', include('contact.urls')),
-    path('auth_api/', obtain_auth_token)
+    path('auth_api/', obtain_auth_token),
+    path('accounts/', include('users.urls')),
 
 ]
 
