@@ -8,7 +8,7 @@ from django.core.paginator import Paginator, EmptyPage
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models import Count
-# from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 import xlwt
 from django.http import HttpResponse
 import requests
@@ -22,7 +22,7 @@ from rest_framework.authentication import TokenAuthentication
 #
 # # Create your views here.
 
-
+@login_required(login_url='users:login')
 def list_pastor(request):
     paslist = Pastor.objects.all().order_by('created_at')
     paspage = Paginator(paslist, 10)
@@ -145,6 +145,8 @@ def list_attendance(request):
     return render(request, 'attendance.html', context)
 
 
+
+@login_required(login_url='users:login')
 def index(request, chapel__slug=None):
     memcount = Member.objects.all().count()
     shecounts = Shepherd.objects.all().count()
@@ -480,7 +482,6 @@ class MinistryViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
-
 class PastorViewSet(viewsets.ModelViewSet):
     queryset = Pastor.objects.all()
     serializer_class = PastorSerializer
@@ -750,7 +751,6 @@ class AreaViewSet(viewsets.ModelViewSet):
     serializer_class = AreaSerializer
     queryset = AreaResidence.objects.all()
     authentication_classes = (TokenAuthentication,)
-
 
 # class UserViewSet(viewsets.ModelViewSet):
 #     serializer_class = UserSerializer
