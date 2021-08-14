@@ -32,12 +32,12 @@
        <div class="form-group">
        <div class="container-login100" style="background-image: url({% static 'images/bg-01.jpg' %})">
 			<div class="wrap-login100">
-					<span class="login100-form-logo">
-						<i class="zmdi zmdi-landscape"></i>
-
-
-
-                    </span>
+{#					<span class="login100-form-logo">#}
+{#						<i class="zmdi zmdi-landscape"></i>#}
+{#                    </span>#}
+      	<span>
+          <img src="{% static 'images/ligh.jpg' %}"style="border-radius: 50%;height:150px;width: 150px; margin-left:120px;margin-bottom:50px; ">
+        </span>
       <br>
                  <form method="POST">{% csrf_token %}
 
