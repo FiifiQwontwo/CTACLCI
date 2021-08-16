@@ -17,6 +17,8 @@ from .resources import *
 from tablib import Dataset
 import requests
 from rest_framework.authentication import TokenAuthentication
+from django.views.decorators.csrf import ensure_csrf_cookie
+
 
 
 #
@@ -154,6 +156,12 @@ def index(request, chapel__slug=None):
     mini_count = Ministry.objects.all().count()
     att = AttendanceMember.objects.all().order_by('-id')[:10]
 
+    if request.session.test_cookie_worked():
+        request.session.delete_test_cookie()
+    else:
+        request.session.set_test_cookie()
+        messages.error(request, 'Please enable cookies')
+
     context = {
         'memcount': memcount,
         'shecounts': shecounts,
@@ -212,6 +220,7 @@ def chapel_details(request, slug):
 
 
 # create
+@ensure_csrf_cookie
 def create_pastor(request):
     pastor_create = CreatePastorForm(request.POST or None, request.FILES)
     if pastor_create.is_valid():
@@ -226,7 +235,8 @@ def create_pastor(request):
 
 
 #
-#
+#+
+@ensure_csrf_cookie
 def create_shepherd(request):
     shepherd_create = CreateShepherdForm(request.POST or None, request.FILES)
     if shepherd_create.is_valid():
@@ -242,7 +252,7 @@ def create_shepherd(request):
 
 #
 #
-
+@ensure_csrf_cookie
 def create_ministry(request):
     ministry_create = CreateMinistryForm(request.POST or None, request.FILES)
     if ministry_create.is_valid():
@@ -259,7 +269,7 @@ def create_ministry(request):
 #
 #
 
-
+@ensure_csrf_cookie
 def create_member(request):
     member_create = CreateMemberForm(request.POST or None, request.FILES)
     if member_create.is_valid():
@@ -273,6 +283,7 @@ def create_member(request):
     return render(request, 'create/member.html', context)
 
 
+@ensure_csrf_cookie
 def create_chapel(request):
     chapel_create = CreateChapelForm(request.POST or None, request.FILES)
     if chapel_create.is_valid():
@@ -286,6 +297,7 @@ def create_chapel(request):
     return render(request, 'create/chapel.html', context)
 
 
+@ensure_csrf_cookie
 def create_services(request):
     services_create = CreateServiceForm(request.POST or None, request.FILES)
     if services_create.is_valid():
@@ -299,6 +311,7 @@ def create_services(request):
     return render(request, 'create/services.html', context)
 
 
+@ensure_csrf_cookie
 def create_area_residences(request):
     arearesidences = CreateServiceForm(request.POST or None, request.FILES)
     if arearesidences.is_valid():
@@ -312,6 +325,7 @@ def create_area_residences(request):
     return render(request, 'create/area.html', context)
 
 
+@ensure_csrf_cookie
 def create_chapel_heads(request):
     heads_chapel = CreateChapelHeadsForm(request.POST or None, request.FILES)
     if heads_chapel.is_valid():
@@ -325,6 +339,7 @@ def create_chapel_heads(request):
     return render(request, 'create/chapel_heads.html', context)
 
 
+@ensure_csrf_cookie
 def create_attendance(request):
     attend = CreateAttendanceForm(request.POST or None, request.FILES)
     if attend.is_valid():
