@@ -20,7 +20,6 @@ from rest_framework.authentication import TokenAuthentication
 from django.views.decorators.csrf import ensure_csrf_cookie
 
 
-
 #
 # # Create your views here.
 
@@ -147,7 +146,6 @@ def list_attendance(request):
     return render(request, 'attendance.html', context)
 
 
-
 @login_required(login_url='users:login')
 def index(request, chapel__slug=None):
     memcount = Member.objects.all().count()
@@ -235,7 +233,7 @@ def create_pastor(request):
 
 
 #
-#+
+# +
 @ensure_csrf_cookie
 def create_shepherd(request):
     shepherd_create = CreateShepherdForm(request.POST or None, request.FILES)
