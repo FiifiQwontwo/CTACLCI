@@ -44,6 +44,7 @@ def list_pastor(request):
 #
 
 #
+@login_required(login_url='users:login')
 def list_shepherd(request):
     sheplist = Shepherd.objects.all()
     shpage = Paginator(sheplist, 10)
@@ -61,6 +62,7 @@ def list_shepherd(request):
 
 #
 #
+@login_required(login_url='users:login')
 def list_ministry(request):
     minlist = Ministry.objects.all().order_by('created_at')
     mispage = Paginator(minlist, 10)
@@ -75,7 +77,7 @@ def list_ministry(request):
 
 
 #
-
+@login_required(login_url='users:login')
 def list_chapel(request):
     chap = Chapel.objects.all()
     chapage = Paginator(chap, 10)
@@ -89,6 +91,7 @@ def list_chapel(request):
     return render(request, 'chapel.html', context)
 
 
+@login_required(login_url='users:login')
 def list_service(request):
     service = Service.objects.all()
     context = {'service': service}
@@ -96,6 +99,7 @@ def list_service(request):
 
 
 # withcount
+@login_required(login_url='users:login')
 def list_area(request):
     area = AreaResidence.objects.all()
     new_area = area.count()
@@ -111,6 +115,7 @@ def list_area(request):
     return render(request, 'area.html', context)
 
 
+@login_required(login_url='users:login')
 def list_chapel_heads(request):
     heads = ChapelHeads.objects.all()
     cheadpage = Paginator(heads, 10)
@@ -123,6 +128,7 @@ def list_chapel_heads(request):
     return render(request, 'chapelheads.html', context)
 
 
+@login_required(login_url='users:login')
 def list_member(request):
     memblist = Member.objects.all()
     memcount = memblist.count()
@@ -140,6 +146,7 @@ def list_member(request):
     return render(request, 'member.html', context)
 
 
+@login_required(login_url='users:login')
 def list_attendance(request):
     att = AttendanceMember.objects.all().order_by('created_at')
     context = {'att': att}
@@ -181,6 +188,7 @@ def index(request, chapel__slug=None):
 #
 #
 # # details
+@login_required(login_url='users:login')
 def pastor_details(request, slug):
     pas_details = get_object_or_404(Pastor, slug=slug)
     context = {'pas_details': pas_details}
@@ -188,11 +196,13 @@ def pastor_details(request, slug):
 
 
 #
+@login_required(login_url='users:login')
 def shepherd_details(request, slug):
     shepdetails = get_object_or_404(Shepherd, slug=slug)
     return render(request, 'tems/shepherd.html', {'shepdetails': shepdetails})
 
 
+@login_required(login_url='users:login')
 def ministry_details(request, slug):
     mindetails = get_object_or_404(Ministry, slug=slug)
     return render(request, 'tems/ministry.html', {'mindetails': mindetails})
@@ -200,7 +210,7 @@ def ministry_details(request, slug):
 
 #
 
-
+@login_required(login_url='users:login')
 def member_details(request, slug):
     membdetails = get_object_or_404(Member, slug=slug)
     context = {'membdetails': membdetails}
@@ -209,6 +219,7 @@ def member_details(request, slug):
 
 #
 #
+@login_required(login_url='users:login')
 def chapel_details(request, slug):
     chapdetail = get_object_or_404(Chapel, slug=slug)
     context = {
@@ -218,6 +229,7 @@ def chapel_details(request, slug):
 
 
 # create
+@login_required(login_url='users:login')
 @ensure_csrf_cookie
 def create_pastor(request):
     pastor_create = CreatePastorForm(request.POST or None, request.FILES)
@@ -235,6 +247,7 @@ def create_pastor(request):
 #
 # +
 @ensure_csrf_cookie
+@login_required(login_url='users:login')
 def create_shepherd(request):
     shepherd_create = CreateShepherdForm(request.POST or None, request.FILES)
     if shepherd_create.is_valid():
@@ -251,6 +264,7 @@ def create_shepherd(request):
 #
 #
 @ensure_csrf_cookie
+@login_required(login_url='users:login')
 def create_ministry(request):
     ministry_create = CreateMinistryForm(request.POST or None, request.FILES)
     if ministry_create.is_valid():
@@ -268,6 +282,7 @@ def create_ministry(request):
 #
 
 @ensure_csrf_cookie
+@login_required(login_url='users:login')
 def create_member(request):
     member_create = CreateMemberForm(request.POST or None, request.FILES)
     if member_create.is_valid():
@@ -282,6 +297,7 @@ def create_member(request):
 
 
 @ensure_csrf_cookie
+@login_required(login_url='users:login')
 def create_chapel(request):
     chapel_create = CreateChapelForm(request.POST or None, request.FILES)
     if chapel_create.is_valid():
@@ -296,6 +312,7 @@ def create_chapel(request):
 
 
 @ensure_csrf_cookie
+@login_required(login_url='users:login')
 def create_services(request):
     services_create = CreateServiceForm(request.POST or None, request.FILES)
     if services_create.is_valid():
@@ -310,6 +327,7 @@ def create_services(request):
 
 
 @ensure_csrf_cookie
+@login_required(login_url='users:login')
 def create_area_residences(request):
     arearesidences = CreateServiceForm(request.POST or None, request.FILES)
     if arearesidences.is_valid():
@@ -324,6 +342,7 @@ def create_area_residences(request):
 
 
 @ensure_csrf_cookie
+@login_required(login_url='users:login')
 def create_chapel_heads(request):
     heads_chapel = CreateChapelHeadsForm(request.POST or None, request.FILES)
     if heads_chapel.is_valid():
@@ -338,6 +357,7 @@ def create_chapel_heads(request):
 
 
 @ensure_csrf_cookie
+@login_required(login_url='users:login')
 def create_attendance(request):
     attend = CreateAttendanceForm(request.POST or None, request.FILES)
     if attend.is_valid():
@@ -353,6 +373,7 @@ def create_attendance(request):
 
 #
 # update
+@login_required(login_url='users:login')
 def member_update(request, slug):
     update_member = get_object_or_404(Member, slug=slug)
     updatemember = CreateMemberForm(request.POST or None, instance=update_member)
@@ -365,6 +386,7 @@ def member_update(request, slug):
     return render(request, 'update/member.html', context)
 
 
+@login_required(login_url='users:login')
 def pastor_update(request, slug):
     update_pastor = get_object_or_404(Pastor, slug=slug)
     updatepastor = CreatePastorForm(request.POST or None, instance=update_pastor)
@@ -377,6 +399,7 @@ def pastor_update(request, slug):
     return render(request, 'update/pastor.html', context)
 
 
+@login_required(login_url='users:login')
 def ministrty_update(request, slug):
     update_ministry = get_object_or_404(Ministry, slug=slug)
     updateministry = CreateMinistryForm(request.POST or None, instance=update_ministry)
@@ -391,7 +414,7 @@ def ministrty_update(request, slug):
 
 #
 #
-
+@login_required(login_url='users:login')
 def shepherd_update(request, slug):
     update_shepherd = get_object_or_404(Shepherd, slug=slug)
     updateshepherd = CreateShepherdForm(request.POST or None, instance=update_shepherd)
@@ -404,6 +427,7 @@ def shepherd_update(request, slug):
     return render(request, 'update/shepherd.html', context)
 
 
+@login_required(login_url='users:login')
 def chapel_update(request, slug):
     update_chapel = get_object_or_404(Chapel, slug=slug)
     updatechapel = CreateChapelForm(request.POST or None, instance=update_chapel)
@@ -416,6 +440,7 @@ def chapel_update(request, slug):
     return render(request, 'update/chapel.html', context)
 
 
+@login_required(login_url='users:login')
 def chapel_heads_update(request, slug):
     update_heads_chapel = get_object_or_404(Chapel, slug=slug)
     updateheadschapel = CreateChapelForm(request.POST or None, instance=update_heads_chapel)
@@ -428,6 +453,7 @@ def chapel_heads_update(request, slug):
     return render(request, 'update/chapelheads.html', context)
 
 
+@login_required(login_url='users:login')
 def area_update(request, slug):
     update_area = get_object_or_404(Chapel, slug=slug)
     areaupdate = CreateChapelForm(request.POST or None, instance=update_area)
