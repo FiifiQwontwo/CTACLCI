@@ -2,10 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib import messages
 from .forms import *
-from django.views.decorators.csrf import ensure_csrf_cookie
+from django.views.decorators.csrf import csrf_protect
 
 
-@ensure_csrf_cookie
+@csrf_protect
 def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -27,8 +27,8 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    messages.success(request, ('You have been logout '))
-    return redirect('home')
+    messages.success(request, 'You have been logout ')
+    return redirect('ctac:home')
 
 
 def register_user(request):
@@ -54,8 +54,8 @@ def edit_user(request):
         if form.is_valid():
             form.save()
 
-            messages.success(request, ('You have Updated Your Profile'))
-            return redirect('home')
+            messages.success(request, 'You have Updated Your Profile')
+            return redirect('ctac:home')
     else:
         form = EditUserForm(instance=request.user)
     context = {'form': form}

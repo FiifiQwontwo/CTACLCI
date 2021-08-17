@@ -12,7 +12,8 @@ from django.conf.urls import handler404, handler500, handler403, handler400
 
 
 urlpatterns = [
-    path('mews/', admin.site.urls),
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
+    path('newdancelordctac/', admin.site.urls),
     path('', include('ctac.urls')),
     # path('sentry-debug/', trigger_error),
     path('search/', include('search.urls')),

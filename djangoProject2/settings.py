@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'import_export',
     'contact',
+    'admin_honeypot',
 ]
 
 MIDDLEWARE = [
