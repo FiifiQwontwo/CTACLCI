@@ -78,6 +78,65 @@
                 <div class="col-md-12">
                   <div class="card">
                     <div class="card-header border-transparent">
+                      <h3 class="card-title">Latest Member</h3>
+
+                      <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                          <i class="fas fa-minus"></i>
+                        </button>
+
+                      </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body ">
+                      <div class="table-responsive">
+                        <table id="example2" class="table table-bordered table-hover">
+                          <thead>
+                          <tr>
+
+                            <th>Last Name</th>
+                            <th>Other Name</th>
+                            <th>First Name</th>
+                            <th>Phone Number</th>
+                            <th>Shepherd</th>
+                            <th>Chapel</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {% for att in att %}
+                            <tr>
+
+                              <td> {{ att.member|lower|capfirst }}</td>
+                              <td> {{ att.date }}</td>
+                              <td>{{ att.services }}</td>
+                              <td> {{ att.present_in|lower|capfirst }}</td>
+                              <td> {{ att.shepherd }}</td>
+                              <td>{{ att.chapel }}</td>
+
+                            </tr>
+                          {% endfor %}
+                          <tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="card-footer clearfix">
+                        <a href="{% url 'ctac:new_attendance_urls' %}" class="btn btn-sm btn-info float-left"> New
+                          Attendance</a>
+                        <a href="{% url 'ctac:urls_attendance' %}" class="btn btn-sm btn-secondary float-right">View All
+                          Attendance</a>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+               <div class="container-fluid mt-0">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="card-header border-transparent">
                       <h3 class="card-title">Latest Attendance</h3>
 
                       <div class="card-tools">
