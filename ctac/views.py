@@ -160,7 +160,7 @@ def index(request, chapel__slug=None):
     new_area = AreaResidence.objects.all().count()
     mini_count = Ministry.objects.all().count()
     att = AttendanceMember.objects.all().order_by('-id')[:10]
-    mems = Member.objects.all().order_by('created_at')[:10]
+    mat = Member.objects.order_by('-created_at', 'shepherd')[:10]
 
     if request.session.test_cookie_worked():
         request.session.delete_test_cookie()
@@ -174,7 +174,7 @@ def index(request, chapel__slug=None):
         'new_area': new_area,
         'mini_count': mini_count,
         'att': att,
-        'mems': mems,
+        'mat': mat,
 
     }
 

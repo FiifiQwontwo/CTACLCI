@@ -2,6 +2,7 @@
 {% load static %}
 {% block title %}CTAC | Dashboard{% endblock %}
 {% block content %}
+{#  {% load template_filters %}#}
   <div class="content-wrapper">
     <div class="wrapper">
       <section class="content">
@@ -99,19 +100,21 @@
                             <th>First Name</th>
                             <th>Phone Number</th>
                             <th>Shepherd</th>
-                            <th>Chapel</th>
+
                           </tr>
                           </thead>
                           <tbody>
-                          {% for att in att %}
+                          {% for mat in mat %}
                             <tr>
 
-                              <td> {{ att.member|lower|capfirst }}</td>
-                              <td> {{ att.date }}</td>
-                              <td>{{ att.services }}</td>
-                              <td> {{ att.present_in|lower|capfirst }}</td>
-                              <td> {{ att.shepherd }}</td>
-                              <td>{{ att.chapel }}</td>
+                              <td> {{ mat.surname|capfirst|center:"15"  }}</td>
+                              <td> {{ mat.second_name|lower|capfirst }}</td>
+                              <td>{{ mat.first_name|lower|capfirst }}</td>
+{#                              {% for number in object_list %}#}
+                              <td> {{ mat.contact_number}}</td>
+{#                                {% endfor %}#}
+                              <td> {{ mat.shepherd }}</td>
+
 
                             </tr>
                           {% endfor %}
