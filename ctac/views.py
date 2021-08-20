@@ -473,6 +473,7 @@ def area_update(request, slug):
 
 
 # # delete
+@login_required(login_url='users:login')
 def pastor_delete(request, slug):
     delete_pastor = get_object_or_404(Pastor, slug=slug)
     if request.method == "POST":
@@ -482,6 +483,7 @@ def pastor_delete(request, slug):
     return render(request, 'delete/pastor.html', context)
 
 
+@login_required(login_url='users:login')
 def ministry_delete(request, slug):
     delete_ministry = get_object_or_404(Ministry, slug=slug)
     if request.method == "POST":
@@ -491,6 +493,7 @@ def ministry_delete(request, slug):
     return render(request, 'delete/ministry.html', context)
 
 
+@login_required(login_url='users:login')
 def member_delete(request, slug):
     delete_member = get_object_or_404(Member, slug=slug)
     if request.method == "POST":
@@ -500,12 +503,14 @@ def member_delete(request, slug):
 
 
 
+@login_required(login_url='users:login')
 def shepherd_delete(request, slug):
     delete_shepherd = get_object_or_404(Shepherd, slug=slug)
     if request.method == "POST":
         delete_shepherd.delete()
         return redirect('ctaclci:urls_list_shepherd')
     return render(request, 'delete/shepherd.html', context={})
+
 
 
 class MinistryViewSet(viewsets.ModelViewSet):
@@ -573,6 +578,7 @@ class Attendance(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
+@login_required(login_url='users:login')
 def export_members_xls(request):
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="Members.xls"'
@@ -614,6 +620,7 @@ def export_members_xls(request):
     return response
 
 
+@login_required(login_url='users:login')
 def export_shepherd_xls(request):
     responses = HttpResponse(content_type='application/ms-excel')
     responses['Content-Disposition'] = 'attachment; filename="Shepherds.xls"'
@@ -646,6 +653,7 @@ def export_shepherd_xls(request):
     return responses
 
 
+@login_required(login_url='users:login')
 def export_pastor_xls(request):
     responsed = HttpResponse(content_type='application/ms-excel')
     responsed['Content-Disposition'] = 'attachment; filename="Pastor.xls"'
@@ -683,6 +691,7 @@ def export_pastor_xls(request):
     return responsed
 
 
+@login_required(login_url='users:login')
 def ipcalls(request):
     response = requests.get('https://ipstack.com/json/')
     geodata = response.json()
@@ -693,6 +702,7 @@ def ipcalls(request):
                   )
 
 
+@login_required(login_url='users:login')
 def export_member(request):
     member_resource = MemberResource()
     dataset = member_resource.export()
@@ -701,6 +711,7 @@ def export_member(request):
     return response
 
 
+@login_required(login_url='users:login')
 def simple_upload(request):
     if request.method == 'POST':
         mem_resource = MemberResource()
@@ -716,6 +727,7 @@ def simple_upload(request):
     return render(request, 'import.html')
 
 
+@login_required(login_url='users:login')
 def export_area_xls(request):
     responsed = HttpResponse(content_type='application/ms-excel')
     responsed['Content-Disposition'] = 'attachment; filename="Residence.xls"'
