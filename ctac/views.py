@@ -160,6 +160,7 @@ def index(request, chapel__slug=None):
     new_area = AreaResidence.objects.all().count()
     mini_count = Ministry.objects.all().count()
     att = AttendanceMember.objects.all().order_by('-id')[:10]
+    mems = Member.objects.all().order_by('created_at')[:10]
 
     if request.session.test_cookie_worked():
         request.session.delete_test_cookie()
@@ -173,6 +174,7 @@ def index(request, chapel__slug=None):
         'new_area': new_area,
         'mini_count': mini_count,
         'att': att,
+        'mems': mems,
 
     }
 
@@ -502,7 +504,6 @@ def member_delete(request, slug):
     return render(request, 'delete/member.html', context={})
 
 
-
 @login_required(login_url='users:login')
 def shepherd_delete(request, slug):
     delete_shepherd = get_object_or_404(Shepherd, slug=slug)
@@ -510,7 +511,6 @@ def shepherd_delete(request, slug):
         delete_shepherd.delete()
         return redirect('ctaclci:urls_list_shepherd')
     return render(request, 'delete/shepherd.html', context={})
-
 
 
 class MinistryViewSet(viewsets.ModelViewSet):
