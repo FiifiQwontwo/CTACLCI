@@ -473,40 +473,40 @@ def area_update(request, slug):
 
 
 # # delete
-# def pastor_delete(request, slug):
-#     delete_pastor = get_object_or_404(Pastor, slug=slug)
-#     if request.method == "POST":
-#         delete_pastor.delete()
-#         return redirect('ctaclci:urls_list_pastor')
-#     context = {}
-#     return render(request, 'delete/pastor.html', context)
-#
-#
-# def ministry_delete(request, slug):
-#     delete_ministry = get_object_or_404(Ministry, slug=slug)
-#     if request.method == "POST":
-#         delete_ministry.delete()
-#         return redirect('ctaclci:urls_list_ministry')
-#     context = {}
-#     return render(request, 'delete/ministry.html', context)
-#
-#
-# def member_delete(request, slug):
-#     delete_member = get_object_or_404(Member, slug=slug)
-#     if request.method == "POST":
-#         delete_member.delete()
-#         return redirect('ctaclci:urls_list_member')
-#     return render(request, 'delete/member.html', context={})
-#
-#
-# def shepherd_delete(request, slug):
-#     delete_shepherd = get_object_or_404(Shepherd,slug=slug)
-#     if request.method =="POST":
-#         delete_shepherd.delete()
-#         return redirect('ctaclci:urls_list_shepherd')
-#     return render(request,'delete/shepherd.html',context={})
-#
-#
+def pastor_delete(request, slug):
+    delete_pastor = get_object_or_404(Pastor, slug=slug)
+    if request.method == "POST":
+        delete_pastor.delete()
+        return redirect('ctaclci:urls_list_pastor')
+    context = {}
+    return render(request, 'delete/pastor.html', context)
+
+
+def ministry_delete(request, slug):
+    delete_ministry = get_object_or_404(Ministry, slug=slug)
+    if request.method == "POST":
+        delete_ministry.delete()
+        return redirect('ctaclci:urls_list_ministry')
+    context = {}
+    return render(request, 'delete/ministry.html', context)
+
+
+def member_delete(request, slug):
+    delete_member = get_object_or_404(Member, slug=slug)
+    if request.method == "POST":
+        delete_member.delete()
+        return redirect('ctaclci:urls_list_member')
+    return render(request, 'delete/member.html', context={})
+
+
+
+def shepherd_delete(request, slug):
+    delete_shepherd = get_object_or_404(Shepherd, slug=slug)
+    if request.method == "POST":
+        delete_shepherd.delete()
+        return redirect('ctaclci:urls_list_shepherd')
+    return render(request, 'delete/shepherd.html', context={})
+
 
 class MinistryViewSet(viewsets.ModelViewSet):
     queryset = Ministry.objects.all()
