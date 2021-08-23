@@ -159,8 +159,8 @@ def index(request, chapel__slug=None):
     shecounts = Shepherd.objects.all().count()
     new_area = AreaResidence.objects.all().count()
     mini_count = Ministry.objects.all().count()
-    att = AttendanceMember.objects.all().order_by('-id')[:10]
-    mat = Member.objects.order_by('-created_at', 'shepherd')[:10]
+    att = AttendanceMember.objects.all().order_by('-id')[:5]
+    mat = Member.objects.order_by('-created_at', 'shepherd')[:5]
 
     if request.session.test_cookie_worked():
         request.session.delete_test_cookie()
