@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}CTAC | Dashboard{% endblock %}
 {% block content %}
-{#  {% load template_filters %}#}
+  {#  {% load template_filters %}#}
   <div class="content-wrapper">
     <div class="wrapper">
       <section class="content">
@@ -35,7 +35,7 @@
                   <p>Shepherds</p>
                 </div>
                 <div class="icon">
-                 <i class="fas fa-walking"></i>
+                  <i class="fas fa-walking"></i>
                 </div>
                 <a href="{% url 'ctac:urls_shepherd_list' %}" class="small-box-footer">More info </a>
               </div>
@@ -70,69 +70,70 @@
                 <a href="{% url 'ctac:urls_ministry_list' %}" class="small-box-footer">More info </a>
               </div>
             </div>
-
+{##}
+{#            <div class="container-fluid mt-0">#}
+{#              <div class="row">#}
+{#                <div class="col-md-12">#}
+{#                  <div class="card">#}
+{#                    <div class="card-header border-transparent">#}
+{#                      <h3 class="card-title">Latest Member</h3>#}
+{##}
+{#                      <div class="card-tools">#}
+{#                        <button type="button" class="btn btn-tool" data-card-widget="collapse">#}
+{#                          <i class="fas fa-minus"></i>#}
+{#                        </button>#}
+{##}
+{#                      </div>#}
+{#                    </div>#}
+{#                    <!-- /.card-header -->#}
+{#                    <div class="card-body ">#}
+{#                      <div class="table-responsive">#}
+{#                        <table id="example2" class="table table-bordered table-hover">#}
+{#                          <thead>#}
+{#                          <tr>#}
+{##}
+{#                            <th>Last Name</th>#}
+{#                            <th>Other Name</th>#}
+{#                            <th>First Name</th>#}
+{#                            <th>Phone Number</th>#}
+{#                            <th>Shepherd</th>#}
+{##}
+{#                          </tr>#}
+{#                          </thead>#}
+{#                          <tbody>#}
+{#                          {% for mat in mat %}#}
+{#                            <tr>#}
+{##}
+{#                              <td> {{ mat.surname|capfirst|center:"15" }}</td>#}
+{#                              <td> {{ mat.second_name|lower|capfirst }}</td>#}
+{#                              <td>{{ mat.first_name|lower|capfirst }}</td>#}
+                              {#                              {% for number in object_list %}#}
+{#                              <td> {{ mat.contact_number }}</td>#}
+                              {#                                {% endfor %}#}
+{#                              <td> {{ mat.shepherd }}</td>#}
+{##}
+{##}
+{#                            </tr>#}
+{#                          {% endfor %}#}
+{#                          <tr>#}
+{#                          </tbody>#}
+{#                        </table>#}
+{#                      </div>#}
+{#                      <div class="card-footer clearfix">#}
+{#                        <a href="{% url 'ctac:new_ministry_url' %}" class="btn btn-sm btn-info float-left"> New#}
+{#                          Member</a>#}
+{#                        <a href="{% url 'ctac:urls_member_list' %}" class="btn btn-sm btn-secondary float-right">View#}
+{#                          All#}
+{#                          Member</a>#}
+{#                      </div>#}
+{##}
+{#                    </div>#}
+{##}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
             <div class="container-fluid mt-0">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="card">
-                    <div class="card-header border-transparent">
-                      <h3 class="card-title">Latest Member</h3>
-
-                      <div class="card-tools">
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                          <i class="fas fa-minus"></i>
-                        </button>
-
-                      </div>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body ">
-                      <div class="table-responsive">
-                        <table id="example2" class="table table-bordered table-hover">
-                          <thead>
-                          <tr>
-
-                            <th>Last Name</th>
-                            <th>Other Name</th>
-                            <th>First Name</th>
-                            <th>Phone Number</th>
-                            <th>Shepherd</th>
-
-                          </tr>
-                          </thead>
-                          <tbody>
-                          {% for mat in mat %}
-                            <tr>
-
-                              <td> {{ mat.surname|capfirst|center:"15"  }}</td>
-                              <td> {{ mat.second_name|lower|capfirst }}</td>
-                              <td>{{ mat.first_name|lower|capfirst }}</td>
-{#                              {% for number in object_list %}#}
-                              <td> {{ mat.contact_number}}</td>
-{#                                {% endfor %}#}
-                              <td> {{ mat.shepherd }}</td>
-
-
-                            </tr>
-                          {% endfor %}
-                          <tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="card-footer clearfix">
-                        <a href="{% url 'ctac:new_ministry_url' %}" class="btn btn-sm btn-info float-left"> New
-                          Member</a>
-                        <a href="{% url 'ctac:urls_member_list' %}" class="btn btn-sm btn-secondary float-right">View All
-                          Member</a>
-                      </div>
-
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-               <div class="container-fluid mt-0">
               <div class="row">
                 <div class="col-md-12">
                   <div class="card">
@@ -186,15 +187,51 @@
                       </div>
 
                     </div>
+                    <section class="content">
 
+
+                      <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">Latest Member</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                          <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                              <th>Last Name</th>
+                              <th>Other Name</th>
+                              <th>First Name</th>
+                              <th>Phone Number</th>
+                              <th>Shepherd</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for mat in mat %}
+                              <tr>
+                                <td>{{ mat.surname|capfirst|center:"15" }}</td>
+                                <td>{{ mat.second_name|lower|capfirst }}</td>
+                                <td>{{ mat.first_name|lower|capfirst }}</td>
+                                <td> {{ mat.contact_number }}</td>
+                                <td>{{ mat.shepherd }}</td>
+                              </tr>
+                            {% endfor %}
+                            </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
       </section>
     </div>
+
   </div>
+
 
 {% endblock %}

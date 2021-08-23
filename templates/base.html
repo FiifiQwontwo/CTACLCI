@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}">
   <link rel="stylesheet" href="{% static 'plugins/summernote/summernote-bs4.css' %}">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -349,11 +351,30 @@
 <script src="{% static 'plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js' %}"></script>
 <script src="{% static 'plugins/summernote/summernote-bs4.min.js' %}"></script>
 <script src="{% static 'plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+<script src=" {% static 'plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src=" {% static 'plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src=" {% static 'plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
 <script src="{% static 'dist/js/adminlte.js' %}"></script>
-
 <script src="{% static 'dist/js/pages/dashboard.js' %}"></script>
-
 <script src="{% static 'dist/js/demo.js' %}"></script>
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 
 </html>
 
