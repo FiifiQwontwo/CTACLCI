@@ -234,10 +234,13 @@ def chapel_details(request, slug):
 @login_required(login_url='users:login')
 @ensure_csrf_cookie
 def create_pastor(request):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
     pastor_create = CreatePastorForm(request.POST or None, request.FILES)
     if pastor_create.is_valid():
-        pastor_create.save(commit=False)
-        pastor_create.save()
+        instance = pastor_create.save(commit=False)
+        instance.user = request.user
+        instance.save()
         messages.success(request, "Pastor successfully Created")
         return redirect('ctac:urls_pastor_list')
     context = {

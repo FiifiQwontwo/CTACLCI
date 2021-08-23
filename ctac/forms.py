@@ -7,7 +7,7 @@ class CreatePastorForm(forms.ModelForm):
         model = Pastor
         fields = (
             'title', 'first_name', 'second_name', 'surname',
-            'sex',
+            'sex', 'phone_number',
         )
 
 
