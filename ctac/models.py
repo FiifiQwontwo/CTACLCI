@@ -12,7 +12,8 @@ from django.core.validators import RegexValidator
 ##############
 # author fiifi Qwontwo Ahwireng###
 
-PHONE_NUMBER_REGEX = RegexValidator(r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$', 'only valid email is required')
+PHONE_NUMBER_REGEX = RegexValidator(r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$', 'only valid phone is required')
+email = RegexValidator(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', 'only valid email is required')
 
 
 def no_future(value):
@@ -170,8 +171,8 @@ class Pastor(models.Model):
     surname = models.CharField(max_length=70)
     sex = models.CharField(choices=Gender, max_length=20)
     title = models.CharField(choices=Title, max_length=30)
-    phone_number = models.CharField(max_length=20, blank=True, validators=[PHONE_NUMBER_REGEX])
-    email_address = models.EmailField(blank=True)
+    phone_number = models.CharField(max_length=15, blank=True, validators=[PHONE_NUMBER_REGEX])
+    email_address = models.EmailField(blank=True, validators=[email])
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -241,6 +242,7 @@ class Member(models.Model):
     first_name = models.CharField(max_length=150)
     second_name = models.CharField(max_length=50, blank=True)
     surname = models.CharField(max_length=70)
+    contact_number = models.CharField(max_length=14,validators=[PHONE_NUMBER_REGEX])
     contact_number = models.CharField(max_length=14,validators=[PHONE_NUMBER_REGEX])
     owner_of_phone_number = models.CharField(max_length=20, choices=Owner)
     details_of_owner = models.CharField('If Phone Is For Another Person Then Provide Details', max_length=200,
