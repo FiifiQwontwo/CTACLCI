@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-{#            <h1>Pastor Add</h1>#}
+            {#            <h1>Pastor Add</h1>#}
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -26,10 +26,10 @@
             </div>
             <div class="card-body">
               <div class="form-group">
-                <form method="POST">
+                <form method="POST" action="">
                   {% csrf_token %}
                   <div class="form-group">
-                     <label for="inputName">Title</label>
+                    <label for="inputName">Title</label>
                     {{ pastor_create.title }}
                   </div>
                   <div class="form-group">
@@ -50,7 +50,13 @@
                   </div>
                   <div class="form-group">
                     <label>Phone Number</label>
-                    {{ pastor_create.phone_number }}
+                    <input
+                            type='number'
+                            name='phone_number'
+                            class="form-control">
+                    {#                    {{ pastor_create.phone_number }}#}
+
+{#                     <input type="number" id="number" name="amount" value="1" min="1" max="10">#}
                   </div>
                   <div class="form-group">
                     <label>Email Address</label>
@@ -65,8 +71,42 @@
       </div>
     </section>
   </div>
-  </div>
-  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput-jquery.min.js" integrity="sha512-hkmipUFWbNGcKnR0nayU95TV/6YhJ7J9YUAkx4WLoIgrVr7w1NYz28YkdNFMtPyPeX1FrQzbfs3gl+y94uZpSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+    $(document).ready(function () {
+      $("input[type=tel]").intlTelInput({
+        initialCountry: "gh",
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.14/js/utils.js"
+
+      });
+    });
+
+    function valid(d) {
+      let input = $(d);
+      //result = $("#result");
+      //alert("go");
+      let num = $(d).intlTelInput("getNumber"),
+              valid = $(d).intlTelInput("isValidNumber");
+      console.log(d.value);
+      console.log(num);
+      console.log("Number: " + num + ", valid: " + valid);
+      if (valid) {
+        d.value = num;
+        //$(this).val(num);
+      } else {
+        // alert("please enter a Valid telephone number");
+        $(d).val('');
+        Swal.fire({
+          title: 'Error!',
+          text: 'Please Enter a valid telephone number',
+          icon: 'error',
+          iconColor: 'red',
+          confirmButtonText: 'Ok',
+        });
+      }
+    }
+  </script>
 {% endblock %}
 
 
@@ -86,78 +126,78 @@
 {#</div>#}
 {#<div class="card-body">#}
 {#  <div class="form-group">#}
-    {#              <label for="inputName">Project Name</label>#}
-    {#              <input type="text" id="inputName" class="form-control">#}
-    {#            </div>#}
-    {##}
-    {#            <div class="form-group">#}
-    {#              <label for="inputName">Project Name</label>#}
-    {#              <input type="text" id="inputName" class="form-control">#}
-    {#            </div>#}
-    {#            <div class="form-group">#}
-    {#              <label for="inputDescription">Project Description</label>#}
-    {#              <textarea id="inputDescription" class="form-control" rows="4"></textarea>#}
-    {#            </div>#}
-    {#            <div class="form-group">#}
-    {#              <label for="inputStatus">Status</label>#}
-    {#              <select class="form-control custom-select">#}
-    {#                <option selected disabled>Select one</option>#}
-    {#                <option>On Hold</option>#}
-    {#                <option>Canceled</option>#}
-    {#                <option>Success</option>#}
-    {#              </select>#}
-    {#            </div>#}
-    {#            <div class="form-group">#}
-    {#              <label for="inputClientCompany">Client Company</label>#}
-    {#              <input type="text" id="inputClientCompany" class="form-control">#}
-    {#            </div>#}
-    {#            <div class="form-group">#}
-    {#              <label for="inputProjectLeader">Project Leader</label>#}
-    {#              <input type="text" id="inputProjectLeader" class="form-control">#}
-    {#            </div>#}
-    {#          </div>#}
-    {#          <!-- /.card-body -->#}
-    {#        </div>#}
-    {#        <!-- /.card -->#}
-    {#      </div>#}
-    {#      <div class="col-md-6">#}
-    {#        <div class="card card-secondary">#}
-    {#          <div class="card-header">#}
-    {#            <h3 class="card-title">Budget</h3>#}
-    {##}
-    {#            <div class="card-tools">#}
-    {#              <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"#}
-    {#                      title="Collapse">#}
-    {#                <i class="fas fa-minus"></i></button>#}
-    {#            </div>#}
-    {#          </div>#}
-    {#          <div class="card-body">#}
-    {#            <div class="form-group">#}
-    {#              <label for="inputEstimatedBudget">Estimated budget</label>#}
-    {#              <input type="number" id="inputEstimatedBudget" class="form-control">#}
-    {#            </div>#}
-    {#            <div class="form-group">#}
-    {#              <label for="inputSpentBudget">Total amount spent</label>#}
-    {#              <input type="number" id="inputSpentBudget" class="form-control">#}
-    {#            </div>#}
-    {#            <div class="form-group">#}
-    {#              <label for="inputEstimatedDuration">Estimated project duration</label>#}
-    {#              <input type="number" id="inputEstimatedDuration" class="form-control">#}
-    {#            </div>#}
-    {#          </div>#}
-    {#          <!-- /.card-body -->#}
-    {#        </div>#}
-    {#        <!-- /.card -->#}
-    {#      </div>#}
-    {#    </div>#}
-    {#    <div class="row">#}
-    {#      <div class="col-12">#}
-    {#        <a href="#" class="btn btn-secondary">Cancel</a>#}
-    {#        <input type="submit" value="Create new Porject" class="btn btn-success float-right">#}
-    {#      </div>#}
-    {#    </div>#}
-    {#  </section>#}
-    {#  <!-- /.content -->#}
-    {#</div>#}
+{#              <label for="inputName">Project Name</label>#}
+{#              <input type="text" id="inputName" class="form-control">#}
+{#            </div>#}
+{##}
+{#            <div class="form-group">#}
+{#              <label for="inputName">Project Name</label>#}
+{#              <input type="text" id="inputName" class="form-control">#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#              <label for="inputDescription">Project Description</label>#}
+{#              <textarea id="inputDescription" class="form-control" rows="4"></textarea>#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#              <label for="inputStatus">Status</label>#}
+{#              <select class="form-control custom-select">#}
+{#                <option selected disabled>Select one</option>#}
+{#                <option>On Hold</option>#}
+{#                <option>Canceled</option>#}
+{#                <option>Success</option>#}
+{#              </select>#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#              <label for="inputClientCompany">Client Company</label>#}
+{#              <input type="text" id="inputClientCompany" class="form-control">#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#              <label for="inputProjectLeader">Project Leader</label>#}
+{#              <input type="text" id="inputProjectLeader" class="form-control">#}
+{#            </div>#}
+{#          </div>#}
+{#          <!-- /.card-body -->#}
+{#        </div>#}
+{#        <!-- /.card -->#}
+{#      </div>#}
+{#      <div class="col-md-6">#}
+{#        <div class="card card-secondary">#}
+{#          <div class="card-header">#}
+{#            <h3 class="card-title">Budget</h3>#}
+{##}
+{#            <div class="card-tools">#}
+{#              <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"#}
+{#                      title="Collapse">#}
+{#                <i class="fas fa-minus"></i></button>#}
+{#            </div>#}
+{#          </div>#}
+{#          <div class="card-body">#}
+{#            <div class="form-group">#}
+{#              <label for="inputEstimatedBudget">Estimated budget</label>#}
+{#              <input type="number" id="inputEstimatedBudget" class="form-control">#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#              <label for="inputSpentBudget">Total amount spent</label>#}
+{#              <input type="number" id="inputSpentBudget" class="form-control">#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#              <label for="inputEstimatedDuration">Estimated project duration</label>#}
+{#              <input type="number" id="inputEstimatedDuration" class="form-control">#}
+{#            </div>#}
+{#          </div>#}
+{#          <!-- /.card-body -->#}
+{#        </div>#}
+{#        <!-- /.card -->#}
+{#      </div>#}
+{#    </div>#}
+{#    <div class="row">#}
+{#      <div class="col-12">#}
+{#        <a href="#" class="btn btn-secondary">Cancel</a>#}
+{#        <input type="submit" value="Create new Porject" class="btn btn-success float-right">#}
+{#      </div>#}
+{#    </div>#}
+{#  </section>#}
+{#  <!-- /.content -->#}
+{#</div>#}
 {#  </div>#}
 {#</div>#}
