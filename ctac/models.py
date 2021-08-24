@@ -6,11 +6,13 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from datetime import date
 from django.urls import reverse
-
+from django.core.validators import RegexValidator
 
 # Create your models here.
 ##############
 # author fiifi Qwontwo Ahwireng###
+
+PHONE_NUMBER_REGEX = RegexValidator(r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$', 'only valid email is required')
 
 
 def no_future(value):
@@ -151,7 +153,7 @@ class ChapelHeads(models.Model):
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -168,7 +170,7 @@ class Pastor(models.Model):
     surname = models.CharField(max_length=70)
     sex = models.CharField(choices=Gender, max_length=20)
     title = models.CharField(choices=Title, max_length=30)
-    phone_number = models.CharField(max_length=20, blank=True)
+    phone_number = models.CharField(max_length=20, blank=True, validators=[PHONE_NUMBER_REGEX])
     email_address = models.EmailField(blank=True)
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
     created_at = models.DateTimeField(auto_now_add=True)
@@ -202,7 +204,7 @@ class Shepherd(models.Model):
     first_name = models.CharField(max_length=150)
     second_name = models.CharField(max_length=50, blank=True)
     surname = models.CharField(max_length=70)
-    phone = models.CharField(max_length=12, blank = True)
+    phone = models.CharField(max_length=12, blank=True, validators=[PHONE_NUMBER_REGEX])
     sex = models.CharField(choices=Gender, max_length=20)
     type = models.CharField('Type of Shepherd', choices=Types_of_Shepherd, max_length=30)
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
@@ -224,7 +226,7 @@ class AreaResidence(models.Model):
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -239,11 +241,11 @@ class Member(models.Model):
     first_name = models.CharField(max_length=150)
     second_name = models.CharField(max_length=50, blank=True)
     surname = models.CharField(max_length=70)
-    contact_number = models.CharField(max_length=12)
+    contact_number = models.CharField(max_length=14,validators=[PHONE_NUMBER_REGEX])
     owner_of_phone_number = models.CharField(max_length=20, choices=Owner)
     details_of_owner = models.CharField('If Phone Is For Another Person Then Provide Details', max_length=200,
                                         blank=True)
-    whatsapp_number = models.CharField(max_length=12, blank=True)
+    whatsapp_number = models.CharField(max_length=12, blank=True, validators=[PHONE_NUMBER_REGEX])
     sex = models.CharField(choices=Gender, max_length=20)
     age = models.CharField('Select your Age Group', choices=Age_Group, max_length=15)
     occupation = models.CharField('Your Profession', max_length=30)
@@ -264,7 +266,7 @@ class Member(models.Model):
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.surname + ' - ' + self.first_name
