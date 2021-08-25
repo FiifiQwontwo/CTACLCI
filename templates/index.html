@@ -13,7 +13,7 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>{{ memcount }}</h3>
+                 <a href="{% url 'ctac:urls_member_list' %}"><h3>{{ memcount }}</h3></a>
 
                   <p>Members</p>
                 </div>
@@ -45,11 +45,12 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>{{ new_area }}</h3>
+                <a href="{% url 'ctac:urls_areas_list' %}" ><h3 >{{ new_area }}</h3></a>
 
                   <p>Residences</p>
                 </div>
                 <div class="icon">
+{#                   <a href=""></a>#}
                   <i class="far fa-building"></i>
                 </div>
 {#                <a href="{% url 'ctac:urls_areas_list' %}" class="small-box-footer">More info</a>#}
@@ -60,7 +61,7 @@
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>{{ mini_count }}</h3>
+                <a href="{% url 'ctac:urls_ministry_list' %}"><h3>{{ mini_count }}</h3></a>
 
                   <p>Ministries</p>
                 </div>

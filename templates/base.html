@@ -26,7 +26,7 @@
         integrity="sha512-gxWow8Mo6q6pLa1XH/CcH8JyiSDEtiwJV78E+D+QP0EVasFs8wKXq16G8CLD4CJ2SnonHr4Lm/yY2fSI2+cbmw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition sidebar-mini sidebar-collapse">
 <div class="wrapper">
   <nav class="main-header navbar navbar-expand navbar-light bg-kofi">
     <!-- Left navbar links -->
@@ -82,15 +82,18 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
+            <i class="fas fa-users"></i>
             <p>
               Members
-              <i class="fas fa-angle-left right"></i>
+
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="{% url 'ctac:urls_member_list' %}" class="nav-link">
+
                 <p>members</p>
+
               </a>
             </li>
             <li class="nav-item">
@@ -101,12 +104,15 @@
 
           </ul>
         </li>
+        <br>
+        &nbsp;
 
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
+            <i class="fas fa-walking"></i>
             <p>
               Shepherd
-              <i class="fas fa-angle-left right"></i>
+              {#              <i class="fas fa-angle-left right"></i>#}
             </p>
           </a>
           <ul class="nav nav-treeview">
@@ -123,12 +129,15 @@
 
           </ul>
         </li>
+        <br>
+        &nbsp;
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
+            <i class="fas fa-user-tie"></i>
             <!-- <i class="nav-icon fas fa-copy"></i> -->
             <p>
               Pastor
-              <i class="fas fa-angle-left right"></i>
+              {#              <i class="fas fa-angle-left right"></i>#}
               <!-- <span class="badge badge-info right">6</span> -->
             </p>
           </a>
@@ -147,35 +156,35 @@
             {#            </li>#}
           </ul>
         </li>
+        <br>
+        &nbsp;
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-            <!-- <i class="nav-icon fas fa-chart-pie"></i> -->
+            <i class="fas fa-church"></i>
             <p>
               Ministry
-              <i class="right fas fa-angle-left"></i>
+
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="{% url 'ctac:urls_ministry_list' %}" class="nav-link">
-                <!-- <i class="far fa-circle nav-icon"></i> -->
+
                 <p>ministries</p>
               </a>
             </li>
-            {#            <li class="nav-item">#}
-            {#              <a href="{% url 'ctac:new_ministry_url' %}" class="nav-link">#}
-            {#                <!-- <i class="far fa-circle nav-icon"></i> -->#}
-            {#                <p>add ministry</p>#}
-            {#              </a>#}
-            {#            </li>#}
+
           </ul>
         </li>
+        <br>
+        &nbsp;
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-            <!-- <i class="nav-icon fas fa-tree"></i> -->
+            <i class="fas fa-place-of-worship"></i>
+
             <p>
               Chapel
-              <i class="fas fa-angle-left right"></i>
+              {#              <i class="fas fa-angle-left right"></i>#}
             </p>
           </a>
           <ul class="nav nav-treeview">
@@ -185,20 +194,16 @@
                 <p>chapels</p>
               </a>
             </li>
-            {#            <li class="nav-item">#}
-            {#              <a href="{% url 'ctac:add_chapel_url' %}" class="nav-link">#}
-            {#                <!-- <i class="far fa-circle nav-icon"></i> -->#}
-            {#                <p>new chapel</p>#}
-            {#              </a>#}
-            {#            </li>#}
-
           </ul>
         </li>
+        <br>
+        &nbsp;
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
+            <i class="fas fa-h-square"></i>
             <p>
               Chapel Heads
-              <i class="fas fa-angle-left right"></i>
+
             </p>
           </a>
           <ul class="nav nav-treeview">
@@ -208,20 +213,15 @@
                 <p>chapel heads</p>
               </a>
             </li>
-            {#            <li class="nav-item">#}
-            {#              <a href="{% url 'ctac:add_heads_chapel' %}" class="nav-link">#}
-            {#                <!-- <i class="far fa-circle nav-icon"></i> -->#}
-            {#                <p>add new chapel head</p>#}
-            {#              </a>#}
-            {#            </li>#}
-
           </ul>
         </li>
+        <br>
+        &nbsp;
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
+            <i class="fas fa-dice-three"></i>
             <p>
               Service
-              <i class="fas fa-angle-left right"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
@@ -230,20 +230,16 @@
                 <p>services</p>
               </a>
             </li>
-            {#            <li class="nav-item">#}
-            {#              <a href="{% url 'ctac:new_services' %}" class="nav-link">#}
-            {#                <p>add service</p>#}
-            {#              </a>#}
-            {#            </li>#}
           </ul>
         </li>
-
+        <br>
+        &nbsp;
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-
+            <i class="far fa-building"></i>
             <p>
               Residence
-              <i class="fas fa-angle-left right"></i>
+              {#              <i class="fas fa-angle-left right"></i>#}
             </p>
           </a>
           <ul class="nav nav-treeview">
@@ -252,20 +248,15 @@
                 <p>residence</p>
               </a>
             </li>
-            {#            <li class="nav-item">#}
-            {#              <a href="pages/mailbox/compose.html" class="nav-link">#}
-            {#                <p>new residence</p>#}
-            {#              </a>#}
-            {#            </li>#}
-
           </ul>
         </li>
-
+        <br>
+        &nbsp;
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
+            <i class="fas fa-sign-out-alt"></i>
             <p>
               User Accounts
-              <i class="fas fa-angle-left right"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
@@ -281,40 +272,26 @@
                 <p>{{ user.username }}</p>
               </a>
             </li>
-
             <li class="nav-item">
               <a href="{% url 'users:login' %}" class="nav-link">
                 <!-- <i class="far fa-circle nav-icon"></i> -->
                 <p>Lockscreen</p>
               </a>
             </li>
-
           </ul>
         </li>
-
-
         <li class="nav-item has-treeview">
-
           <ul class="nav nav-treeview">
-
             <li class="nav-item has-treeview">
-
               <ul class="nav nav-treeview">
-
                 <li class="nav-item">
-
                 </li>
-
               </ul>
             </li>
-
           </ul>
         </li>
-
       </ul>
     </nav>
-
-
   </aside>
 
   {% block content %}
