@@ -1,72 +1,83 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}CTAC | Pastors {% endblock %}
-{% block content  %}
-<div class="wrapper">
- <div class="content-wrapper">
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-               <h2 class="card-title col-md-12">
-                  <div class="row mb-2">
-                     <div class="col-sm-6">
-                      <ol class="breadcrumb float-sm-left">
-                        <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a></li>
-                        <li class="breadcrumb-item active"><i class="fas fa-users"></i> </li>
-                      </ol>
+{% block content %}
+  <div class="wrapper">
+    <div class="content-wrapper">
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h2 class="card-title col-md-12">
+                    <div class="row mb-2">
+                      <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-left">
+                          <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a>
+                          </li>
+                          <li class="breadcrumb-item active"><i class="fas fa-users"></i></li>
+                        </ol>
+                      </div>
+                      <div class="col-md-6 text-right">
+                        <a href="{% url 'ctac:new_pastor_url' %}"> <i class="fas fa-user-plus"></i></a>
+                        &nbsp;<b>|</b>
+                        <a href="{% url 'ctac:export_pastor_xls' %}" style=""> <i class="fas fa-file-excel"></i></a>
+                      </div>
                     </div>
-                    <div class="col-md-6 text-right">
-                       <a href="{% url 'ctac:new_pastor_url' %}"> <i class="fas fa-user-plus"></i></a>
-                      &nbsp;<b>|</b>
-                        <a href="{% url 'ctac:export_pastor_xls' %}" style="">  <i class="fas fa-file-excel"></i></a>
+                  </h2>
+                </div>
+                <section class="content">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title">Pastor's List</h3>
+                    </div>
+                    <div class="card-body">
+                      <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Title</th>
+                          <th>Surname</th>
+                          <th>First Name</th>
+                          <th>Contact Number</th>
+                          <th>Email Address</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for paslist in paslist %}
+                          <tr>
+                            <td> {{ paslist.id }}</td>
+                            <td> {{ paslist.title }}</td>
+                            <td><a href="{% url 'ctac:pastor_details_url' paslist.slug %}"
+                                   class="link-black text-sm"> {{ paslist.surname }}</a></td>
+                            <td> {{ paslist.first_name }}</td>
+                            <td> {{ paslist.phone_number }}</td>
+                            <td>{{ paslist.email_address }}</td>
+                          </tr>
+                        {% endfor %}
+                        </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
-                </h2>
-              <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Title </th>
-                    <th>Surname</th>
-                    <th>First Name</th>
-                    <th>Contact Number</th>
-                    <th>Email Address  </th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  {% for paslist in paslist %}
-                  <tr>
-                    <td> {{ paslist.id  }}</td>
-                    <td> {{ paslist.title  }}</td>
-                    <td><a  href="{% url 'ctac:pastor_details_url' paslist.slug %}" class="link-black text-sm"> {{ paslist.surname }}</a></td>
-                    <td> {{ paslist.first_name }}</td>
-                    <td> {{ paslist.phone_number  }}</td>
-                    <td>{{ paslist.email_address  }}</td>
-                  </tr>
-                  {% endfor %}
-                  <tr>
-                  </tbody>
-                </table>
-              {% if paslist.has_previous %}
-<a href="?page={{paslist.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a> &nbsp; &nbsp;
-{% endif%}
-{% if paslist.has_next %}
-<a href="?page={{paslist.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
-{% endif %}
+                  {% if paslist.has_previous %}
+                    <a href="?page={{ paslist.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a>
+                    &nbsp;
+                    &nbsp;
+                  {% endif %}
+                  {% if paslist.has_next %}
+                    <a href="?page={{ paslist.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
+                  {% endif %}
+                </section>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      </div>
-    </section>
- </div>
-</div>
- {% endblock %}
+      </section>
+    </div>
+  </div>
+{% endblock %}
 
 
 

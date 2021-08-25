@@ -26,7 +26,7 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 @login_required(login_url='users:login')
 def list_pastor(request):
     paslist = Pastor.objects.all().order_by('created_at')
-    paspage = Paginator(paslist, 10)
+    paspage = Paginator(paslist, 50)
 
     page_num = request.GET.get('page', 1)
     try:
