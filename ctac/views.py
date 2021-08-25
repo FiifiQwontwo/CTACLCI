@@ -210,8 +210,6 @@ def ministry_details(request, slug):
     return render(request, 'tems/ministry.html', {'mindetails': mindetails})
 
 
-#
-
 @login_required(login_url='users:login')
 def member_details(request, slug):
     membdetails = get_object_or_404(Member, slug=slug)
@@ -219,7 +217,6 @@ def member_details(request, slug):
     return render(request, 'tems/member.html', context)
 
 
-#
 #
 @login_required(login_url='users:login')
 def chapel_details(request, slug):
@@ -254,14 +251,17 @@ def create_pastor(request):
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
 def create_shepherd(request):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
     shepherd_create = CreateShepherdForm(request.POST or None, request.FILES)
     if shepherd_create.is_valid():
-        shepherd_create.save(commit=False)
-        shepherd_create.save()
+        instance = shepherd_create.save(commit=False)
+        instance.user = request.user
+        instance.save()
         messages.success(request, "Shepherd successfully Created")
-        return redirect('ctac:urls_list_shepherd')
+        return redirect('ctac:urls_shepherd_list')
     context = {
-        'create_shepherd': create_shepherd
+        'shepherd_create': shepherd_create
     }
     return render(request, 'create/shepherd.html', context)
 

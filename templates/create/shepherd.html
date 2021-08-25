@@ -1,10 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div class="content-wrapper">
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="content">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">NEW SHEPHERD</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                  <i class="fas fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <form method="POST" action="">
+                  {% csrf_token %}
 
-</body>
-</html>
+                  <div class="form-group">
+                    <label>First Name </label>
+                     <input
+                            type='text'
+                            name='first_name'
+                            class="form-control"
+                            placeholder="Enter first name">
+
+                  </div>
+                  <div class="form-group">
+                    <label>Middle Name </label>
+                    <input
+                            type='text'
+                            name='second_name'
+                            class="form-control"
+                            placeholder="Enter Middle Name">
+
+                  </div>
+                  <div class="form-group">
+                    <label>Last Name</label>
+                      <input
+                            type='text'
+                            name='surname'
+                            class="form-control"
+                            placeholder="Enter Last name">
+
+                  </div>
+                  <div class="form-group">
+                    <label>Gender</label>
+                    <select class="form-control select2" name="sex" style="width: 100%;">
+                    <option selected="selected">Male</option>
+                    <option>Female</option>
+                  </select>
+
+                  </div>
+
+                   <div class="form-group">
+                    <label>Shepherd Type</label>
+                    <select class="form-control select2" name="sex" style="width: 100%;">
+                    <option selected="selected">Ministry Shepherd</option>
+                    <option>Trainee Shepherd</option>
+                      <option>Assistant Shepherd</option>
+                      <option>Bacenta Leader</option>
+                  </select>
+
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+{% endblock %}
+
