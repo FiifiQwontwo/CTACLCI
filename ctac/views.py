@@ -148,8 +148,15 @@ def list_member(request):
 
 @login_required(login_url='users:login')
 def list_attendance(request):
-    att = AttendanceMember.objects.all().order_by('created_at')
-    context = {'att': att}
+    att = AttendanceMember.objects.all()
+    atmem = Paginator(att, 100)
+
+    page_num = request.GET.get('page', 1)
+    try:
+        page = atmem.page(page_num)
+    except EmptyPage:
+        page = atmem(1)
+    context = {'att': page}
     return render(request, 'attendance.html', context)
 
 
@@ -341,7 +348,7 @@ def create_area_residences(request):
         raise Http404
     arearesidences = CreateServiceForm(request.POST or None, request.FILES)
     if arearesidences.is_valid():
-        instance =arearesidences.save(commit=False)
+        instance = arearesidences.save(commit=False)
         instance.user = request.user
         instance.save()
         messages.success(request, 'Added a new Residences')

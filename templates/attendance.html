@@ -25,7 +25,8 @@
                     </div>
                   </h2>
                 </div>
-                <section class="content">
+
+              <section class="content">
                   <div class="card">
                     <div class="card-header">
                       <h3 class="card-title">Attendance's List</h3>
@@ -34,7 +35,7 @@
                       <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                          <th> ID</th>
+                           <th> ID</th>
                           <th>Member</th>
                           <th>Service Date</th>
                           <th>Service Attended</th>
@@ -44,30 +45,32 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for att in att %}
-                          <tr>
-                            <td>{{ att.id }}</td>
-                            <td> {{ att.member }}</td>
-                            <td> {{ att.date }}</td>
-                            <td>{{ att.services }}</td>
-                            <td> {{ att.present_in }}</td>
-                            <td> {{ att.shepherd }}</td>
-                            <td>{{ att.chapel }}</td>
-                          </tr>
+                         {% for att in att %}
+                      <tr>
+                        <td>{{ att.id }}</td>
+                        <td> {{ att.member |lower|capfirst  }}</td>
+                        <td>  {{ att.date }}</td>
+                        <td>{{ att.services }}</td>
+                        <td> {{ att.present_in }}</td>
+                        <td>{{ att.shepherd }}</td>
+                        <td>{{ att.chapel }}</td>
+
+                      </tr>
                         {% endfor %}
-                        <tr>
+                        </tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
-                  {% if memblist.has_previous %}
-                    <a href="?page={{ memblist.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a>
+                   {% if memblist.has_previous %}
+                    <a href="?page={{ att.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a>
                     &nbsp; &nbsp;
                   {% endif %}
                   {% if memblist.has_next %}
-                    <a href="?page={{ memblist.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
+                    <a href="?page={{ att.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
                   {% endif %}
                 </section>
+
               </div>
             </div>
           </div>
