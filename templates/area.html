@@ -23,7 +23,7 @@
                   </div>
 
                 </div>
-              <section class="content">
+                <section class="content">
                   <div class="card">
                     <div class="card-header">
                       <h3 class="card-title">Area's List</h3>
@@ -38,24 +38,24 @@
                         </thead>
                         <tbody>
                         {% for area in area %}
-                      <tr>
-                        <td> {{ area.id }}</td>
-                        <td> {{ area.area_residence|lower|capfirst }}</td>
+                          <tr>
+                            <td> {{ area.id }}</td>
+                            <td> {{ area.area_residence|lower|capfirst }}</td>
 
-                      </tr>
-                    {% endfor %}
+                          </tr>
+                        {% endfor %}
 
                         </tbody>
                       </table>
                     </div>
                   </div>
-{#                   {% if area.has_previous %}#}
-{#                    <a href="?page={{ area.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a>#}
-{#                    &nbsp; &nbsp;#}
-{#                  {% endif %}#}
-{#                  {% if area.has_next %}#}
-{#                    <a href="?page={{ area.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>#}
-{#                  {% endif %}#}
+                  {#                   {% if area.has_previous %}#}
+                  {#                    <a href="?page={{ area.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a>#}
+                  {#                    &nbsp; &nbsp;#}
+                  {#                  {% endif %}#}
+                  {#                  {% if area.has_next %}#}
+                  {#                    <a href="?page={{ area.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>#}
+                  {#                  {% endif %}#}
                 </section>
               </div>
             </div>

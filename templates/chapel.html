@@ -1,52 +1,53 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}CTAC | Chapels{% endblock %}
-{% block content  %}
-<div class="wrapper">
- <div class="content-wrapper">
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <div class="col-sm-6">
-                  <ol class="breadcrumb float-sm-left">
-                    <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a></li>
-                    <li class="breadcrumb-item active"><i class="fas fa-church"></i></li>
-                  </ol>
+{% block content %}
+  <div class="wrapper">
+    <div class="content-wrapper">
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-left">
+                      <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a></li>
+                      <li class="breadcrumb-item active"><i class="fas fa-church"></i></li>
+                    </ol>
+                  </div>
                 </div>
-              </div>
-              <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Chapel Name</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  {% for chap in chap %}
-                  <tr>
-                    <td> {{ chap.id }}</td>
-                    <td> {{ chap.chapel_name }}</td>
-                  </tr>
-                  {% endfor %}
-                  <tr>
-                  </tbody>
-                </table>
-               {% if chap.has_previous %}
-<a href="?page={{chap.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a> &nbsp; &nbsp;
-{% endif%}
-{% if chap.has_next %}
-<a href="?page={{chap.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
-{% endif %}
+                 <section class="content">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title">Chapel's List</h3>
+                    </div>
+                    <div class="card-body">
+                      <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Chapel Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for chap in chap %}
+                          <tr>
+                            <td> {{ chap.id }}</td>
+                            <td> {{ chap.chapel_name }}</td>
+                          </tr>
+                        {% endfor %}
+                        <tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </section>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
- </div>
-</div>
-  {% endblock %}
+      </section>
+    </div>
+  </div>
+{% endblock %}
