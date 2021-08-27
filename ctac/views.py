@@ -132,7 +132,7 @@ def list_chapel_heads(request):
 def list_member(request):
     memblist = Member.objects.all()
     memcount = memblist.count()
-    membs = Paginator(memblist, 10)
+    membs = Paginator(memblist, 100)
 
     page_num = request.GET.get('page', 1)
     try:
@@ -337,10 +337,13 @@ def create_services(request):
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
 def create_area_residences(request):
+    if not request.user.is_superuser or not request.user.is_staff:
+        raise Http404
     arearesidences = CreateServiceForm(request.POST or None, request.FILES)
     if arearesidences.is_valid():
-        arearesidences.save(commit=False)
-        arearesidences.save()
+        instance =arearesidences.save(commit=False)
+        instance.user = request.user
+        instance.save()
         messages.success(request, 'Added a new Residences')
         return redirect('ctac:urls_areas_list')
     context = {
