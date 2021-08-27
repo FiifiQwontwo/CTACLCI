@@ -73,6 +73,51 @@
                   {% if memblist.has_next %}
                     <a href="?page={{ memblist.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
                   {% endif %}
+                </section> <section class="content">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title">Member's List</h3>
+                    </div>
+                    <div class="card-body">
+                      <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                          <th style="background-color:#e67676">ID</th>
+                          <th style="background-color:#e67676">Surname</th>
+                          <th style="background-color:#e67676">First Name</th>
+                          <th style="background-color:#e67676">Gender</th>
+                          <th style="background-color:#e67676">Contact Number</th>
+                          <th style="background-color:#e67676">Whatsapp Number</th>
+                          <th style="background-color:#e67676">Area of Residence</th>
+                          <th style="background-color:#e67676">Shepherd</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                         {% for memblist in memblist %}
+                      <tr>
+                        <td>{{ memblist.id }}</td>
+                        <td><a href="{% url 'ctac:member_details_url' memblist.slug %}"
+                               class="link-black text-sm"> {{ memblist.surname|lower|capfirst }}</a></td>
+                        <td> {{ memblist.first_name|lower|capfirst }}</td>
+                        <td>{{ memblist.sex|lower|capfirst }}</td>
+                        <td> {{ memblist.contact_number }}</td>
+                        <td>{{ memblist.whatsapp_number }}</td>
+                        <td>{{ memblist.area_of_residence|lower|capfirst }}</td>
+                        <td>{{ memblist.shepherd }}</td>
+                      </tr>
+                        {% endfor %}
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                   {% if memblist.has_previous %}
+                    <a href="?page={{ memblist.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a>
+                    &nbsp; &nbsp;
+                  {% endif %}
+                  {% if memblist.has_next %}
+                    <a href="?page={{ memblist.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
+                  {% endif %}
                 </section>
               </div>
             </div>

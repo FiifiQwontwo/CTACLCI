@@ -35,13 +35,13 @@
                       <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                           <th> ID</th>
-                          <th>Member</th>
-                          <th>Service Date</th>
-                          <th>Service Attended</th>
-                          <th>Present_in</th>
-                          <th>Shepherd</th>
-                          <th>Chapel</th>
+                           <th style="background-color:#e67676"> ID</th>
+                          <th style="background-color:#e67676">Member</th>
+                          <th style="background-color:#e67676">Service Date</th>
+                          <th style="background-color:#e67676">Service Attended</th>
+                          <th style="background-color:#e67676">Present_in</th>
+                          <th style="background-color:#e67676">Shepherd</th>
+                          <th style="background-color:#e67676">Chapel</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -62,13 +62,13 @@
                       </table>
                     </div>
                   </div>
-                   {% if memblist.has_previous %}
-                    <a href="?page={{ att.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a>
-                    &nbsp; &nbsp;
-                  {% endif %}
-                  {% if memblist.has_next %}
-                    <a href="?page={{ att.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
-                  {% endif %}
+{#                   {% if memblist.has_previous %}#}
+{#                    <a href="?page={{ att.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a>#}
+{#                    &nbsp; &nbsp;#}
+{#                  {% endif %}#}
+{#                  {% if memblist.has_next %}#}
+{#                    <a href="?page={{ att.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>#}
+{#                  {% endif %}#}
                 </section>
 
               </div>

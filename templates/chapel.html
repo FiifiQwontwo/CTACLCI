@@ -17,31 +17,39 @@
                     </ol>
                   </div>
                 </div>
-                 <section class="content">
+                <section class="content">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title">Chapel's List</h3>
+                      <h2 class="card-title">Chapels</h2>
                     </div>
                     <div class="card-body">
                       <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                          <th>ID</th>
-                          <th>Chapel Name</th>
+                          <th style="background-color:#e67676">ID</th>
+                          <th style="background-color:#e67676">Chapel Name</th>
                         </tr>
                         </thead>
                         <tbody>
                         {% for chap in chap %}
                           <tr>
-                            <td> {{ chap.id }}</td>
-                            <td> {{ chap.chapel_name }}</td>
+                            <td>{{ chap.id }}</td>
+                            <td>{{ chap.chapel_name|lower|capfirst }}</td>
+
                           </tr>
                         {% endfor %}
-                        <tr>
+                        </tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
+                  {#                   {% if memblist.has_previous %}#}
+                  {#                    <a href="?page={{ memblist.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a>#}
+                  {#                    &nbsp; &nbsp;#}
+                  {#                  {% endif %}#}
+                  {#                  {% if memblist.has_next %}#}
+                  {#                    <a href="?page={{ memblist.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>#}
+                  {#                  {% endif %}#}
                 </section>
               </div>
             </div>
