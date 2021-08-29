@@ -243,7 +243,7 @@ class Member(models.Model):
     second_name = models.CharField(max_length=50, blank=True)
     surname = models.CharField(max_length=70)
     contact_number = models.CharField(max_length=14,validators=[PHONE_NUMBER_REGEX])
-    contact_number = models.CharField(max_length=14,validators=[PHONE_NUMBER_REGEX])
+   # contact_number = models.CharField(max_length=14,validators=[PHONE_NUMBER_REGEX])
     owner_of_phone_number = models.CharField(max_length=20, choices=Owner)
     details_of_owner = models.CharField('If Phone Is For Another Person Then Provide Details', max_length=200,
                                         blank=True)

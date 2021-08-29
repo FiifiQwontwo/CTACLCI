@@ -52,7 +52,37 @@
                             name='surname'
                             class="form-control"
                             placeholder="Enter Last name">
-
+                  </div>
+                  <div class="form-group">
+                    <label> Contact Number </label>
+                    <input
+                            type='number'
+                            data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']"
+                            name='contact_number'
+                            class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Ownership of Phone </label>
+                    <select class="form-control select2" name="owner_of_phone_number" style="width: 100%;">
+                      <option selected="selected">Self</option>
+                      <option>Another Person</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Owner Details</label>
+                    <input
+                            type='text'
+                            name='details_of_owner'
+                            class="form-control"
+                            placeholder="Enter Name of the Phone owner">
+                  </div>
+                  <div class="form-group">
+                    <label>Whatsapp Number </label>
+                    <input
+                            type='number'
+                            data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']"
+                            name='whatsapp_number'
+                            class="form-control">
                   </div>
                   <div class="form-group">
                     <label>Gender</label>
@@ -89,15 +119,80 @@
                       <option>widow</option>
                     </select>
                   </div>
+
                   <div class="form-group">
-                    <label>Middle Name </label>
+                    <label>Select Area</label><br>
+                    {{ member_create.area_of_residence }}
+                  </div>
+                  <div class="form-group">
+                    <label>Micro Area</label>
                     <input
                             type='text'
-                            name='second_name'
+                            name='micro_area_name'
                             class="form-control"
-                            placeholder="Enter Middle Name">
-
+                            placeholder="Enter Name of the area eg. coco beach">
                   </div>
+                  <div class="form-group">
+                    <label>Landmark</label>
+                    <input
+                            type='text'
+                            name='nearest_landmark'
+                            class="form-control"
+                            placeholder="Enter landmark eg.old kasapreko">
+                  </div>
+                  <div class="form-group">
+                    <label>Able to join online service</label><br>
+                    {{ member_create.online_service }}
+                  </div>
+                  <div class="form-group">
+                    <label>Phone Usage</label>
+                    <select class="form-control select2" name="phone_usage" style="width: 100%;">
+                      <option selected="selected">I use a smartphone for online service</option>
+                      <option>I use a tablet for online service</option>
+                      <option>I don't have a smartphone but i have a yam</option>
+                      <option>I don't have a phone</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Select Ministry</label><br>
+                    {{ member_create.ministries }}
+                  </div>
+                  <div class="form-group">
+                    <label>Select Chapel</label><br>
+                    {{ member_create.chapel }}
+                  </div>
+                  <div class="form-group">
+                    <label>Select Shepherd</label><br>
+                    {{ member_create.shepherd }}
+                  </div>
+                  <div class="form-group">
+                    <label>Select Chapel Head</label><br>
+                    {{ member_create.chapel_head }}
+                  </div>
+                  <div class="form-group">
+                    <label>State</label>
+                    <select class="form-control select2" name="state" style="width: 100%;">
+                      <option selected="selected">Member</option>
+                      <option>Ministry Shepherd</option>
+                      <option>Shepherd</option>
+                      <option>Assisting Shepherd or Trainee Shepherd</option>
+                      <option>Don't Understand</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Select Service</label><br>
+                    {{ member_create.services }}
+                  </div>
+                  <div class="form-group">
+                    <label>Bacenta Leader</label>
+                    <input
+                            type='text'
+                            name='bacenta_leader'
+                            class="form-control"
+                            placeholder="Enter bacenta leader's name">
+                  </div>
+
+
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
               </div>
