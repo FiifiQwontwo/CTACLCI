@@ -1,53 +1,47 @@
 {% extends 'base.html' %}
-{% block title %}CTAC | Add Area {% endblock %}
 {% load static %}
 {% block content %}
   <div class="content-wrapper">
-    <div class="wrapper">
-      <section class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h2 class="card-title col-md-12">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <ol class="breadcrumb float-sm-left">
-                          <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a>
-                          </li>
-                          <li class="breadcrumb-item "><a href="{% url 'ctac:urls_areas_list' %}"><i
-                                  class="fas fa-house-user"></i></a></li>
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="content">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Add New Pastor</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                  <i class="fas fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <form method="POST" action="">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label>Area Name</label>
+                    <input
+                            type='text'
+                            name='area_residence'
+                            class="form-control"
+                            placeholder="Enter Area Name">
+                  </div>
 
-                          <li class="breadcrumb-item active"><i class="fas fa-laptop-house"></i></li>
-                        </ol>
-                      </div>
-                      <div class="col-md-6 text-right">
-                        <a href="{% url 'ctac:export_area_xls' %}" style=""> <i class="fas fa-file-excel"></i></a>
-                      </div>
-                    </div>
-                    <div class="card card-primary">
-                      <div class="card-header">
-                        <h3 class="card-title">Area of Residence</h3>
-                        <div class="card-body">
-                          <div class="form-group">
-                            <label for="inputName">Area</label>
-                            <input type="text" id="inputName" class="form-control" name="member_create.second_name">
-                          </div>
-                          <input type="submit" value =Submit>
-                        </div>
-                      </div>
-                    </div>
-                  </h2>
-                </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </div>
-  </div>
-
 {% endblock %}
-

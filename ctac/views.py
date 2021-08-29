@@ -103,7 +103,7 @@ def list_service(request):
 def list_area(request):
     area = AreaResidence.objects.all()
     new_area = area.count()
-    areapage = Paginator(area, 10)
+    areapage = Paginator(area, 100)
 
     page_num = request.GET.get('page', 1)
     try:
@@ -346,7 +346,7 @@ def create_services(request):
 def create_area_residences(request):
     if not request.user.is_superuser or not request.user.is_staff:
         raise Http404
-    arearesidences = CreateServiceForm(request.POST or None, request.FILES)
+    arearesidences = CreateAreaResidenceForm(request.POST or None, request.FILES)
     if arearesidences.is_valid():
         instance = arearesidences.save(commit=False)
         instance.user = request.user
