@@ -2,160 +2,111 @@
 {% load static %}
 {% block content %}
   <div class="content-wrapper">
-    <div class="wrapper">
-      <section class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h2 class="card-title col-md-12">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <ol class="breadcrumb float-sm-left">
-                          <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a>
-                          </li>
-                            <li class="breadcrumb-item "><a href="{% url 'ctac:urls_member_list' %}"><i
-                      class="fas fa-users"></i></a></li>
-                          <li class="breadcrumb-item active"><i class="fas fa-user-plus"></i></li>
-                        </ol>
-                      </div>
-                      <div class="col-md-6 text-right">
-                        <a href="{% url 'ctac:memex' %}" style=""> <i class="fas fa-file-excel"></i></a>
-                      </div>
-                    </div>
-                    <form method="post" novalidate>
-                      {% csrf_token %}
-
-                      {{ member_create.non_field_errors }}
-
-                      {% for hidden_field in member_create.hidden_fields %}
-                        {{ hidden_field.errors }}
-                        {{ hidden_field }}
-                      {% endfor %}
-
-                      <table border="1">
-                        {% for field in member_create.visible_fields %}
-                          <tr>
-                            <th>{{ field.label_tag }}</th>
-                            <td>
-                              {{ field.errors }}
-                              {{ field }}
-                              {{ field.help_text }}
-                            </td>
-                          </tr>
-                        {% endfor %}
-
-                      </table>
-                    </form>
-                  </h2>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
-
-
-
- <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Project Add</h1>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
-
-    <!-- Main content -->
     <section class="content">
       <div class="row">
         <div class="col-md-6">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Personal Details</h3>
-
+              <h3 class="card-title">NEW MEMBER</h3>
               <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
                   <i class="fas fa-minus"></i></button>
               </div>
             </div>
             <div class="card-body">
               <div class="form-group">
-                <label for="inputName">First Name</label>
-                <input type="text" id="inputName" class="form-control" name="member_create.second_name">
-              </div>
+                <form method="POST" action="">
+                  {% csrf_token %}
 
-              <div class="form-group">
-                <label for="inputName">Middle Name</label>
-                <input type="text" id="inputName" class="form-control" name="member_create.second_name">
-              </div>
-              <div class="form-group">
-                <label for="inputDescription">Surname</label>
-                 <input type="text" id="inputName" class="form-control" name="member_create.surname">
-              </div>
-              <div class="form-group">
-                <label for="inputStatus">Sex</label>
-                <select class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  <option>On Hold</option>
-                  <option>Canceled</option>
-                  <option>Success</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="inputClientCompany">Client Company</label>
-                <input type="text" id="inputClientCompany" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="inputProjectLeader">Project Leader</label>
-                <input type="text" id="inputProjectLeader" class="form-control">
-              </div>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <div class="col-md-6">
-          <div class="card card-secondary">
-            <div class="card-header">
-              <h3 class="card-title">Budget</h3>
+                  <div class="form-group">
+                    <label>First Name </label>
+                    <input
+                            type='text'
+                            name='first_name'
+                            class="form-control"
+                            placeholder="Enter first name">
 
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-minus"></i></button>
+                  </div>
+                  <div class="form-group">
+                    <label>Middle Name </label>
+                    <input
+                            type='text'
+                            name='second_name'
+                            class="form-control"
+                            placeholder="Enter Middle Name">
+
+                  </div>
+                  <div class="form-group">
+                    <label>Last Name</label>
+                    <input
+                            type='text'
+                            name='surname'
+                            class="form-control"
+                            placeholder="Enter Last name">
+
+                  </div>
+                  <div class="form-group">
+                    <label>Gender</label>
+                    <select class="form-control select2" name="sex" style="width: 100%;">
+                      <option selected="selected">Male</option>
+                      <option>Female</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Age Group</label>
+                    <select class="form-control select2" name="age" style="width: 100%;">
+                      <option selected="selected">10-19 years</option>
+                      <option>20-29 years</option>
+                      <option>30-39 years</option>
+                      <option>40-49 years</option>
+                      <option>50-59 years</option>
+                      <option>60 and above</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Occupation</label>
+                    <input
+                            type='text'
+                            name='occupation'
+                            class="form-control"
+                            placeholder="Enter Occupation">
+                  </div>
+                  <div class="form-group">
+                    <label>Marital Status</label>
+                    <select class="form-control select2" name="marital_status" style="width: 100%;">
+                      <option selected="selected">Single</option>
+                      <option>Married</option>
+                      <option>Divorced</option>
+                      <option>widow</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Middle Name </label>
+                    <input
+                            type='text'
+                            name='second_name'
+                            class="form-control"
+                            placeholder="Enter Middle Name">
+
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
               </div>
             </div>
-            <div class="card-body">
-              <div class="form-group">
-                <label for="inputEstimatedBudget">Estimated budget</label>
-                <input type="number" id="inputEstimatedBudget" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="inputSpentBudget">Total amount spent</label>
-                <input type="number" id="inputSpentBudget" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="inputEstimatedDuration">Estimated project duration</label>
-                <input type="number" id="inputEstimatedDuration" class="form-control">
-              </div>
-            </div>
-            <!-- /.card-body -->
           </div>
-          <!-- /.card -->
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <a href="#" class="btn btn-secondary">Cancel</a>
-          <input type="submit" value="Create new Porject" class="btn btn-success float-right">
         </div>
       </div>
     </section>
- </div>
+  </div>
+
 {% endblock %}
+
