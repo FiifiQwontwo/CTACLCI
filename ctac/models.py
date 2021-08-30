@@ -12,7 +12,7 @@ from django.core.validators import RegexValidator
 ##############
 # author fiifi Qwontwo Ahwireng###
 
-PHONE_NUMBER_REGEX = RegexValidator(r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$', 'only valid phone is required')
+# PHONE_NUMBER_REGEX = RegexValidator(r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$', 'only valid phone is required')
 # email = RegexValidator(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', 'only valid email is required')
 
 
@@ -171,7 +171,7 @@ class Pastor(models.Model):
     surname = models.CharField(max_length=70)
     sex = models.CharField(choices=Gender, max_length=20)
     title = models.CharField(choices=Title, max_length=30)
-    phone_number = models.CharField(max_length=15, blank=True, validators=[PHONE_NUMBER_REGEX])
+    phone_number = models.CharField(max_length=15, blank=True)
     email_address = models.EmailField(blank=True)
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
     created_at = models.DateTimeField(auto_now_add=True)
@@ -205,7 +205,7 @@ class Shepherd(models.Model):
     first_name = models.CharField(max_length=150)
     second_name = models.CharField(max_length=50, blank=True)
     surname = models.CharField(max_length=70)
-    phone = models.CharField(max_length=12, blank=True, validators=[PHONE_NUMBER_REGEX])
+    phone = models.CharField(max_length=12, blank=True)
     sex = models.CharField(choices=Gender, max_length=20)
     type = models.CharField('Type of Shepherd', choices=Types_of_Shepherd, max_length=30)
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
@@ -242,12 +242,12 @@ class Member(models.Model):
     first_name = models.CharField(max_length=150)
     second_name = models.CharField(max_length=50, blank=True)
     surname = models.CharField(max_length=70)
-    contact_number = models.CharField(max_length=14,validators=[PHONE_NUMBER_REGEX])
+    contact_number = models.CharField(max_length=14 )
    # contact_number = models.CharField(max_length=14,validators=[PHONE_NUMBER_REGEX])
     owner_of_phone_number = models.CharField(max_length=20, choices=Owner)
     details_of_owner = models.CharField('If Phone Is For Another Person Then Provide Details', max_length=200,
                                         blank=True)
-    whatsapp_number = models.CharField(max_length=12, blank=True, validators=[PHONE_NUMBER_REGEX])
+    whatsapp_number = models.CharField(max_length=12, blank=True)
     sex = models.CharField(choices=Gender, max_length=20)
     age = models.CharField('Select your Age Group', choices=Age_Group, max_length=15)
     occupation = models.CharField('Your Profession', max_length=30)

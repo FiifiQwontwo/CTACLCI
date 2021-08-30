@@ -10,7 +10,7 @@ from django.db.models import Q
 from django.db.models import Count
 from django.contrib.auth.decorators import login_required
 import xlwt
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 import requests
 import json
 from .resources import *
@@ -278,10 +278,13 @@ def create_shepherd(request):
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
 def create_ministry(request):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
     ministry_create = CreateMinistryForm(request.POST or None, request.FILES)
     if ministry_create.is_valid():
-        ministry_create.save(commit=False)
-        ministry_create.save()
+        instance = ministry_create.save(commit=False)
+        instance.user = request.user
+        instance.save()
         messages.success(request, 'Ministry Successfully Added')
         return redirect('ctac:urls_list_shepherd')
     context = {
@@ -293,14 +296,36 @@ def create_ministry(request):
 #
 #
 
+# @ensure_csrf_cookie
+# @login_required(login_url='users:login')
+# def create_member(request):
+#     if not request.user.is_staff or not request.user.is_superuser:
+#         raise Http404
+#     member_create = CreateMemberForm(request.POST or None, request.FILES)
+#     if member_create.is_valid():
+#         instance = member_create.save(commit=False)
+#         instance.user = request.user
+#         instance.save()
+#         messages.success(request, 'Ministry Successfully Added')
+#         return redirect('ctac:urls_list_member')
+#     context = {
+#         'member_create': member_create
+#     }
+#     return render(request, 'create/member.html', context)
+
+
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
 def create_member(request):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
     member_create = CreateMemberForm(request.POST or None, request.FILES)
     if member_create.is_valid():
-        member_create.save(commit=False)
-        member_create.save()
-        messages.success(request, 'Ministry Successfully Added')
+        print('hi')
+        instance = member_create.save(commit=False)
+        instance.user = request.user
+        instance.save()
+        messages.success(request, "Shepherd successfully Created")
         return redirect('ctac:urls_list_member')
     context = {
         'member_create': member_create
@@ -377,10 +402,13 @@ def create_chapel_heads(request):
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
 def create_attendance(request):
+    if not request.user.is_superuser or request.user.is_staff:
+        raise Http404
     attend = CreateAttendanceForm(request.POST or None, request.FILES)
     if attend.is_valid():
-        attend.save(commit=False)
-        attend.save()
+        instance = attend.save(commit=False)
+        instance.user = request.user
+        instance.save()
         messages.success(request, 'Added a New attendee')
         return redirect('ctac:home')
     context = {

@@ -67,11 +67,21 @@ class CreateMemberForm(forms.ModelForm):
                   'occupation',
                   'marital_status',
                   'area_of_residence',
-                  'contact_number', 'owner_of_phone_number',
-                  'details_of_owner', 'whatsapp_number',
+                  'contact_number',
+                  'owner_of_phone_number',
+                  'details_of_owner',
+                  'whatsapp_number',
                   'micro_area_name',
-                  'nearest_landmark', 'phone_usage', 'online_service', 'services',
-                  'ministries', 'chapel', 'shepherd', 'chapel_head', 'state', 'bacenta_leader',)
+                  'nearest_landmark',
+                  'phone_usage',
+                  'online_service',
+                  'services',
+                  'ministries',
+                  'chapel',
+                  'shepherd',
+                  'chapel_head',
+                  'state',
+                  'bacenta_leader',)
 
 
 class CreateAttendanceForm(forms.ModelForm):
