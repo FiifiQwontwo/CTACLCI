@@ -10,7 +10,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'plugins/contact.css' %}">
   <link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}">
   <link rel="stylesheet" href=" {% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
-  <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+  <link rel="stylesheet" href="{% static  'plugins/fontawesome-free/css/all.min.css' %}">
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
   <link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
@@ -41,34 +41,9 @@
     </ul>
 
     <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <div class="dropdown-divider"></div>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
+
       <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-        </div>
-      </li>
+
     </ul>
   </nav>
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -97,7 +72,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="{% url 'ctac:urls_attendance' %}" class="nav-link">
+              <a href="{%url 'ctac:urls_attendance' %}" class="nav-link">
                 <p>attendance</p>
               </a>
             </li>
