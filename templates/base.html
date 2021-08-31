@@ -62,24 +62,19 @@
                 <p>members</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="{% url 'ctac:urls_attendance' %}" class="nav-link">
-                <p>attendance</p>
-              </a>
-            </li>
           </ul>
         </li>
           <li class="nav-item has-treeview">
            <a href="#" class="nav-link">
-            <i class="fas fa-user-tie"></i>
+           <i class="far fa-calendar-plus"></i>
             <p>
-              Pastor
+              Attendance
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{% url 'ctac:urls_pastor_list' %}" class="nav-link">
-                <p>pastors</p>
+              <a href="{% url 'ctac:urls_attendance_list' %}" class="nav-link">
+                <p>attendance</p>
               </a>
             </li>
           </ul>
@@ -177,8 +172,7 @@
             </li>
           </ul>
         </li>
-        <br>
-        &nbsp;
+
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="fas fa-dice-three"></i>

@@ -19,7 +19,7 @@ urlpatterns = [
     path('areas/', list_area, name='urls_areas_list'),
     path('chapel_heads/', list_chapel_heads, name='urls_head_list'),
     path('members/', list_member, name='urls_member_list'),
-    path('atts/', list_attendance, name='urls_attendance'),
+    path('list_attend/', list_attendance, name='urls_attendance_list'),
     # details
     path('pastors/<slug:slug>', pastor_details, name='pastor_details_url'),
     path('shepherds/<slug:slug>', shepherd_details, name='shepherd_details_url'),
@@ -36,8 +36,7 @@ urlpatterns = [
     path('add_area/', create_area_residences, name='add_area_url'),
     path('add_chapel_head/', create_chapel_heads, name='add_heads_chapel'),
     path('add_services/', create_services, name='new_services'),
-    path('attendance/', create_attendance, name='new_attendance_urls'),
-
+    path('new_member_attendance', create_attendance, name='new_attend'),
     # update
     path('update_members/<slug:slug>', member_update, name='member_update_url'),
     path('update_pastors/<slug:slug>', pastor_update, name='pastor_update_url'),

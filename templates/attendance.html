@@ -14,13 +14,13 @@
                     <div class="row">
                       <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-left">
-                          <li class="breadcrumb-item"><a href="{% url 'ctac:new_att' %}"> <i class="fas fa-home"></i></a>
+                          <li class="breadcrumb-item"><a href="{% url 'ctac:new_attend' %}"> <i class="fas fa-home"></i></a>
                           </li>
                           <li class="breadcrumb-item active"><i class="fas fa-users"></i></li>
                         </ol>
                       </div>
                       <div class="col-md-6 text-right">
-                        <a href="{% url 'ctac:new_attendance_urls' %}"> <i class="fas fa-calendar-plus"></i></a>
+                        <a href="{% url 'ctac:new_attend' %}"> <i class="fas fa-calendar-plus"></i></a>
                       </div>
                     </div>
                   </h2>
@@ -45,15 +45,15 @@
                         </tr>
                         </thead>
                         <tbody>
-                         {% for att in att %}
+                         {% for attd in attd %}
                       <tr>
-                        <td>{{ att.id }}</td>
-                        <td> {{ att.member |lower|capfirst  }}</td>
-                        <td>  {{ att.date }}</td>
-                        <td>{{ att.services }}</td>
-                        <td> {{ att.present_in }}</td>
-                        <td>{{ att.shepherd }}</td>
-                        <td>{{ att.chapel }}</td>
+                        <td>{{ attd.id }}</td>
+                        <td> {{ attd.member |lower|capfirst  }}</td>
+                        <td>  {{ attd.date }}</td>
+                        <td>{{ attd.services }}</td>
+                        <td> {{ attd.present_in }}</td>
+                        <td>{{ attd.shepherd }}</td>
+                        <td>{{ attd.chapel }}</td>
 
                       </tr>
                         {% endfor %}
@@ -63,11 +63,11 @@
                     </div>
                   </div>
 {#                   {% if memblist.has_previous %}#}
-{#                    <a href="?page={{ att.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a>#}
+{#                    <a href="?page={{ attd.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a>#}
 {#                    &nbsp; &nbsp;#}
 {#                  {% endif %}#}
 {#                  {% if memblist.has_next %}#}
-{#                    <a href="?page={{ att.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>#}
+{#                    <a href="?page={{ attd.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>#}
 {#                  {% endif %}#}
                 </section>
 

@@ -148,15 +148,15 @@ def list_member(request):
 
 @login_required(login_url='users:login')
 def list_attendance(request):
-    att = AttendanceMember.objects.all()
-    atmem = Paginator(att, 100)
+    attd = AttendanceMember.objects.all()
+    atmem = Paginator(attd, 100)
 
     page_num = request.GET.get('page', 1)
     try:
         page = atmem.page(page_num)
     except EmptyPage:
         page = atmem(1)
-    context = {'att': page}
+    context = {'attd': page}
     return render(request, 'attendance.html', context)
 
 
@@ -166,7 +166,7 @@ def index(request, chapel__slug=None):
     shecounts = Shepherd.objects.all().count()
     new_area = AreaResidence.objects.all().count()
     mini_count = Ministry.objects.all().count()
-    att = AttendanceMember.objects.all().order_by('-id')[:5]
+    attd = AttendanceMember.objects.all().order_by('-id')[:5]
     mat = Member.objects.order_by('-created_at', 'shepherd')[:5]
 
     if request.session.test_cookie_worked():
@@ -180,7 +180,7 @@ def index(request, chapel__slug=None):
         'shecounts': shecounts,
         'new_area': new_area,
         'mini_count': mini_count,
-        'att': att,
+        'attd': attd,
         'mat': mat,
 
     }

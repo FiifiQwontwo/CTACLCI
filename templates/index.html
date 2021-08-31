@@ -97,14 +97,14 @@
                           </tr>
                           </thead>
                           <tbody>
-                          {% for att in att %}
+                          {% for attd in attd %}
                             <tr>
-                              <td> {{ att.member|lower|capfirst }}</td>
-                              <td> {{ att.date }}</td>
-                              <td>{{ att.services }}</td>
-                              <td> {{ att.present_in|lower|capfirst }}</td>
-                              <td> {{ att.shepherd }}</td>
-                              <td>{{ att.chapel }}</td>
+                              <td> {{ attd.member|lower|capfirst }}</td>
+                              <td> {{ attd.date }}</td>
+                              <td>{{ attd.services }}</td>
+                              <td> {{ attd.present_in|lower|capfirst }}</td>
+                              <td> {{ attd.shepherd }}</td>
+                              <td>{{ attd.chapel }}</td>
                             </tr>
                           {% endfor %}
                           <tr>
@@ -112,9 +112,9 @@
                         </table>
                       </div>
                       <div class="card-footer clearfix">
-                        <a href="{% url 'ctac:new_attendance_urls' %}" class="btn btn-sm btn-info float-left"> New
+                        <a href="{% url 'ctac:new_attend' %}" class="btn btn-sm btn-info float-left"> New
                           Attendance</a>
-                        <a href="{% url 'ctac:urls_attendance' %}" class="btn btn-sm btn-secondary float-right">View All
+                        <a href="{% url 'ctac:urls_attendance_list' %}" class="btn btn-sm btn-secondary float-right">View All
                           Attendance</a>
                       </div>
                     </div>
