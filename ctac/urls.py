@@ -26,7 +26,6 @@ urlpatterns = [
     path('ministries/<slug:slug>', member_details, name='ministries_details_url'),
     path('members/<slug:slug>', member_details, name='member_details_url'),
     path('chapels/<slug:slug>', chapel_details, name='chapel_details_urls'),
-
     # create
     path('add_pastor/', create_pastor, name='new_pastor_url'),
     path('add_shepherd/', create_shepherd, name='new_shepherd_url'),
@@ -36,12 +35,12 @@ urlpatterns = [
     path('add_area/', create_area_residences, name='add_area_url'),
     path('add_chapel_head/', create_chapel_heads, name='add_heads_chapel'),
     path('add_services/', create_services, name='new_services'),
-    path('new_member_attendance', create_attendance, name='new_attend'),
+    path('atts/', create_attendance, name='new_attend'),
+
     # update
     path('update_members/<slug:slug>', member_update, name='member_update_url'),
     path('update_pastors/<slug:slug>', pastor_update, name='pastor_update_url'),
     path('update_ministry/<slug:slug>', ministrty_update, name='ministries_update_url'),
-
     ##api vies
     path('ministry_list_api/', MinistryViewSet.as_view({'get': 'list', }), name='ministry_list_api'),
     path('pastor_list_api/', PastorViewSet.as_view({'get': 'list', }), name='pastor_list_api'),
@@ -50,10 +49,8 @@ urlpatterns = [
     path('shepherd_list_api/', ShepherdViewSet.as_view({'get': 'list'}), name='sheperd_list_api'),
     path('api_attendance/', Attendance.as_view({'get': 'list'}), name='attendance_list'),
     path('new_attendance/', Attendance.as_view({'post': 'create'}), name='new_attendance'),
-
     path('member_list_api/', MemberViewSet.as_view({'get': 'list', }), name='member_list_api'),
     path('add_member_api/', MemberViewSet.as_view({'post': 'create', }), name='new_member_api'),
-
     path('export_member/xls/', export_members_xls, name='export_members_xls'),
     path('export_shepherd/xls/', export_shepherd_xls, name='export_shepherd_xls'),
     path('export_pastor/xls/', export_pastor_xls, name='export_pastor_xls'),

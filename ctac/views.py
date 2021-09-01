@@ -414,7 +414,7 @@ def create_attendance(request):
     context = {
         'attend': attend
     }
-    return render(request, 'create/attendance.html', context)
+    return render(request, 'create/attend.html', context)
 
 
 #
@@ -430,6 +430,7 @@ def member_update(request, slug):
         'updatemember': updatemember
     }
     return render(request, 'update/member.html', context)
+
 
 
 @login_required(login_url='users:login')
