@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}CTAC | Dashboard{% endblock %}
 {% block content %}
-  {% if user.is_authenticated %}
+{#  {% if user.is_authenticated %}#}
   <div class="content-wrapper">
     <div class="wrapper">
       <section class="content">
@@ -159,9 +159,10 @@
       </section>
     </div>
   </div>
-  {% else %}
-  <h1>You must be login to view this page</h1>
-  {% endif %}
+{#  {% else %}#}
+{#  <h1>You must be login to view this page</h1>#}
+{##}
+{#  {% endif %}#}
 
 
 {% endblock %}

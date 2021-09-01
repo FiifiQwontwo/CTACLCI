@@ -160,7 +160,7 @@ def list_attendance(request):
     return render(request, 'attendance.html', context)
 
 
-@login_required(login_url='users:login')
+# @login_required(login_url='users:login')
 def index(request, chapel__slug=None):
     memcount = Member.objects.all().count()
     shecounts = Shepherd.objects.all().count()
@@ -168,6 +168,7 @@ def index(request, chapel__slug=None):
     mini_count = Ministry.objects.all().count()
     attd = AttendanceMember.objects.all().order_by('-id')[:5]
     mat = Member.objects.order_by('-created_at', 'shepherd')[:5]
+    # me = AreaResidence.objectsfilter(pk=mat.pk)
 
     if request.session.test_cookie_worked():
         request.session.delete_test_cookie()
@@ -182,6 +183,7 @@ def index(request, chapel__slug=None):
         'mini_count': mini_count,
         'attd': attd,
         'mat': mat,
+        # 'me':me,
 
     }
 
