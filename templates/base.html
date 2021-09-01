@@ -96,7 +96,6 @@
           </ul>
         </li>
         <br>
-        &nbsp;
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="fas fa-user-tie"></i>
@@ -113,8 +112,6 @@
             </li>
           </ul>
         </li>
-        <br>
-        &nbsp;
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="fas fa-church"></i>
@@ -133,8 +130,7 @@
 
           </ul>
         </li>
-        <br>
-        &nbsp;
+
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="fas fa-place-of-worship"></i>
@@ -153,26 +149,21 @@
             </li>
           </ul>
         </li>
-        <br>
-        &nbsp;
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="fas fa-h-square"></i>
             <p>
               Chapel Heads
-
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="{% url 'ctac:urls_head_list' %}" class="nav-link">
-                <!-- <i class="far fa-circle nav-icon"></i> -->
                 <p>chapel heads</p>
               </a>
             </li>
           </ul>
         </li>
-
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="fas fa-dice-three"></i>
@@ -188,14 +179,11 @@
             </li>
           </ul>
         </li>
-        <br>
-        &nbsp;
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="far fa-building"></i>
             <p>
               Residence
-              {#              <i class="fas fa-angle-left right"></i>#}
             </p>
           </a>
           <ul class="nav nav-treeview">
@@ -206,8 +194,6 @@
             </li>
           </ul>
         </li>
-        <br>
-        &nbsp;
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="fas fa-sign-out-alt"></i>
@@ -217,14 +203,13 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              {#              {% if users.is_authenticated %}#}
               <a href="{% url 'users:logout' %}" class="nav-link">
                 <p>Logout</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{% url 'users:update profile' %}" class="nav-link">
-                <!-- <i class="far fa-circle nav-icon"></i> -->
+                 <i class="far fa-circle nav-icon"></i>
                 <p>{{ user.username }}</p>
               </a>
             </li>
