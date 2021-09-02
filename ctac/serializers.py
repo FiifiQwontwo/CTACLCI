@@ -9,10 +9,10 @@ class MinistrySerializer(serializers.ModelSerializer):
         fields = ('ministry_name',)
 
 
-# class PastorSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Pastor
-#         fields = ('title', 'first_name', 'second_name', 'surname', 'sex', 'phone_number', 'email_address',)
+class PastorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pastor
+        fields = ('title', 'first_name', 'second_name', 'surname', 'sex', 'phone_number', 'email_address',)
 
 
 class ShepherdSerializer(serializers.ModelSerializer):
