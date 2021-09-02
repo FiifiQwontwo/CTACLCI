@@ -23,22 +23,22 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 #
 # # Create your views here.
 
-@login_required(login_url='users:login')
-def list_pastor(request):
-    paslist = Pastor.objects.all().order_by('created_at')
-    paspage = Paginator(paslist, 50)
-
-    page_num = request.GET.get('page', 1)
-    try:
-        page = paspage.page(page_num)
-    except EmptyPage:
-        page = paspage(1)
-    context = {
-        'paslist': page,
-
-    }
-    return render(request, 'pastor.html', context)
-
+# @login_required(login_url='users:login')
+# def list_pastor(request):
+#     paslist = Pastor.objects.all().order_by('created_at')
+#     paspage = Paginator(paslist, 50)
+#
+#     page_num = request.GET.get('page', 1)
+#     try:
+#         page = paspage.page(page_num)
+#     except EmptyPage:
+#         page = paspage(1)
+#     context = {
+#         'paslist': page,
+#
+#     }
+#     return render(request, 'pastor.html', context)
+#
 
 #
 #
@@ -168,7 +168,6 @@ def index(request, chapel__slug=None):
     mini_count = Ministry.objects.all().count()
     attd = AttendanceMember.objects.all().order_by('-id')[:5]
     mat = Member.objects.order_by('-created_at', 'shepherd')[:5]
-    # me = AreaResidence.objectsfilter(pk=mat.pk)
 
     if request.session.test_cookie_worked():
         request.session.delete_test_cookie()
@@ -183,7 +182,7 @@ def index(request, chapel__slug=None):
         'mini_count': mini_count,
         'attd': attd,
         'mat': mat,
-        # 'me':me,
+
 
     }
 
@@ -199,11 +198,11 @@ def index(request, chapel__slug=None):
 #
 #
 # # details
-@login_required(login_url='users:login')
-def pastor_details(request, slug):
-    pas_details = get_object_or_404(Pastor, slug=slug)
-    context = {'pas_details': pas_details}
-    return render(request, 'tems/pastor.html', context)
+# @login_required(login_url='users:login')
+# def pastor_details(request, slug):
+#     pas_details = get_object_or_404(Pastor, slug=slug)
+#     context = {'pas_details': pas_details}
+#     return render(request, 'tems/pastor.html', context)
 
 
 #
@@ -237,23 +236,23 @@ def chapel_details(request, slug):
 
 
 # create
-@login_required(login_url='users:login')
-@ensure_csrf_cookie
-def create_pastor(request):
-    if not request.user.is_staff or not request.user.is_superuser:
-        raise Http404
-    pastor_create = CreatePastorForm(request.POST or None, request.FILES)
-    if pastor_create.is_valid():
-        instance = pastor_create.save(commit=False)
-        instance.user = request.user
-        instance.save()
-        messages.success(request, "Pastor successfully Created")
-        return redirect('ctac:urls_pastor_list')
-    context = {
-        'pastor_create': pastor_create
-    }
-    return render(request, 'create/pastor.html', context)
-
+# @login_required(login_url='users:login')
+# @ensure_csrf_cookie
+# def create_pastor(request):
+#     if not request.user.is_staff or not request.user.is_superuser:
+#         raise Http404
+#     pastor_create = CreatePastorForm(request.POST or None, request.FILES)
+#     if pastor_create.is_valid():
+#         instance = pastor_create.save(commit=False)
+#         instance.user = request.user
+#         instance.save()
+#         messages.success(request, "Pastor successfully Created")
+#         return redirect('ctac:urls_pastor_list')
+#     context = {
+#         'pastor_create': pastor_create
+#     }
+#     return render(request, 'create/pastor.html', context)
+#
 
 #
 # +
@@ -572,18 +571,18 @@ class MinistryViewSet(viewsets.ModelViewSet):
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
-
-class PastorViewSet(viewsets.ModelViewSet):
-    queryset = Pastor.objects.all()
-    serializer_class = PastorSerializer
-    authentication_classes = (TokenAuthentication,)
-
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data, many=isinstance(request.data, list))
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+#
+# class PastorViewSet(viewsets.ModelViewSet):
+#     queryset = Pastor.objects.all()
+#     serializer_class = PastorSerializer
+#     authentication_classes = (TokenAuthentication,)
+#
+#     def create(self, request, *args, **kwargs):
+#         serializer = self.get_serializer(data=request.data, many=isinstance(request.data, list))
+#         serializer.is_valid(raise_exception=True)
+#         self.perform_create(serializer)
+#         headers = self.get_success_headers(serializer.data)
+#         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
 class ShepherdViewSet(viewsets.ModelViewSet):

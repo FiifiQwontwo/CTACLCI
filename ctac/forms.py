@@ -2,13 +2,13 @@ from django import forms
 from .models import *
 
 
-class CreatePastorForm(forms.ModelForm):
-    class Meta:
-        model = Pastor
-        fields = (
-            'title', 'first_name', 'second_name', 'surname',
-            'sex', 'phone_number', 'email_address',
-        )
+# class CreatePastorForm(forms.ModelForm):
+#     class Meta:
+#         model = Pastor
+#         fields = (
+#             'title', 'first_name', 'second_name', 'surname',
+#             'sex', 'phone_number', 'email_address',
+#         )
 
 
 class CreateServiceForm(forms.ModelForm):

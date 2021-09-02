@@ -6,7 +6,7 @@ class MemberResource(resources.ModelResource):
     class Meta:
         model = Member
 
-
-class PastorResource(resources.ModelResource):
-    class Meta:
-        model = Pastor
+#
+# class PastorResource(resources.ModelResource):
+#     class Meta:
+#         model = Pastor
