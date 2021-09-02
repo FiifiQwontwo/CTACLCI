@@ -571,18 +571,19 @@ class MinistryViewSet(viewsets.ModelViewSet):
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
-#
-# class PastorViewSet(viewsets.ModelViewSet):
-#     queryset = Pastor.objects.all()
-#     serializer_class = PastorSerializer
-#     authentication_classes = (TokenAuthentication,)
-#
-#     def create(self, request, *args, **kwargs):
-#         serializer = self.get_serializer(data=request.data, many=isinstance(request.data, list))
-#         serializer.is_valid(raise_exception=True)
-#         self.perform_create(serializer)
-#         headers = self.get_success_headers(serializer.data)
-#         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+class PastorViewSet(viewsets.ModelViewSet):
+    queryset = Pastor.objects.all()
+    serializer_class = PastorSerializer
+    authentication_classes = (TokenAuthentication,)
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data, many=isinstance(request.data, list))
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
 
 
 class ShepherdViewSet(viewsets.ModelViewSet):
