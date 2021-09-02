@@ -295,24 +295,24 @@ def create_ministry(request):
 
 
 #
-#
 
-# @ensure_csrf_cookie
-# @login_required(login_url='users:login')
-# def create_member(request):
-#     if not request.user.is_staff or not request.user.is_superuser:
-#         raise Http404
-#     member_create = CreateMemberForm(request.POST or None, request.FILES)
-#     if member_create.is_valid():
-#         instance = member_create.save(commit=False)
-#         instance.user = request.user
-#         instance.save()
-#         messages.success(request, 'Ministry Successfully Added')
-#         return redirect('ctac:urls_list_member')
-#     context = {
-#         'member_create': member_create
-#     }
-#     return render(request, 'create/member.html', context)
+
+@ensure_csrf_cookie
+@login_required(login_url='users:login')
+def create_member(request):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
+    member_create = CreateMemberForm(request.POST or None, request.FILES)
+    if member_create.is_valid():
+        instance = member_create.save(commit=False)
+        instance.user = request.user
+        instance.save()
+        messages.success(request, 'Ministry Successfully Added')
+        return redirect('ctac:urls_list_member')
+    context = {
+        'member_create': member_create
+    }
+    return render(request, 'create/member.html', context)
 
 
 @ensure_csrf_cookie
