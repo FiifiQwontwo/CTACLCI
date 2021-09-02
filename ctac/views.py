@@ -23,22 +23,22 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 #
 # # Create your views here.
 
-# @login_required(login_url='users:login')
-# def list_pastor(request):
-#     paslist = Pastor.objects.all().order_by('created_at')
-#     paspage = Paginator(paslist, 50)
-#
-#     page_num = request.GET.get('page', 1)
-#     try:
-#         page = paspage.page(page_num)
-#     except EmptyPage:
-#         page = paspage(1)
-#     context = {
-#         'paslist': page,
-#
-#     }
-#     return render(request, 'pastor.html', context)
-#
+@login_required(login_url='users:login')
+def list_pastor(request):
+    paslist = Pastor.objects.all().order_by('created_at')
+    paspage = Paginator(paslist, 50)
+
+    page_num = request.GET.get('page', 1)
+    try:
+        page = paspage.page(page_num)
+    except EmptyPage:
+        page = paspage(1)
+    context = {
+        'paslist': page,
+
+    }
+    return render(request, 'pastor.html', context)
+
 
 #
 #
