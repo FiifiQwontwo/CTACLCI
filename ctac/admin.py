@@ -39,11 +39,11 @@ class ShepherdAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('surname', 'first_name')}
 
 
-# @admin.register(Pastor)
-# class PastorAdmin(admin.ModelAdmin):
-#     list_display = ['title', 'first_name', 'second_name', 'surname']
-#     search_fields = ['surname', 'phone_number']
-#     prepopulated_fields = {'slug': ('surname',)}
+@admin.register(Pastor)
+class PastorAdmin(admin.ModelAdmin):
+    list_display = ['title', 'first_name', 'second_name', 'surname']
+    search_fields = ['surname', 'phone_number']
+    prepopulated_fields = {'slug': ('surname',)}
 
 
 @admin.register(AreaResidence)
