@@ -198,11 +198,11 @@ def index(request, chapel__slug=None):
 #
 #
 # # details
-# @login_required(login_url='users:login')
-# def pastor_details(request, slug):
-#     pas_details = get_object_or_404(Pastor, slug=slug)
-#     context = {'pas_details': pas_details}
-#     return render(request, 'tems/pastor.html', context)
+@login_required(login_url='users:login')
+def pastor_details(request, slug):
+    pas_details = get_object_or_404(Pastor, slug=slug)
+    context = {'pas_details': pas_details}
+    return render(request, 'tems/pastor.html', context)
 
 
 #
