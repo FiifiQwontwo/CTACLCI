@@ -45,6 +45,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+
     'django_extensions',
     'users',
     'django.contrib.admin',
@@ -60,6 +61,7 @@ INSTALLED_APPS = [
     'import_export',
     'contact',
     'admin_honeypot',
+     # 'django_filters',
 ]
 
 MIDDLEWARE = [
