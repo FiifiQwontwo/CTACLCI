@@ -136,9 +136,13 @@
                             class="form-control"
                             placeholder="Enter landmark eg.old kasapreko">
                   </div>
-                  <div class="form-group">
-                    <label>Able to join online service</label><br>
-                    {{ member_create.online_service }}
+
+                    <div class="form-group">
+                    <label>Able to join online service ?</label>
+                    <select class="form-control select2" name="online_service" style="width: 100%;">
+                      <option value="Yes">Yes</option>
+                      <option value="No">Not able to join</option>
+                    </select>
                   </div>
                   <div class="form-group">
                     <label>Phone Usage</label>

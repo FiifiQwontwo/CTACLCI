@@ -322,11 +322,10 @@ def create_member(request):
         raise Http404
     member_create = CreateMemberForm(request.POST or None, request.FILES)
     if member_create.is_valid():
-        print('hi')
         instance = member_create.save(commit=False)
         instance.user = request.user
         instance.save()
-        messages.success(request, "Shepherd successfully Created")
+        messages.success(request, "Member successfully Created")
         return redirect('ctac:urls_list_member')
     context = {
         'member_create': member_create
