@@ -36,6 +36,7 @@ urlpatterns = [
     path('add_chapel_head/', create_chapel_heads, name='add_heads_chapel'),
     path('add_services/', create_services, name='new_services'),
     path('atts/', create_attendance, name='new_attend'),
+    path('attes/',create_attendance, name='attes'),
 
     # update
     path('update_members/<slug:slug>', member_update, name='member_update_url'),

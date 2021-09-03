@@ -404,9 +404,9 @@ def create_chapel_heads(request):
 def create_attendance(request):
     if not request.user.is_superuser or request.user.is_staff:
         raise Http404
-    attend = CreateAttendanceForm(request.POST or None, request.FILES)
-    if attend.is_valid():
-        instance = attend.save(commit=False)
+    attends = CreateAttendanceForm(request.POST or None, request.FILES)
+    if attends.is_valid():
+        instance = attends.save(commit=False)
         instance.user = request.user
         instance.save()
         messages.success(request, 'Added a New attendee')
@@ -414,7 +414,7 @@ def create_attendance(request):
     context = {
         'attend': attend
     }
-    return render(request, 'create/attend.html', context)
+    return render(request, 'create/attendance.html', context)
 
 
 #
