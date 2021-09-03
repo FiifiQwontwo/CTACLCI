@@ -224,7 +224,7 @@ class Member(models.Model):
     micro_area_name = models.CharField(max_length=100)
     nearest_landmark = models.CharField(max_length=100)
     phone_usage = models.CharField('Which of The Following Applies To You', choices=Mobile_Usage, max_length=50)
-    online_service = models.BooleanField('Are You Able To Join Our Online Services?', default=False)
+    online_service = models.CharField('Are You Able To Join Our Online Services?',choices=Online_Services, max_length=50)
     ministries = models.ForeignKey(Ministry, on_delete=models.CASCADE)
     chapel = models.ForeignKey(Chapel, on_delete=models.CASCADE)
     shepherd = models.ForeignKey(Shepherd, on_delete=models.CASCADE)
