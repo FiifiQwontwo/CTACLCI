@@ -416,6 +416,7 @@ def create_attendance(request):
     return render(request, 'create/attendance.html', context)
 
 
+
 #
 # update
 @login_required(login_url='users:login')
