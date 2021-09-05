@@ -11,11 +11,10 @@ from django.db.models import Count
 from django.contrib.auth.decorators import login_required
 import xlwt
 from django.http import HttpResponse, Http404
-import requests
+# import requests
 import json
 from .resources import *
 from tablib import Dataset
-import requests
 from rest_framework.authentication import TokenAuthentication
 from django.views.decorators.csrf import ensure_csrf_cookie
 
@@ -160,7 +159,7 @@ def list_attendance(request):
     return render(request, 'attendance.html', context)
 
 
-# @login_required(login_url='users:login')
+@login_required(login_url='users:login')
 def index(request, chapel__slug=None):
     memcount = Member.objects.all().count()
     shecounts = Shepherd.objects.all().count()
