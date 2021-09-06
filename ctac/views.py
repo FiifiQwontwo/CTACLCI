@@ -194,7 +194,7 @@ def index(request, chapel__slug=None):
     return render(request, 'index.html', context)
 
 
-#
+
 #
 # # details
 @login_required(login_url='users:login')
