@@ -166,6 +166,43 @@ class ChapelHeads(models.Model):
 
 
 
+class Pastor(models.Model):
+    first_name = models.CharField(max_length=150)
+    second_name = models.CharField(max_length=50, blank=True)
+    surname = models.CharField(max_length=70)
+    sex = models.CharField(choices=Gender, max_length=20)
+    title = models.CharField(choices=Title, max_length=30)
+    phone_number = models.CharField(max_length=15, blank=True)
+    email_address = models.EmailField(blank=True)
+    slug = models.SlugField(unique=True, help_text='Enter any text', default='')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    # def save(self, *args, **kwargs):
+    #     account_sid = ['AC9d1a78bae11c1fbd7f948bf4f1db8447']
+    #     auth_token = ['27f297040157b111e64385cb2de5fa80']
+    #     client = Client(account_sid, auth_token)
+    #
+    #     message = client.messages.create(
+    #         messaging_service_sid='MG5dc4b05a843ea4b93c9b8b85e08535e7',
+    #         body='a pastor was created',
+    #         to='+233547232768'
+    #     )
+    #
+    #     print(message.sid)
+    #     return super(Pastor, self).save(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(rand_slug() + "-" + self.surname)
+        super(Pastor, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.surname + ' - ' + self.first_name
+
+
+
 class Shepherd(models.Model):
     first_name = models.CharField(max_length=150)
     second_name = models.CharField(max_length=50, blank=True)
@@ -261,40 +298,4 @@ class AttendanceMember(models.Model):
     def __str__(self):
         return self.present_in
 
-
-
-class Pastor(models.Model):
-    first_name = models.CharField(max_length=150)
-    second_name = models.CharField(max_length=50, blank=True)
-    surname = models.CharField(max_length=70)
-    sex = models.CharField(choices=Gender, max_length=20)
-    title = models.CharField(choices=Title, max_length=30)
-    phone_number = models.CharField(max_length=15, blank=True)
-    email_address = models.EmailField(blank=True)
-    slug = models.SlugField(unique=True, help_text='Enter any text', default='')
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-
-    # def save(self, *args, **kwargs):
-    #     account_sid = ['AC9d1a78bae11c1fbd7f948bf4f1db8447']
-    #     auth_token = ['27f297040157b111e64385cb2de5fa80']
-    #     client = Client(account_sid, auth_token)
-    #
-    #     message = client.messages.create(
-    #         messaging_service_sid='MG5dc4b05a843ea4b93c9b8b85e08535e7',
-    #         body='a pastor was created',
-    #         to='+233547232768'
-    #     )
-    #
-    #     print(message.sid)
-    #     return super(Pastor, self).save(*args, **kwargs)
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(rand_slug() + "-" + self.surname)
-        super(Pastor, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.surname + ' - ' + self.first_name
 
