@@ -170,7 +170,7 @@ class Shepherd(models.Model):
     first_name = models.CharField(max_length=150)
     second_name = models.CharField(max_length=50, blank=True)
     surname = models.CharField(max_length=70)
-    phone = models.CharField(max_length=12, blank=True)
+    # phone = models.CharField(max_length=12, blank=True)
     sex = models.CharField(choices=Gender, max_length=20)
     phone_number = models.CharField(max_length=15, blank=True)
     email_address = models.EmailField(blank=True)

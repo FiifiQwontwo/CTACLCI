@@ -208,6 +208,7 @@ def pastor_details(request, slug):
 @login_required(login_url='users:login')
 def shepherd_details(request, slug):
     shepdetails = get_object_or_404(Shepherd, slug=slug)
+    # members =
     return render(request, 'tems/shepherd.html', {'shepdetails': shepdetails})
 
 
