@@ -21,10 +21,7 @@
         </div>
       </div>
     </section>
-
     <section class="content">
-
-      <!-- Default box -->
       <div class="card">
         <div class="card-header">
           <h3 class="card-title"><b> SHEPHERD PERSONAL DETAILS</b></h3>
@@ -32,8 +29,6 @@
         <div class="card-body">
           <table class="col-12">
             <tbody>
-
-
             <tr>
               <td width="50%">Surname</td>
               <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.surname|lower|capfirst }}</td>
@@ -54,13 +49,37 @@
             </tr>
             </tbody>
           </table>
-
-
       </div>
-
  </div>
 
       <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><b> CONTACT DETAILS</b></h3>
+        </div>
+        <div class="card-body">
+          <table class="col-12">
+             {% if shepdetails.phone_number %}
+           <tr>
+             <td width="50%">Phone Number</td>
+           <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.phone_number}}</td>
+           </tr>
+            {% endif %}
+          <tr>
+            {% if shepdetails.email_address %}
+             <td width="50%">Email Address</td>
+           <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.email_address}}</td>
+           </tr>
+          {% endif %}
+           <tr>
+            {% if shepdetails.gps_address %}
+             <td width="50%">GPS Address</td>
+           <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.gps_address}}</td>
+           </tr>
+          {% endif %}
+        </table>
+        </div>
+      </div>
+    <div class="card">
         <div class="card-header">
           <h3 class="card-title"><b> STATE OF SHEPHERD</b></h3>
         </div>
@@ -72,8 +91,6 @@
            <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.type}}</td>
            </tr>
             {% endif %}
-
-
         </table>
         </div>
       </div>
