@@ -182,7 +182,6 @@ def index(request, chapel__slug=None):
         'attd': attd,
         'mat': mat,
 
-
     }
 
     chapel_page = None
@@ -192,7 +191,6 @@ def index(request, chapel__slug=None):
         member = Member.objects.filter(chapel=chapel_page, availabe=True)
 
     return render(request, 'index.html', context)
-
 
 
 #
@@ -208,8 +206,11 @@ def pastor_details(request, slug):
 @login_required(login_url='users:login')
 def shepherd_details(request, slug):
     shepdetails = get_object_or_404(Shepherd, slug=slug)
-    # members =
-    return render(request, 'tems/shepherd.html', {'shepdetails': shepdetails})
+    members = Member.objects.filter(slug=shepdetails)
+    context = {'shepdetails': shepdetails,
+               'members': members
+               }
+    return render(request, 'tems/shepherd.html', context)
 
 
 @login_required(login_url='users:login')
@@ -417,7 +418,6 @@ def create_attendance(request):
     return render(request, 'create/attendance.html', context)
 
 
-
 #
 # update
 @login_required(login_url='users:login')
@@ -431,7 +431,6 @@ def member_update(request, slug):
         'updatemember': updatemember
     }
     return render(request, 'update/member.html', context)
-
 
 
 @login_required(login_url='users:login')
@@ -583,7 +582,6 @@ class PastorViewSet(viewsets.ModelViewSet):
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-
 
 
 class ShepherdViewSet(viewsets.ModelViewSet):
