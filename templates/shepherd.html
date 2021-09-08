@@ -17,72 +17,75 @@
                         <ol class="breadcrumb float-sm-left">
                           <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a>
                           </li>
-                          <li class="breadcrumb-item active"><i class="fas fa-users"></i></li>
+                          <li class="breadcrumb-item active"><i class="fas fa-walking"></i></li>
                         </ol>
                       </div>
                       <div class="col-md-6 text-right">
-                        <a href="{% url 'ctac:new_shepherd_url' %}"> <i class="fas fa-user-plus"></i></a>&nbsp;<b>|</b>
+                        <a href="{% url 'ctac:new_shepherd_url' %}"> <i class="fas fa-walking"></i>&nbsp;<i class="fas fa-plus"></i></a>&nbsp;&nbsp;
                         &nbsp;
                         <a href="{% url 'ctac:export_shepherd_xls' %}" style=""> <i class="fas fa-file-excel"></i></a>
                       </div>
                     </div>
                   </h2>
                 </div>
-                    <section class="content">
-                      <div class="card">
-                        <div class="card-header">
-                          <h3 class="card-title">Shepherd's List</h3>
-                        </div>
-                        <div class="card-body">
-                          <table id="example1" class="table table-bordered table-striped">
-                            <thead>
-                            <tr>
-                              <th style="background-color:#e67676">ID</th>
-                              <th style="background-color:#e67676">Surname</th>
-                              <th style="background-color:#e67676">First Name</th>
-                              <th style="background-color:#e67676">Gender</th>
-                              <th style="background-color:#e67676">Type</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for sheplist in sheplist %}
-                              <tr>
-                                <td>{{ sheplist.id }}</td>
-                                <td><a href="{% url 'ctac:shepherd_details_url' sheplist.slug %}"
-                                       class="link-black text-sm"> {{ sheplist.surname }}</a></td>
-                                <td> {{ sheplist.first_name }}</td>
-                                <td>{{ sheplist.sex }}</td>
-                                <td> {{ sheplist.type }}</td>
-                              </tr>
-                            {% endfor %}
-                            </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                      {% if paslist.has_previous %}
-                        <a href="?page={{ paslist.previous_page_number }}"><i
-                                class="fas fa-chevron-circle-left"></i></a>
-                        &nbsp;
-                        &nbsp;
-                      {% endif %}
-                      {% if paslist.has_next %}
-                        <a href="?page={{ paslist.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
-                      {% endif %}
-                    </section>
-                    {% if sheplist.has_previous %}
-                      <a href="?page={{ sheplist.previous_page_number }}">Previous Page</a> &nbsp; &nbsp;
-                    {% endif %}
-                    {% if sheplist.has_next %}
-                      <a href="?page={{ sheplist.next_page_number }}">Next Page</a>
-                    {% endif %}
-                </div>
+                <section class="content">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title">Shepherd's List</h3>
+                    </div>
+                    <div class="card-body">
+                      <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                          <th style="background-color:#e67676">ID</th>
+                          <th style="background-color:#e67676">Surname</th>
+                          <th style="background-color:#e67676">First Name</th>
+                          <th style="background-color:#e67676">Gender</th>
+                          <th style="background-color:#e67676">Type</th>
+                          <th style="background-color:#e67676">Ministry</th>
+                          <th style="background-color:#e67676">Chapel</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for sheplist in sheplist %}
+                          <tr>
+                            <td>{{ sheplist.id }}</td>
+                            <td><a href="{% url 'ctac:shepherd_details_url' sheplist.slug %}"
+                                   class="link-black text-sm"> {{ sheplist.surname }}</a></td>
+                            <td> {{ sheplist.first_name }}</td>
+                            <td>{{ sheplist.sex }}</td>
+                            <td> {{ sheplist.type }}</td>
+                            <td> {{ sheplist.ministry }}</td>
+                            <td> {{ sheplist.chapel }}</td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  {% if paslist.has_previous %}
+                    <a href="?page={{ paslist.previous_page_number }}"><i
+                      class="fas fa-chevron-circle-left"></i></a>
+                    &nbsp;
+                    &nbsp;
+                  {% endif %}
+                  {% if paslist.has_next %}
+                    <a href="?page={{ paslist.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
+                  {% endif %}
+                </section>
+                {% if sheplist.has_previous %}
+                  <a href="?page={{ sheplist.previous_page_number }}">Previous Page</a> &nbsp; &nbsp;
+                {% endif %}
+                {% if sheplist.has_next %}
+                  <a href="?page={{ sheplist.next_page_number }}">Next Page</a>
+                {% endif %}
               </div>
             </div>
           </div>
         </div>
     </div>
-    </section>
+  </div>
+  </section>
   </div>
   </div>
   </div>

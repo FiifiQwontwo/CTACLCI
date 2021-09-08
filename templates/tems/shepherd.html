@@ -1,20 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content  %}
+{% block content %}
   <div class="content-wrapper">
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1><b>{{ shepdetails.surname|lower|capfirst }} {{ shepdetails.first_name|lower|capfirst}}</b> &nbsp;Details</h1>
+            <h1><b>{{ shepdetails.surname|lower|capfirst }} {{ shepdetails.first_name|lower|capfirst }}</b> &nbsp;Details
+            </h1>
           </div>
           <div class="col-sm-6">
 
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a></li>
               <li class="breadcrumb-item active"><a href="{% url 'ctac:urls_shepherd_list' %}"><i
-                      class="fas fa-users"></i></a></li>
-              <li class="breadcrumb-item active"><i class="fas fa-user"></i></li>
+                class="fas fa-walking"></i><i class="fas fa-walking"></i></a></li>
+              <li class="breadcrumb-item active"><i class="fas fa-walking"></i></li>
             </ol>
           </div><!-- /.col -->
 
@@ -34,23 +35,25 @@
               <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.surname|lower|capfirst }}</td>
             </tr>
             {% if shepdetails.second_name %}
-            <tr>
-               <td width="50%">Middle Name</td>
-              <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.second_name|lower|capfirst }}</td>
-            </tr>
+              <tr>
+                <td width="50%">Middle Name</td>
+                <td width="50%"
+                    style="text-align: left; font-weight: bold;">{{ shepdetails.second_name|lower|capfirst }}</td>
+              </tr>
             {% endif %}
-             <tr>
-               <td width="50%">First Name</td>
-              <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.first_name|lower|capfirst}}</td>
+            <tr>
+              <td width="50%">First Name</td>
+              <td width="50%"
+                  style="text-align: left; font-weight: bold;">{{ shepdetails.first_name|lower|capfirst }}</td>
             </tr>
-             <tr>
-               <td width="50%">Gender</td>
-              <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.sex|lower|capfirst}}</td>
+            <tr>
+              <td width="50%">Gender</td>
+              <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.sex|lower|capfirst }}</td>
             </tr>
             </tbody>
           </table>
+        </div>
       </div>
- </div>
 
       <div class="card">
         <div class="card-header">
@@ -58,42 +61,60 @@
         </div>
         <div class="card-body">
           <table class="col-12">
-             {% if shepdetails.phone_number %}
-           <tr>
-             <td width="50%">Phone Number</td>
-           <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.phone_number}}</td>
-           </tr>
+            {% if shepdetails.phone_number %}
+              <tr>
+                <td width="50%">Phone Number</td>
+                <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.phone_number }}</td>
+              </tr>
             {% endif %}
-          <tr>
-            {% if shepdetails.email_address %}
-             <td width="50%">Email Address</td>
-           <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.email_address}}</td>
-           </tr>
-          {% endif %}
-           <tr>
-            {% if shepdetails.gps_address %}
-             <td width="50%">GPS Address</td>
-           <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.gps_address}}</td>
-           </tr>
-          {% endif %}
-        </table>
+            <tr>
+              {% if shepdetails.email_address %}
+                <td width="50%">Email Address</td>
+                <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.email_address }}</td>
+                </tr>
+              {% endif %}
+            <tr>
+              {% if shepdetails.gps_address %}
+                <td width="50%">GPS Address</td>
+                <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.gps_address }}</td>
+                </tr>
+              {% endif %}
+          </table>
         </div>
       </div>
-    <div class="card">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><b>MINISTRY DETAILS</b></h3>
+        </div>
+        <div class="card-body">
+          <table class="col-12">
+            <tr>
+              <td width="50%">Ministry</td>
+              <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.ministry }}</td>
+            </tr>
+            <tr>
+              <td width="50%">Chapel</td>
+              <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.chapel }}</td>
+            </tr>
+            <tr>
+          </table>
+        </div>
+      </div>
+      <div class="card">
         <div class="card-header">
           <h3 class="card-title"><b> STATE OF SHEPHERD</b></h3>
         </div>
         <div class="card-body">
           <table class="col-12">
-             {% if shepdetails.type %}
-           <tr>
-             <td width="50%">Type of Shepherd</td>
-           <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.type}}</td>
-           </tr>
+            {% if shepdetails.type %}
+              <tr>
+                <td width="50%">Type of Shepherd</td>
+                <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.type }}</td>
+              </tr>
             {% endif %}
-        </table>
+          </table>
         </div>
       </div>
-  </section>
+    </section>
   </div>
 {% endblock %}
