@@ -6,7 +6,7 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from datetime import date
 from django.urls import reverse
-from django.core.validators import RegexValidator
+# from django.core.validators import RegexValidator
 
 
 # Create your models here.
@@ -286,7 +286,7 @@ class Member(models.Model):
         return self.shepherd.surname
 
     def chapeled(self):
-        return self.shepherd.chapel.chapel_name
+        return self.shepherd.chapeled.chapel_name
 
 
     def __str__(self):
