@@ -223,6 +223,12 @@ class Shepherd(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
+    def ministryname(self):
+        return self.ministry.ministry_name
+
+    def chapelname(self):
+        return self.chapel.chapel_name
+
     def __str__(self):
         return self.surname + ' - ' + self.first_name
 
@@ -279,6 +285,9 @@ class Member(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    def chape_name(self):
+        return self.chapel.chapel_name
 
     def __str__(self):
         return self.surname + ' - ' + self.first_name
