@@ -6,7 +6,7 @@ from import_export.admin import ImportExportModelAdmin
 # Register your models here.
 @admin.register(Ministry)
 class MinistryAdmin(admin.ModelAdmin):
-    fields = ['ministry_name', 'slug', 'user']
+    fields = ['ministry_name','chapel','slug','user']
     search_fields = ['ministry_name']
     prepopulated_fields = {'slug': ('ministry_name',)}
 
@@ -27,7 +27,7 @@ class ServiceAdmin(admin.ModelAdmin):
 
 @admin.register(ChapelHeads)
 class ChapelHeadsAdmin(admin.ModelAdmin):
-    fields = ['chapel_heads', 'slug','user']
+    fields = ['chapel_heads', 'chapel', 'slug','user']
     search_fields = ['chapel_heads']
     prepopulated_fields = {'slug': ('chapel_heads',)}
 

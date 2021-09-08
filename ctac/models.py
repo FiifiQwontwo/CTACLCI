@@ -42,22 +42,6 @@ def rand_slug():
     return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(6))
 
 
-class Ministry(models.Model):
-    ministry_name = models.CharField(max_length=100)
-    slug = models.SlugField(unique=True, help_text='Enter any text', default='')
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(rand_slug() + "-" + self.ministry_name)
-        super(Ministry, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.ministry_name
-
-
 class Chapel(models.Model):
     chapel_name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
@@ -132,6 +116,25 @@ Attendance = {
 }
 
 
+
+class Ministry(models.Model):
+    ministry_name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True, help_text='Enter any text', default='')
+    chapel = models.ForeignKey(Chapel, default = 1, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(rand_slug() + "-" + self.ministry_name)
+        super(Ministry, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.ministry_name
+
+
+
 class Service(models.Model):
     service_name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
@@ -162,7 +165,7 @@ class ChapelHeads(models.Model):
         super(ChapelHeads, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.chapel_heads
+        return  str(self.chapel)   + "-"+ self.chapel_heads
 
 
 
@@ -212,6 +215,8 @@ class Shepherd(models.Model):
     phone_number = models.CharField(max_length=15, blank=True)
     email_address = models.EmailField(blank=True)
     gps_address = models.CharField(max_length=15,blank=True)
+    ministry = models.ForeignKey(Ministry,default = 1, on_delete = models.CASCADE)
+    chapel = models.ForeignKey(Chapel, default=1, on_delete=models.CASCADE)
     type = models.CharField('Type of Shepherd', choices=Types_of_Shepherd, max_length=30)
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
     created_at = models.DateTimeField(auto_now_add=True)
