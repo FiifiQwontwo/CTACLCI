@@ -8,6 +8,7 @@ from datetime import date
 from django.urls import reverse
 from django.core.validators import RegexValidator
 
+
 # Create your models here.
 ##############
 # author fiifi Qwontwo Ahwireng###
@@ -116,11 +117,10 @@ Attendance = {
 }
 
 
-
 class Ministry(models.Model):
     ministry_name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
-    chapel = models.ForeignKey(Chapel, default = 1, on_delete=models.CASCADE)
+    chapel = models.ForeignKey(Chapel, default=1, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -132,7 +132,6 @@ class Ministry(models.Model):
 
     def __str__(self):
         return self.ministry_name
-
 
 
 class Service(models.Model):
@@ -165,8 +164,7 @@ class ChapelHeads(models.Model):
         super(ChapelHeads, self).save(*args, **kwargs)
 
     def __str__(self):
-        return  str(self.chapel)   + "-"+ self.chapel_heads
-
+        return str(self.chapel) + "-" + self.chapel_heads
 
 
 class Pastor(models.Model):
@@ -205,7 +203,6 @@ class Pastor(models.Model):
         return self.surname + ' - ' + self.first_name
 
 
-
 class Shepherd(models.Model):
     first_name = models.CharField(max_length=150)
     second_name = models.CharField(max_length=50, blank=True)
@@ -214,8 +211,8 @@ class Shepherd(models.Model):
     sex = models.CharField(choices=Gender, max_length=20)
     phone_number = models.CharField(max_length=15, blank=True)
     email_address = models.EmailField(blank=True)
-    gps_address = models.CharField(max_length=15,blank=True)
-    ministry = models.ForeignKey(Ministry,default = 1, on_delete = models.CASCADE)
+    gps_address = models.CharField(max_length=15, blank=True)
+    ministry = models.ForeignKey(Ministry, default=1, on_delete=models.CASCADE)
     chapel = models.ForeignKey(Chapel, default=1, on_delete=models.CASCADE)
     type = models.CharField('Type of Shepherd', choices=Types_of_Shepherd, max_length=30)
     slug = models.SlugField(unique=True, help_text='Enter any text', default='')
@@ -223,8 +220,7 @@ class Shepherd(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
-    def ministryname(self):
-        return self.ministry.ministry_name
+
 
     def chapelname(self):
         return self.chapel.chapel_name
@@ -258,8 +254,7 @@ class Member(models.Model):
     first_name = models.CharField(max_length=150)
     second_name = models.CharField(max_length=50, blank=True)
     surname = models.CharField(max_length=70)
-    contact_number = models.CharField(max_length=14 )
-   # contact_number = models.CharField(max_length=14,validators=[PHONE_NUMBER_REGEX])
+    contact_number = models.CharField(max_length=14)
     owner_of_phone_number = models.CharField(max_length=20, choices=Owner)
     details_of_owner = models.CharField('If Phone Is For Another Person Then Provide Details', max_length=200,
                                         blank=True)
@@ -272,7 +267,8 @@ class Member(models.Model):
     micro_area_name = models.CharField(max_length=100)
     nearest_landmark = models.CharField(max_length=100)
     phone_usage = models.CharField('Which of The Following Applies To You', choices=Mobile_Usage, max_length=50)
-    online_service = models.CharField('Are You Able To Join Our Online Services?',choices=Online_Services, max_length=50)
+    online_service = models.CharField('Are You Able To Join Our Online Services?', choices=Online_Services,
+                                      max_length=50)
     ministries = models.ForeignKey(Ministry, on_delete=models.CASCADE)
     chapel = models.ForeignKey(Chapel, on_delete=models.CASCADE)
     shepherd = models.ForeignKey(Shepherd, on_delete=models.CASCADE)
@@ -286,8 +282,12 @@ class Member(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
-    def chape_name(self):
-        return self.chapel.chapel_name
+    def shepherd_name(self):
+        return self.shepherd.surname
+
+    def chapeled(self):
+        return self.shepherd.chapel.chapel_name
+
 
     def __str__(self):
         return self.surname + ' - ' + self.first_name
@@ -311,5 +311,3 @@ class AttendanceMember(models.Model):
 
     def __str__(self):
         return self.present_in
-
-
