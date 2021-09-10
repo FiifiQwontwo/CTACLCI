@@ -74,6 +74,7 @@ class CreateMemberForm(forms.ModelForm):
 
     chapels = json.dumps(chapels)
     shepherd = json.dumps(dshepherds)
+
     class Meta:
         model = Member
         fields = ('first_name',
@@ -94,8 +95,8 @@ class CreateMemberForm(forms.ModelForm):
                   'online_service',
                   'services',
                   'ministries',
-                  'chapel',
-                  'shepherd',
+                  'chapel_select',
+                  'shepherd_select',
                   'chapel_head',
                   'state',
                   'bacenta_leader',)
