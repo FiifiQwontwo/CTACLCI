@@ -314,6 +314,22 @@ def create_ministry(request):
 #         'member_create': member_create
 #     }
 #     return render(request, 'create/member.html', context)
+# def regcar(request):
+#     if request.method == 'POST':
+#         car_form = RegCarForm(data=request.POST)
+#
+#         if car_form.is_valid():
+#             cdata = car_form.cleaned_data.get
+#             car_selected = Car.objects.filter(name=cdata('car_select'))
+#             reg1 = Fleet(car_id=car_selected[0].id, description=cdata('description'))
+#             reg1.save()
+#         else:
+#             print ('Invalid')
+#
+#     else:
+#         car_form = RegCarForm()
+#     return render(request, 'core/regcar.html', {'car_form': car_form})
+
 
 
 @ensure_csrf_cookie
@@ -324,6 +340,9 @@ def create_member(request):
     member_create = CreateMemberForm(request.POST or None, request.FILES)
     if member_create.is_valid():
         instance = member_create.save(commit=False)
+        mdata = member_create.cleaned_data.get
+        shepherd_selected = Shepherd.objects.filter(name=mdata('shepherd_select'))
+        member_create =Member(shepherd_id= shepherd_selected[0].id)
         instance.user = request.user
         instance.save()
         messages.success(request, "Member successfully Created")
