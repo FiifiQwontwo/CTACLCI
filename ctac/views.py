@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from rest_framework.views import APIView
+
 from .forms import *
 from .models import *
 from rest_framework import status, viewsets
@@ -10,7 +12,7 @@ from django.db.models import Q
 from django.db.models import Count
 from django.contrib.auth.decorators import login_required
 import xlwt
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, JsonResponse
 # import requests
 import json
 from .resources import *
@@ -206,7 +208,8 @@ def pastor_details(request, slug):
 @login_required(login_url='users:login')
 def shepherd_details(request, slug):
     shepdetails = get_object_or_404(Shepherd, slug=slug)
-    members = Member.objects.filter(slug=shepdetails)
+    members = Member.objects.filter(shepherd__slug=slug)
+    print(members)
     context = {'shepdetails': shepdetails,
                'members': members
                }
@@ -288,11 +291,11 @@ def create_ministry(request):
         instance.user = request.user
         instance.save()
         messages.success(request, 'Ministry Successfully Added')
-        return redirect('ctac:urls_list_shepherd')
+        return redirect('ctac:home')
     context = {
         'ministry_create': ministry_create
     }
-    return render(request, 'create/member.html', context)
+    return render(request, 'create/ministry.html', context)
 
 
 #
@@ -331,7 +334,6 @@ def create_ministry(request):
 #     return render(request, 'core/regcar.html', {'car_form': car_form})
 
 
-
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
 def create_member(request):
@@ -339,12 +341,14 @@ def create_member(request):
         raise Http404
     member_create = CreateMemberForm(request.POST or None, request.FILES)
     if member_create.is_valid():
+        print('new')
         instance = member_create.save(commit=False)
         mdata = member_create.cleaned_data.get
         shepherd_selected = Shepherd.objects.filter(name=mdata('shepherd_select'))
-        member_create =Member(shepherd_id= shepherd_selected[0].id)
+        member_create = Member(shepherd_id=shepherd_selected[0].id)
         instance.user = request.user
         instance.save()
+        # print(member_create)
         messages.success(request, "Member successfully Created")
         return redirect('ctac:urls_list_member')
     context = {
@@ -432,7 +436,7 @@ def create_attendance(request):
         messages.success(request, 'Added a New attendee')
         return redirect('ctac:home')
     context = {
-        'attend': attend
+        'attend': attends
     }
     return render(request, 'create/attendance.html', context)
 
@@ -757,7 +761,7 @@ def export_pastor_xls(request):
 
 @login_required(login_url='users:login')
 def ipcalls(request):
-    response = requests.get('https://ipstack.com/json/')
+    response = request.get('https://ipstack.com/json/')
     geodata = response.json()
     return render(request, 'ips.html', {
         'ip': geodata['ip'],
@@ -782,7 +786,7 @@ def simple_upload(request):
         datasets = Dataset()
         new_persons = request.FILES['new_persons']
 
-        imported_data = datasets.load(new_members.read())
+        imported_data = datasets.load(new_persons.read())
         result = mem_resource.import_data(datasets, dry_run=True)  # Test the data import
 
         if not result.has_errors():
@@ -870,3 +874,19 @@ class AreaViewSet(viewsets.ModelViewSet):
 # class UserViewSet(viewsets.ModelViewSet):
 #     serializer_class = UserSerializer
 #     queryset = User.objects.all()
+
+
+# def get_data(request, *args, **kwargs):
+#     data = {
+#
+#     }
+#     return JsonResponse(data)
+
+
+# class AttendanceChart(APIView):
+#
+#     def get(self, request, format=None):
+#         data = {
+#             "attendances": AttendanceMember.objects.filter(),
+#         }
+#         return Response()

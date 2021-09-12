@@ -97,6 +97,12 @@
               <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.chapel }}</td>
             </tr>
             <tr>
+              <td width="50%">member</td>
+              {% for members in members %}
+              <td width="50%" style="text-align: left; font-weight: bold;">{{ members.surname }}</td>
+              {% endfor %}
+            </tr>
+            <tr>
           </table>
         </div>
       </div>
@@ -110,6 +116,7 @@
               <tr>
                 <td width="50%">Type of Shepherd</td>
                 <td width="50%" style="text-align: left; font-weight: bold;">{{ shepdetails.type }}</td>
+
               </tr>
             {% endif %}
           </table>

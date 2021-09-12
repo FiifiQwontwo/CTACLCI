@@ -40,7 +40,7 @@ class CreateShepherdForm(forms.ModelForm):
     class Meta:
         model = Shepherd
         fields = (
-            'first_name', 'second_name', 'surname','email_address','phone_number','gps_address',
+            'first_name', 'second_name', 'surname','email_address', 'phone_number','gps_address',
             'sex', 'type','ministry','chapel',
         )
 
