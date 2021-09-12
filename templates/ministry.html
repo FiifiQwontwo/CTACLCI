@@ -2,22 +2,32 @@
 {% load static %}
 {% block title %}CTAC | Ministries{% endblock %}
 {% block content %}
-
   <div class="wrapper">
     <div class="content-wrapper">
       <section class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-12">
+            <div class="col-md-12">
               <div class="card">
-                <div class="col-sm-6">
-                  <ol class="breadcrumb float-sm-left">
-                    <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a></li>
-                    <li class="breadcrumb-item active"><i class="fas fa-users"></i></li>
-                  </ol>
+                <div class="card-header">
+                  <h2 class="card-title col-md-12">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-left">
+                          <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a>
+                          </li>
+                          <li class="breadcrumb-item active"><i class="fas fa-church"></i> <i class="fas fa-church"></i>
+                          </li>
+                        </ol>
+                      </div>
+                      <div class="col-md-6 text-right">
+                        <a href="{% url 'ctac:new_ministry_url' %}"> <i class="fas fa-church"></i>
+                          &nbsp;<i class="fas fa-plus"></i></a>
+                      </div>
+                    </div>
+                  </h2>
                 </div>
-
-               <section class="content">
+                <section class="content">
                   <div class="card">
                     <div class="card-header">
                       <h3 class="card-title">Ministries</h3>
@@ -27,32 +37,30 @@
                         <thead>
                         <tr>
                           <th style="background-color:#e67676">ID</th>
-                           <th style="background-color:#e67676">Ministry Name</th>
-
+                          <th style="background-color:#e67676">Ministry Name</th>
                         </tr>
                         </thead>
                         <tbody>
-                           {% for minlist in minlist %}
-                      <tr>
-                        <td>{{ minlist.id }}</td>
-                        <td>{{ minlist.ministry_name|lower|capfirst }}</td>
+                        {% for minlist in minlist %}
+                          <tr>
+                            <td>{{ minlist.id }}</td>
+                            <td>{{ minlist.ministry_name|lower|capfirst }}</td>
 
-                      </tr>
+                          </tr>
                         {% endfor %}
                         </tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
-{#                   {% if memblist.has_previous %}#}
-{#                    <a href="?page={{ memblist.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a>#}
-{#                    &nbsp; &nbsp;#}
-{#                  {% endif %}#}
-{#                  {% if memblist.has_next %}#}
-{#                    <a href="?page={{ memblist.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>#}
-{#                  {% endif %}#}
+                  {% if memblist.has_previous %}
+                    <a href="?page={{ memblist.previous_page_number }}"><i class="fas fa-chevron-circle-left"></i></a>
+                    &nbsp; &nbsp;
+                  {% endif %}
+                  {% if memblist.has_next %}
+                    <a href="?page={{ memblist.next_page_number }}"><i class="fas fa-chevron-circle-right"></i></a>
+                  {% endif %}
                 </section>
-
               </div>
             </div>
           </div>
@@ -60,6 +68,4 @@
       </section>
     </div>
   </div>
-
-
 {% endblock %}
