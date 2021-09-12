@@ -24,7 +24,7 @@ class CreateChapelHeadsForm(forms.ModelForm):
     class Meta:
         model = ChapelHeads
         fields = (
-            'chapel_heads',
+            'chapel_heads', 'chapel',
         )
 
 

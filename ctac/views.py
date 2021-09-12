@@ -416,16 +416,19 @@ def create_area_residences(request):
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
 def create_chapel_heads(request):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
     heads_chapel = CreateChapelHeadsForm(request.POST or None, request.FILES)
     if heads_chapel.is_valid():
-        heads_chapel.save(commit=False)
-        heads_chapel.save()
+        instance = heads_chapel.save(commit=False)
+        instance.user = request.user
+        instance.save()
         messages.success(request, 'Added a New Chapel Head')
         return redirect('ctac:urls_head_list')
     context = {
         'heads_chapel': heads_chapel
     }
-    return render(request, 'create/chapel_heads.html', context)
+    return render(request, 'create/chapelheads.html', context)
 
 
 @ensure_csrf_cookie
