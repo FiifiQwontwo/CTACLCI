@@ -316,40 +316,6 @@ def create_ministry(request):
     return render(request, 'create/ministry.html', context)
 
 
-#
-
-
-# @ensure_csrf_cookie
-# @login_required(login_url='users:login')
-# def create_member(request):
-#     if not request.user.is_staff or not request.user.is_superuser:
-#         raise Http404
-#     member_create = CreateMemberForm(request.POST or None, request.FILES)
-#     if member_create.is_valid():
-#         instance = member_create.save(commit=False)
-#         instance.user = request.user
-#         instance.save()
-#         messages.success(request, 'Ministry Successfully Added')
-#         return redirect('ctac:urls_list_member')
-#     context = {
-#         'member_create': member_create
-#     }
-#     return render(request, 'create/member.html', context)
-# def regcar(request):
-#     if request.method == 'POST':
-#         car_form = RegCarForm(data=request.POST)
-#
-#         if car_form.is_valid():
-#             cdata = car_form.cleaned_data.get
-#             car_selected = Car.objects.filter(name=cdata('car_select'))
-#             reg1 = Fleet(car_id=car_selected[0].id, description=cdata('description'))
-#             reg1.save()
-#         else:
-#             print ('Invalid')
-#
-#     else:
-#         car_form = RegCarForm()
-#     return render(request, 'core/regcar.html', {'car_form': car_form})
 
 
 @ensure_csrf_cookie
@@ -359,14 +325,9 @@ def create_member(request):
         raise Http404
     member_create = CreateMemberForm(request.POST or None, request.FILES)
     if member_create.is_valid():
-        print('new')
         instance = member_create.save(commit=False)
-        mdata = member_create.cleaned_data.get
-        shepherd_selected = Shepherd.objects.filter(name=mdata('shepherd_select'))
-        member_create = Member(shepherd_id=shepherd_selected[0].id)
         instance.user = request.user
         instance.save()
-        # print(member_create)
         messages.success(request, "Member successfully Created")
         return redirect('ctac:urls_list_member')
     context = {
@@ -374,20 +335,46 @@ def create_member(request):
     }
     return render(request, 'create/member.html', context)
 
+#
+# @ensure_csrf_cookie
+# @login_required(login_url='users:login')
+# def create_member(request):
+#     if not request.user.is_staff or not request.user.is_superuser:
+#         raise Http404
+#     member_create = CreateMemberForm(request.POST or None, request.FILES)
+#     if member_create.is_valid():
+#         print('new')
+#         instance = member_create.save(commit=False)
+#         mdata = member_create.cleaned_data.get
+#         shepherd_selected = Shepherd.objects.filter(name=mdata('shepherd_select'))
+#         member_create = Member(shepherd_id=shepherd_selected[0].id)
+#         instance.user = request.user
+#         instance.save()
+#         # print(member_create)
+#         messages.success(request, "Member successfully Created")
+#         return redirect('ctac:urls_list_member')
+#     context = {
+#         'member_create': member_create
+#     }
+#     return render(request, 'create/member.html', context)
+
 
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
-def create_chapel(request):
+def create_chapels(request):
+    if request.user.is_superuser or not request.user.is_staff:
+        raise Http404
     chapel_create = CreateChapelForm(request.POST or None, request.FILES)
     if chapel_create.is_valid():
-        chapel_create.save(commit=False)
-        chapel_create.save()
+        instance = chapel_create.save(commit=False)
+        instance.user = request.user
+        instance.save()
         messages.success(request, 'Chapel Successfully Created')
         return redirect('ctac:urls_list_chapel')
     context = {
         'chapel_create': chapel_create
     }
-    return render(request, 'create/chapel.html', context)
+    return render(request, 'create/services.html', context)
 
 
 @ensure_csrf_cookie
