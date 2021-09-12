@@ -361,7 +361,7 @@ def create_member(request):
 
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
-def create_chapels(request):
+def create_chapel(request):
     if request.user.is_superuser or not request.user.is_staff:
         raise Http404
     chapel_create = CreateChapelForm(request.POST or None, request.FILES)
@@ -374,7 +374,7 @@ def create_chapels(request):
     context = {
         'chapel_create': chapel_create
     }
-    return render(request, 'create/services.html', context)
+    return render(request, 'create/chapel.html', context)
 
 
 @ensure_csrf_cookie
