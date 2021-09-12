@@ -397,6 +397,25 @@ def create_services(request):
 
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
+def create_services(request):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
+    services_create = CreateServiceForm(request.POST or None, request.FILES)
+    if services_create.is_valid():
+        instance = services_create.save(commit=False)
+        instance.user = request.user
+        instance.save()
+        messages.success(request, "Service successfully Created")
+        return redirect('ctac:urls_services_list')
+    context = {
+        'services_create': services_create
+    }
+    return render(request, 'create/services.html', context)
+
+
+
+@ensure_csrf_cookie
+@login_required(login_url='users:login')
 def create_area_residences(request):
     if not request.user.is_superuser or not request.user.is_staff:
         raise Http404
