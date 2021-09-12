@@ -279,7 +279,25 @@ def create_shepherd(request):
 
 
 #
-#
+# #
+# @ensure_csrf_cookie
+# @login_required(login_url='users:login')
+# def create_ministry(request):
+#     if not request.user.is_staff or not request.user.is_superuser:
+#         raise Http404
+#     ministry_create = CreateMinistryForm(request.POST or None, request.FILES)
+#     if ministry_create.is_valid():
+#         instance = ministry_create.save(commit=False)
+#         instance.user = request.user
+#         instance.save()
+#         messages.success(request, 'Ministry Successfully Added')
+#         return redirect('ctac:home')
+#     context = {
+#         'ministry_create': ministry_create
+#     }
+#     return render(request, 'create/ministry.html', context)
+
+
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
 def create_ministry(request):
@@ -290,8 +308,8 @@ def create_ministry(request):
         instance = ministry_create.save(commit=False)
         instance.user = request.user
         instance.save()
-        messages.success(request, 'Ministry Successfully Added')
-        return redirect('ctac:home')
+        messages.success(request, "Ministry successfully Created")
+        return redirect('ctac:urls_ministry_list')
     context = {
         'ministry_create': ministry_create
     }
