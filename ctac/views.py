@@ -450,6 +450,27 @@ def create_chapel_heads(request):
     return render(request, 'create/chapelheads.html', context)
 
 
+
+@ensure_csrf_cookie
+@login_required(login_url='users:login')
+def attend_created(request):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
+    attend = CreateAttendanceForm(request.POST or None, request.FILES)
+    if attend.is_valid():
+        instance = attend.save(commit=False)
+        instance.user = request.user
+        instance.save()
+        messages.success(request, 'Attendace added ')
+        return redirect('ctac:attendance_list')
+    context = {
+        'attend': attend
+    }
+    return render(request, 'create/at.html', context)
+
+
+
+
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
 def create_attendance(request):
