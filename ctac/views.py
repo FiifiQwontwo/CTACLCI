@@ -466,7 +466,7 @@ def attend_created(request):
     context = {
         'attend': attend
     }
-    return render(request, 'create/at.html', context)
+    return render(request, 'create/attendance.html', context)
 
 
 
