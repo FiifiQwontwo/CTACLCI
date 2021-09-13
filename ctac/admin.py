@@ -57,4 +57,8 @@ class MemberAdmin(ImportExportModelAdmin):
     pass
 
 
+@admin.register(AttendanceMember)
+class AttendanceMemberAdmin(ImportExportModelAdmin):
+    pass
+
 

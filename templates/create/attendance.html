@@ -1,37 +1,81 @@
+
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}CTAC |Add attendance{% endblock %}
-
 {% block content %}
+  {% block title %}CTAC |Add attendance{% endblock %}
   <div class="content-wrapper">
-    <div class="wrapper">
-      <section class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h2 class="card-title col-md-12">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <ol class="breadcrumb float-sm-left">
-                          <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a>
-                          </li>
-                          <li class="breadcrumb-item "><a href="{% url 'ctac:urls_member_list' %}"><i
-                                  class="fas fa-users"></i></a></li>
-                          <li class="breadcrumb-item active"><i class="far fa-calendar-plus"></i></li>
-                        </ol>
-                      </div>
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="content">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">ADD ATTENDANCE</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                  <i class="fas fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <form method="POST" action="">
+                  {% csrf_token %}
 
-                    </div>
-                  </h2>
-                </div>
+                  <div class="form-group">
+                    <label>Was at Church</label>
+                    <select class="form-control select2" name="present_in" style="width: 100%;">
+                    <option selected="selected">present</option>
+                    <option>not_available</option>
+                  </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Service Date</label>
+                    <input
+                            type='date'
+                            name='date'
+{#                            placeholder="1231-451-678" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}"#}
+                            class="form-control">
+                          <small>Format: 12/23/2020</small><br><br>
+                  </div>
+                  <div class="form-group">
+                    <label>Member</label>
+
+                            {{ attend.member }}
+                  </div>
+                  <div class="form-group">
+                    <label>Chapel</label>
+
+                            {{ attend.chapel }}
+                  </div>
+                   <div class="form-group">
+                    <label>Shepherd</label>
+
+                            {{ attend.shepherd }}
+                  </div>
+                   <div class="form-group">
+                    <label>Services</label>
+
+                            {{ attend.services }}
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </div>
 
 {% endblock %}
+
+
