@@ -309,4 +309,4 @@ class AttendanceMember(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.present_in + ' ' + str(self.member) + ' - ' + str(self.shepherd)
+        return self.present_in + ' ' + str(self.member) + ' - ' + str(self.shepherd) + ' ' + str(self.date)

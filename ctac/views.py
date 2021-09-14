@@ -48,7 +48,7 @@ def list_pastor(request):
 @login_required(login_url='users:login')
 def list_shepherd(request):
     sheplist = Shepherd.objects.all()
-    shpage = Paginator(sheplist, 50)
+    shpage = Paginator(sheplist, 200)
 
     page_num = request.GET.get('page', 1)
     try:
@@ -461,7 +461,7 @@ def attend_created(request):
         instance.user = request.user
         instance.save()
         messages.success(request, 'Attendace added ')
-        return redirect('ctac:attendance_list')
+        return redirect('ctac:home')
     context = {
         'attend': attend
     }
