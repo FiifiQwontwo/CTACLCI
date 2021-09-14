@@ -6,6 +6,8 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from datetime import date
 from django.urls import reverse
+
+
 # from django.core.validators import RegexValidator
 
 
@@ -220,8 +222,6 @@ class Shepherd(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
-
-
     def chapelname(self):
         return self.chapel.chapel_name
 
@@ -288,7 +288,6 @@ class Member(models.Model):
     def chapeled(self):
         return self.shepherd.chapeled.chapel_name
 
-
     def __str__(self):
         return self.surname + ' - ' + self.first_name
 
@@ -310,4 +309,4 @@ class AttendanceMember(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.present_in
+        return self.present_in + ' ' + str(self.member) + ' - ' + str(self.shepherd)
