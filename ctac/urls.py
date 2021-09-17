@@ -35,15 +35,13 @@ urlpatterns = [
     path('add_area/', create_area_residences, name='add_area_url'),
     path('add_chapel_head/', create_chapel_heads, name='add_heads_chapel'),
     path('add_services/', create_services, name='new_services'),
-    # path('atts/', create_attendance, name='new_attend'),
-    # path('attend_add/', create_attendance, name='add_attend'),
     path('attendance_new/', attend_created, name='dance'),
 
     # update
     path('update_members/<slug:slug>', member_update, name='member_update_url'),
     path('update_pastors/<slug:slug>', pastor_update, name='pastor_update_url'),
     path('update_ministry/<slug:slug>', ministrty_update, name='ministries_update_url'),
-    ##api vies
+    ##api views
     path('ministry_list_api/', MinistryViewSet.as_view({'get': 'list', }), name='ministry_list_api'),
     path('pastor_list_api/', PastorViewSet.as_view({'get': 'list', }), name='pastor_list_api'),
     path('add_osofo/', PastorViewSet.as_view({'post': 'create', }), name='new_osofo_api'),

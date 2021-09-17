@@ -469,24 +469,24 @@ def attend_created(request):
 
 
 
-
-@ensure_csrf_cookie
-@login_required(login_url='users:login')
-def create_attendance(request):
-    if not request.user.is_superuser or request.user.is_staff:
-        raise Http404
-    attends = CreateAttendanceForm(request.POST or None, request.FILES)
-    if attends.is_valid():
-        instance = attends.save(commit=False)
-        instance.user = request.user
-        instance.save()
-        messages.success(request, 'Added a New attendee')
-        return redirect('ctac:home')
-    context = {
-        'attend': attends
-    }
-    return render(request, 'create/attend.html', context)
-
+#
+# @ensure_csrf_cookie
+# @login_required(login_url='users:login')
+# def create_attendance(request):
+#     if not request.user.is_superuser or request.user.is_staff:
+#         raise Http404
+#     attends = CreateAttendanceForm(request.POST or None, request.FILES)
+#     if attends.is_valid():
+#         instance = attends.save(commit=False)
+#         instance.user = request.user
+#         instance.save()
+#         messages.success(request, 'Added a New attendee')
+#         return redirect('ctac:home')
+#     context = {
+#         'attend': attends
+#     }
+#     return render(request, 'create/attend.html', context)
+#
 
 #
 # update
