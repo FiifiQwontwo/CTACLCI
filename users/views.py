@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
 from ctac.forms import CodeForm
 from .models import CustomUser
+from .utils import send_sms
 
 
 @csrf_protect
@@ -36,16 +37,17 @@ def verify_view(request):
         code_user = f"{user.username}: {user.code}"
         if not request.POST:
             print(code_user)
+            send_sms(code_user, user.phone_number)
         if form.is_valid():
             num = form.cleaned_data.get('number')
 
             if str(code) == num:
                 code.save()
                 login(request, user)
-                return redirect()
+                return redirect('ctac:home')
             else:
                 return redirect()
-    return render(request, 'verify', {'form': form})
+    return render(request, 'verify.html', {'form': form})
 
 
 def logout_user(request):
