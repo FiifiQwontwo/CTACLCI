@@ -1,6 +1,6 @@
 import os
 from twilio.rest import Client
-
+#auth_token is wrong so u will have to change it
 account_sid = ['AC9d1a78bae11c1fbd7f948bf4f1db8447']
 auth_token = ['27f297040157b111e64385cb2de5fa80']
 client = Client(account_sid, auth_token)
