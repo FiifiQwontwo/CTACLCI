@@ -62,3 +62,5 @@ class AttendanceMemberAdmin(ImportExportModelAdmin):
     pass
 
 
+admin.site.register(Code)
+

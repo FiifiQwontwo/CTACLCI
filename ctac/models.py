@@ -6,6 +6,7 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from datetime import date
 from django.urls import reverse
+from users.models import CustomUser
 
 
 # from django.core.validators import RegexValidator
@@ -310,3 +311,23 @@ class AttendanceMember(models.Model):
 
     def __str__(self):
         return self.present_in + ' ' + str(self.member) + ' - ' + str(self.shepherd) + ' ' + str(self.date)
+
+
+class Code(models.Model):
+    number = models.CharField(max_length=5, blank=5)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.number)
+
+    def save(self, *args, **kwargs):
+        number_list = [x for x in range(10)]
+        code_items = []
+
+        for i in range(5):
+            num = random.choice(number_list)
+            code_items.append(num)
+
+        code_string = "".join(str(item) for item in code_items)
+        self.number = code_string
+        super().save(*args, **kwargs)

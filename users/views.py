@@ -3,6 +3,9 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.contrib import messages
 from .forms import *
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.decorators import login_required
+from ctac.forms import CodeForm
+from .models import CustomUser
 
 
 @csrf_protect
@@ -12,17 +15,37 @@ def login_user(request):
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            login(request, user)
+            request.session['pk'] = user.pk
+        return redirect('users:verify')
 
-            if 'next' in request.POST:
-                return redirect(request.POST.get('next'))
+    # if 'next' in request.POST:
+    #  return redirect(request.POST.get('next'))
+    #  else:
+    #   return redirect('ctac:home')
+    #
+    # else:
+    return render(request, "login.html", {})
+
+
+def verify_view(request):
+    form = CodeForm(request.POST or None)
+    pk = request.session.get('pk')
+    if pk:
+        user = CustomUser.objects.get(pk=pk)
+        code = user.code
+        code_user = f"{user.username}: {user.code}"
+        if not request.POST:
+            print(code_user)
+        if form.is_valid():
+            num = form.cleaned_data.get('number')
+
+            if str(code) == num:
+                code.save()
+                login(request, user)
+                return redirect()
             else:
-                return redirect('ctac:home')
-        else:
-            messages.error(request, ("Error Logging In - Please Try Again"))
-            return redirect('users:login')
-    else:
-        return render(request, "login.html", {})
+                return redirect()
+    return render(request, 'verify', {'form': form})
 
 
 def logout_user(request):
@@ -31,6 +54,7 @@ def logout_user(request):
     return redirect('ctac:home')
 
 
+@login_required(login_url='users:login')
 def register_user(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
