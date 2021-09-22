@@ -10,190 +10,190 @@
         </div>
       </div>
     </section>
-{#    <section class="content">#}
-{#      <div class="row">#}
-{#        <div class="col-md-6">#}
-{#          <div class="card card-primary">#}
-{#            <div class="card-header">#}
-{#              <h3 class="card-title">NEW MEMBER</h3>#}
-{#              <div class="card-tools">#}
-{#                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"#}
-{#                        title="Collapse">#}
-{#                  <i class="fas fa-minus"></i></button>#}
-{#              </div>#}
-{#            </div>#}
-{#            <div class="card-body">#}
-{#              <div class="form-group">#}
-{#                <form method="POST" action="">#}
-{#                  {% csrf_token %}#}
-{#                  <div class="form-group">#}
-{#                    <label>First Name </label>#}
-{#                    <input#}
-{#                            type='text'#}
-{#                            name='first_name'#}
-{#                            class="form-control"#}
-{#                            placeholder="Enter first name">#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Middle Name </label>#}
-{#                    <input#}
-{#                            type='text'#}
-{#                            name='second_name'#}
-{#                            class="form-control"#}
-{#                            placeholder="Enter Middle Name">#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Last Name</label>#}
-{#                    <input#}
-{#                            type='text'#}
-{#                            name='surname'#}
-{#                            class="form-control"#}
-{#                            placeholder="Enter Last name">#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label> Contact Number </label>#}
-{#                    <input#}
-{#                            type='number'#}
-{#                            data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']"#}
-{#                            name='contact_number'#}
-{#                            class="form-control">#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Ownership of Phone </label>#}
-{#                    <select class="form-control select2" name="owner_of_phone_number" style="width: 100%;">#}
-{#                      <option value="Self">Self</option>#}
-{#                      <option value="Another Person">Another Person</option>#}
-{#                    </select>#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Owner Details</label>#}
-{#                    <input#}
-{#                            type='text'#}
-{#                            name='details_of_owner'#}
-{#                            class="form-control"#}
-{#                            placeholder="Enter Name of the Phone owner">#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Whatsapp Number </label>#}
-{#                    <input#}
-{#                            type='number'#}
-{#                            data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']"#}
-{#                            name='whatsapp_number'#}
-{#                            class="form-control">#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Gender</label>#}
-{#                    <select class="form-control select2" name="sex" style="width: 100%;">#}
-{#                      <option value="Male">Male</option>#}
-{#                      <option value="Female">Female</option>#}
-{#                    </select>#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Age Group</label>#}
-{#                    <select class="form-control select2" name="age" style="width: 100%;">#}
-{#                      <option value="10-19 years">10-19 years</option>#}
-{#                      <option value="20-29 years">20-29 years</option>#}
-{#                      <option value = "30-39 years">30-39 years</option>#}
-{#                      <option value="40-49 years">40-49 years</option>#}
-{#                      <option value="50-59 years">50-59 years</option>#}
-{#                      <option value="60 and above">60 and above</option>#}
-{#                    </select>#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Occupation</label>#}
-{#                    <input#}
-{#                            type='text'#}
-{#                            name='occupation'#}
-{#                            class="form-control"#}
-{#                            placeholder="Enter Occupation">#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Marital Status</label>#}
-{#                    <select class="form-control select2" name="marital_status" style="width: 100%;">#}
-{#                      <option value="Single">Single</option>#}
-{#                      <option value="Married">Married</option>#}
-{#                      <option value="Divorced">Divorced</option>#}
-{#                      <option value="widow">widow</option>#}
-{#                    </select>#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Select Area</label><br>#}
-{#                    {{ member_create.area_of_residence }}#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Micro Area</label>#}
-{#                    <input#}
-{#                            type='text'#}
-{#                            name='micro_area_name'#}
-{#                            class="form-control"#}
-{#                            placeholder="Enter Name of the area eg. coco beach">#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Landmark</label>#}
-{#                    <input#}
-{#                            type='text'#}
-{#                            name='nearest_landmark'#}
-{#                            class="form-control"#}
-{#                            placeholder="Enter landmark eg.old kasapreko">#}
-{#                  </div>#}
-{##}
-{#                    <div class="form-group">#}
-{#                    <label>Able to join online service ?</label>#}
-{#                    <select class="form-control select2" name="online_service" style="width: 100%;">#}
-{#                      <option value="Yes">Yes</option>#}
-{#                      <option value="No">Not able to join</option>#}
-{#                    </select>#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Phone Usage</label>#}
-{#                    <select class="form-control select2" name="phone_usage" style="width: 100%;">#}
-{#                      <option value="I use a smartphone for online service">I use a smartphone for online service</option>#}
-{#                      <option value="I use a tablet for online service">I use a tablet for online service</option>#}
-{#                      <option value="I don\'t have a smartphone but i have a yam">I don't have a smartphone but i have a yam</option>#}
-{#                      <option value="I don\'t have a phone">I don't have a phone</option>#}
-{#                    </select>#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Select Ministry</label><br>#}
-{#                    {{ member_create.ministries }}#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Select Chapel</label><br>#}
-{#                    {{ member_create.chapel_select }}#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Select Shepherd</label><br>#}
-{#                    {{ member_create.shepherd_select }}#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Select Chapel Head</label><br>#}
-{#                    {{ member_create.chapel_head }}#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>State</label>#}
-{#                    <select class="form-control select2" name="state" style="width: 100%;">#}
-{#                      <option value="Member">Member</option>#}
-{#                      <option value="Ministry Shepherd">Ministry Shepherd</option>#}
-{#                      <option value="Shepherd">Shepherd</option>#}
-{#                      <option value="Assisting Shepherd or Trainee Shepherd">Assisting Shepherd or Trainee Shepherd</option>#}
-{#                      <option value="Don\'t Understand">Don't Understand</option>#}
-{#                    </select>#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Select Service</label><br>#}
-{#                    {{ member_create.services }}#}
-{#                  </div>#}
-{#                  <div class="form-group">#}
-{#                    <label>Bacenta Leader</label>#}
-{#                    <input#}
-{#                            type='text'#}
-{#                            name='bacenta_leader'#}
-{#                            class="form-control"#}
-{#                            placeholder="Enter bacenta leader's name">#}
-{#                  </div>#}
-{#                  <button type="submit" class="btn btn-primary">Submit</button>#}
-{#                </form>#}
-{#              </div>#}
+    <section class="content">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">NEW MEMBER</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip"
+                        title="Collapse">
+                  <i class="fas fa-minus"></i></button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <form method="POST" action="">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label>First Name </label>
+                    <input
+                            type='text'
+                            name='first_name'
+                            class="form-control"
+                            placeholder="Enter first name">
+                  </div>
+                  <div class="form-group">
+                    <label>Middle Name </label>
+                    <input
+                            type='text'
+                            name='second_name'
+                            class="form-control"
+                            placeholder="Enter Middle Name">
+                  </div>
+                  <div class="form-group">
+                    <label>Last Name</label>
+                    <input
+                            type='text'
+                            name='surname'
+                            class="form-control"
+                            placeholder="Enter Last name">
+                  </div>
+                  <div class="form-group">
+                    <label> Contact Number </label>
+                    <input
+                            type='number'
+                            data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']"
+                            name='contact_number'
+                            class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Ownership of Phone </label>
+                    <select class="form-control select2" name="owner_of_phone_number" style="width: 100%;">
+                      <option value="Self">Self</option>
+                      <option value="Another Person">Another Person</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Owner Details</label>
+                    <input
+                            type='text'
+                            name='details_of_owner'
+                            class="form-control"
+                            placeholder="Enter Name of the Phone owner">
+                  </div>
+                  <div class="form-group">
+                    <label>Whatsapp Number </label>
+                    <input
+                            type='number'
+                            data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']"
+                            name='whatsapp_number'
+                            class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label>Gender</label>
+                    <select class="form-control select2" name="sex" style="width: 100%;">
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Age Group</label>
+                    <select class="form-control select2" name="age" style="width: 100%;">
+                      <option value="10-19 years">10-19 years</option>
+                      <option value="20-29 years">20-29 years</option>
+                      <option value = "30-39 years">30-39 years</option>
+                      <option value="40-49 years">40-49 years</option>
+                      <option value="50-59 years">50-59 years</option>
+                      <option value="60 and above">60 and above</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Occupation</label>
+                    <input
+                            type='text'
+                            name='occupation'
+                            class="form-control"
+                            placeholder="Enter Occupation">
+                  </div>
+                  <div class="form-group">
+                    <label>Marital Status</label>
+                    <select class="form-control select2" name="marital_status" style="width: 100%;">
+                      <option value="Single">Single</option>
+                      <option value="Married">Married</option>
+                      <option value="Divorced">Divorced</option>
+                      <option value="widow">widow</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Select Area</label><br>
+                    {{ member_create.area_of_residence }}
+                  </div>
+                  <div class="form-group">
+                    <label>Micro Area</label>
+                    <input
+                            type='text'
+                            name='micro_area_name'
+                            class="form-control"
+                            placeholder="Enter Name of the area eg. coco beach">
+                  </div>
+                  <div class="form-group">
+                    <label>Landmark</label>
+                    <input
+                            type='text'
+                            name='nearest_landmark'
+                            class="form-control"
+                            placeholder="Enter landmark eg.old kasapreko">
+                  </div>
+
+                    <div class="form-group">
+                    <label>Able to join online service ?</label>
+                    <select class="form-control select2" name="online_service" style="width: 100%;">
+                      <option value="Yes">Yes</option>
+                      <option value="No">Not able to join</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Phone Usage</label>
+                    <select class="form-control select2" name="phone_usage" style="width: 100%;">
+                      <option value="I use a smartphone for online service">I use a smartphone for online service</option>
+                      <option value="I use a tablet for online service">I use a tablet for online service</option>
+                      <option value="I don\'t have a smartphone but i have a yam">I don't have a smartphone but i have a yam</option>
+                      <option value="I don\'t have a phone">I don't have a phone</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Select Ministry</label><br>
+                    {{ member_create.ministries }}
+                  </div>
+                  <div class="form-group">
+                    <label>Select Chapel</label><br>
+                    {{ member_create.chapel }}
+                  </div>
+                  <div class="form-group">
+                    <label>Select Shepherd</label><br>
+                    {{ member_create.shepherd }}
+                  </div>
+                  <div class="form-group">
+                    <label>Select Chapel Head</label><br>
+                    {{ member_create.chapel_head }}
+                  </div>
+                  <div class="form-group">
+                    <label>State</label>
+                    <select class="form-control select2" name="state" style="width: 100%;">
+                      <option value="Member">Member</option>
+                      <option value="Ministry Shepherd">Ministry Shepherd</option>
+                      <option value="Shepherd">Shepherd</option>
+                      <option value="Assisting Shepherd or Trainee Shepherd">Assisting Shepherd or Trainee Shepherd</option>
+                      <option value="Don\'t Understand">Don't Understand</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Select Service</label><br>
+                    {{ member_create.services }}
+                  </div>
+                  <div class="form-group">
+                    <label>Bacenta Leader</label>
+                    <input
+                            type='text'
+                            name='bacenta_leader'
+                            class="form-control"
+                            placeholder="Enter bacenta leader's name">
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
