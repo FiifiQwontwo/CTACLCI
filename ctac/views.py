@@ -375,6 +375,27 @@ def create_chapel(request):
     }
     return render(request, 'create/chapel.html', context)
 
+
+
+@ensure_csrf_cookie
+@login_required(login_url='users:login')
+def create_chapels(request):
+    if request.user.is_superuser or not request.user.is_staff:
+        raise Http404
+    chapel_created = CreateChapelForm(request.POST or None, request.FILES)
+    if chapel_created.is_valid():
+        instance = chapel_created.save(commit=False)
+        instance.user = request.user
+        instance.save()
+        messages.success(request, 'Chapel Successfully Created')
+        return redirect('ctac:urls_list_chapel')
+    context = {
+        'chapel_created': chapel_created
+    }
+    return render(request, 'create/chapel.html', context)
+
+
+
 #
 # @ensure_csrf_cookie
 # @login_required(login_url='users:login')
