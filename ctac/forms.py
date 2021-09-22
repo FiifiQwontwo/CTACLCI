@@ -48,7 +48,7 @@ class CreateShepherdForm(forms.ModelForm):
 class CreateMinistryForm(forms.ModelForm):
     class Meta:
         model = Ministry
-        fields = ('ministry_name',)
+        fields = ('ministry_name', 'chapel',)
 
 
 class CreateChapelForm(forms.ModelForm):

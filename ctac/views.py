@@ -315,8 +315,6 @@ def create_ministry(request):
     return render(request, 'create/ministry.html', context)
 
 
-
-
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
 def create_member(request):
@@ -333,6 +331,7 @@ def create_member(request):
         'member_create': member_create
     }
     return render(request, 'create/member.html', context)
+
 
 #
 # @ensure_csrf_cookie
@@ -376,7 +375,6 @@ def create_chapel(request):
     return render(request, 'create/chapel.html', context)
 
 
-
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
 def create_chapels(request):
@@ -393,7 +391,6 @@ def create_chapels(request):
         'chapel_created': chapel_created
     }
     return render(request, 'create/chapel.html', context)
-
 
 
 #
@@ -433,7 +430,6 @@ def create_services(request):
     return render(request, 'create/services.html', context)
 
 
-
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
 def create_area_residences(request):
@@ -470,7 +466,6 @@ def create_chapel_heads(request):
     return render(request, 'create/chapelheads.html', context)
 
 
-
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
 def attend_created(request):
@@ -487,7 +482,6 @@ def attend_created(request):
         'attend': attend
     }
     return render(request, 'create/attendance.html', context)
-
 
 
 #
@@ -678,6 +672,7 @@ class PastorViewSet(viewsets.ModelViewSet):
 class ShepherdViewSet(viewsets.ModelViewSet):
     queryset = Shepherd.objects.all()
     serializer_class = ShepherdSerializer
+
     # authentication_classes = (TokenAuthentication,)
 
     def create(self, request, *args, **kwargs):
