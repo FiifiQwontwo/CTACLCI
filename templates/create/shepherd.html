@@ -34,8 +34,8 @@
 
                   <div class="form-group">
 
-                    {% for field in form %}
-					{% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+{#                    {% for field in form %}#}
+{#					{% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}#}
 
                     <label>First Name </label>
                      <input
@@ -43,7 +43,7 @@
                             name='first_name'
                             class="form-control"
                             placeholder="Enter first name">
-                  {% endfor %}
+{#                  {% endfor %}#}
 
                   </div>
                   <div class="form-group">
@@ -75,15 +75,16 @@
                     <input
                             type='tel'
                             name='phone_number'
-{#                            placeholder="1231-451-678" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}"#}
+                            placeholder="1231451678"
                             class="form-control">
-{#                          <small>Format: 0547-309-755</small><br><br>#}
+                         <small>Format: 0547309755</small><br><br>
                   </div>
                   <div class="form-group">
                     <label>Email Address</label>
                     <input
                             type='email'
                             name='email_address'
+                            placeholder="123@mail.com"
                             class="form-control">
                   </div>
                   <div class="form-group">
@@ -93,6 +94,7 @@
                             name='gps_address'
                             placeholder="GA-012-3456" pattern="[A-Z]{2}-[0-9]{3}-[0-9]{4}"
                             class="form-control">
+                     <small>Format: GA-012-3456</small><br><br>
                   </div>
                    <div class="form-group">
                     <label>Shepherd Type</label>

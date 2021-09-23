@@ -53,8 +53,8 @@
                   <div class="form-group">
                     <label> Contact Number </label>
                     <input
-                            type='number'
-                            data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']"
+                            type='text'
+{#                            data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']"#}
                             name='contact_number'
                             class="form-control">
                   </div>
@@ -76,8 +76,8 @@
                   <div class="form-group">
                     <label>Whatsapp Number </label>
                     <input
-                            type='number'
-                            data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']"
+                            type='text'
+{#                            data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']"#}
                             name='whatsapp_number'
                             class="form-control">
                   </div>
@@ -118,7 +118,7 @@
                   </div>
                   <div class="form-group">
                     <label>Select Area</label><br>
-                    {{ member_create.area_of_residence }}
+                    {{ createdmember.area_of_residence }}
                   </div>
                   <div class="form-group">
                     <label>Micro Area</label>
@@ -155,19 +155,19 @@
                   </div>
                   <div class="form-group">
                     <label>Select Ministry</label><br>
-                    {{ member_create.ministries }}
+                    {{ createdmember.ministries }}
                   </div>
                   <div class="form-group">
                     <label>Select Chapel</label><br>
-                    {{ member_create.chapel }}
+                    {{ createdmember.chapel }}
                   </div>
                   <div class="form-group">
                     <label>Select Shepherd</label><br>
-                    {{ member_create.shepherd }}
+                    {{ createdmember.shepherd }}
                   </div>
                   <div class="form-group">
                     <label>Select Chapel Head</label><br>
-                    {{ member_create.chapel_head }}
+                    {{ createdmember.chapel_head }}
                   </div>
                   <div class="form-group">
                     <label>State</label>
@@ -181,7 +181,7 @@
                   </div>
                   <div class="form-group">
                     <label>Select Service</label><br>
-                    {{ member_create.services }}
+                    {{ createdmember.services }}
                   </div>
                   <div class="form-group">
                     <label>Bacenta Leader</label>

@@ -348,7 +348,27 @@ def create_member(request):
     context = {
         'member_create': member_create
     }
+    return render(request, 'create/membejr.html', context)
+
+
+
+@ensure_csrf_cookie
+@login_required(login_url='users:login')
+def new_member(request):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
+    createdmember = CreateMemberForm(request.POST or None, request.FILES)
+    if createdmember.is_valid():
+        instance = createdmember.save(commit=False)
+        instance.user = request.user
+        instance.save()
+        messages.success(request, "Member successfully Created")
+        return redirect('ctac:urls_shepherd_list')
+    context = {
+        'createdmember': createdmember
+    }
     return render(request, 'create/member.html', context)
+
 
 
 #
