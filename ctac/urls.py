@@ -31,12 +31,13 @@ urlpatterns = [
     path('add_shepherd/', create_shepherd, name='new_shepherd_url'),
     path('add_ministry/', create_ministry, name='new_ministry_url'),
     path('add_member/', create_member, name='add_member_url'),
-    path('add_chapel/', create_chapel, name='add_chapel_url'),
+    # path('add_chapel/', create_chapel, name='add_chapel_url'),
     path('add_area/', create_area_residences, name='add_area_url'),
     path('add_chapel_head/', create_chapel_heads, name='add_heads_chapel'),
     path('add_services/', create_services, name='new_services'),
     path('attendance_new/', attend_created, name='dance'),
-    path('chapel_add/', create_chapels, name='dont_dance_chapel'),
+    # path('chapel_add/', create_chapels, name='dont_dance_chapel'),
+    path('chapelsadd/', new_chapel, name='new_url'),
 
     # update
     path('update_members/<slug:slug>', member_update, name='member_update_url'),

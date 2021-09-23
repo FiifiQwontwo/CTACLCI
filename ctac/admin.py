@@ -6,28 +6,28 @@ from import_export.admin import ImportExportModelAdmin
 # Register your models here.
 @admin.register(Ministry)
 class MinistryAdmin(admin.ModelAdmin):
-    fields = ['ministry_name','chapel','slug','user']
+    fields = ['ministry_name', 'chapel', 'slug', 'user']
     search_fields = ['ministry_name']
     prepopulated_fields = {'slug': ('ministry_name',)}
 
 
 @admin.register(Chapel)
 class ChapelAdmin(admin.ModelAdmin):
-    fields = ['chapel_name', 'slug','user']
+    fields = ['chapel_name', 'slug', 'user']
     search_fields = ['chapel_name']
     prepopulated_fields = {'slug': ('chapel_name',)}
 
 
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
-    fields = ['service_name', 'slug','user']
+    fields = ['service_name', 'slug', 'user']
     search_fields = ['service_name']
     prepopulated_fields = {'slug': ('service_name',)}
 
 
 @admin.register(ChapelHeads)
 class ChapelHeadsAdmin(admin.ModelAdmin):
-    fields = ['chapel_heads', 'chapel', 'slug','user']
+    fields = ['chapel_heads', 'chapel', 'slug', 'user']
     search_fields = ['chapel_heads']
     prepopulated_fields = {'slug': ('chapel_heads',)}
 
@@ -63,4 +63,3 @@ class AttendanceMemberAdmin(ImportExportModelAdmin):
 
 
 admin.site.register(Code)
-

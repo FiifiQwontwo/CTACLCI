@@ -316,6 +316,24 @@ def create_ministry(request):
 
 
 @ensure_csrf_cookie
+# @login_required(login_url='users:login')
+def new_chapel(request):
+    if not request.user.is_staff or not request.user.is_superuser:
+        raise Http404
+    chapels = CreateChapelForm(request.POST or None, request.FILES)
+    if chapels.is_valid():
+        instance = chapels.save(commit=False)
+        instance.user = request.user
+        instance.save()
+        messages.success(request, "Chapel successfully Created")
+        return redirect('ctac:home')
+    context = {
+        'chapels': chapels
+    }
+    return render(request, 'create/chap.html', context)
+
+
+@ensure_csrf_cookie
 @login_required(login_url='users:login')
 def create_member(request):
     if not request.user.is_staff or not request.user.is_superuser:
@@ -356,44 +374,44 @@ def create_member(request):
 #     }
 #     return render(request, 'create/member.html', context)
 
-
-@ensure_csrf_cookie
-@login_required(login_url='users:login')
-def create_chapel(request):
-    if request.user.is_superuser or not request.user.is_staff:
-        raise Http404
-    chapel_create = CreateChapelForm(request.POST or None, request.FILES)
-    if chapel_create.is_valid():
-        instance = chapel_create.save(commit=False)
-        instance.user = request.user
-        instance.save()
-        messages.success(request, 'Chapel Successfully Created')
-        return redirect('ctac:urls_list_chapel')
-    context = {
-        'chapel_create': chapel_create
-    }
-    return render(request, 'create/chapel.html', context)
-
-
-@ensure_csrf_cookie
-@login_required(login_url='users:login')
-def create_chapels(request):
-    if request.user.is_superuser or not request.user.is_staff:
-        raise Http404
-    chapel_created = CreateChapelForm(request.POST or None, request.FILES)
-    if chapel_created.is_valid():
-        instance = chapel_created.save(commit=False)
-        instance.user = request.user
-        instance.save()
-        messages.success(request, 'Chapel Successfully Created')
-        return redirect('ctac:urls_list_chapel')
-    context = {
-        'chapel_created': chapel_created
-    }
-    return render(request, 'create/chapel.html', context)
-
-
 #
+# @ensure_csrf_cookie
+# @login_required(login_url='users:login')
+# def create_chapel(request):
+#     if request.user.is_superuser or not request.user.is_staff:
+#         raise Http404
+#     chapel_create = CreateChapelForm(request.POST or None, request.FILES)
+#     if chapel_create.is_valid():
+#         instance = chapel_create.save(commit=False)
+#         instance.user = request.user
+#         instance.save()
+#         messages.success(request, 'Chapel Successfully Created')
+#         return redirect('ctac:urls_list_chapel')
+#     context = {
+#         'chapel_create': chapel_create
+#     }
+#     return render(request, 'create/chapel.html', context)
+#
+#
+# @ensure_csrf_cookie
+# @login_required(login_url='users:login')
+# def create_chapels(request):
+#     if request.user.is_superuser or not request.user.is_staff:
+#         raise Http404
+#     chapel_created = CreateChapelForm(request.POST or None, request.FILES)
+#     if chapel_created.is_valid():
+#         instance = chapel_created.save(commit=False)
+#         instance.user = request.user
+#         instance.save()
+#         messages.success(request, 'Chapel Successfully Created')
+#         return redirect('ctac:urls_list_chapel')
+#     context = {
+#         'chapel_created': chapel_created
+#     }
+#     return render(request, 'create/chapel.html', context)
+#
+#
+
 # @ensure_csrf_cookie
 # @login_required(login_url='users:login')
 # def create_services(request):

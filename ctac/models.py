@@ -43,7 +43,7 @@ MARITAL = {
 # random slug imported to handle slug
 
 def rand_slug():
-    return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(6))
+    return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(8))
 
 
 class Chapel(models.Model):
@@ -53,13 +53,10 @@ class Chapel(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
-    # def save(self, *args, **kwargs):
-    #     if not self.slug:
-    #         self.slug = slugify(rand_slug() + "-" + self.chapel_name)
-    #     super(Chapel, self).save(*args, **kwargs)
-
-    def get_url(self):
-        return reverse('ctac:memberbychapel', args=[self.slug])
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.chapel_name + "-" + rand_slug())
+        super(Chapel, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.chapel_name
