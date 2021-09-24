@@ -33,7 +33,7 @@ class ChapelHeadsAdmin(admin.ModelAdmin):
 
 
 @admin.register(Shepherd)
-class ShepherdAdmin(admin.ModelAdmin):
+class ShepherdAdmin(ImportExportModelAdmin):
     list_display = ['first_name', 'second_name', 'surname']
     search_fields = ['surname', 'phone']
     prepopulated_fields = {'slug': ('surname', 'first_name')}
@@ -44,6 +44,8 @@ class PastorAdmin(admin.ModelAdmin):
     list_display = ['title', 'first_name', 'second_name', 'surname']
     search_fields = ['surname', 'phone_number']
     prepopulated_fields = {'slug': ('surname',)}
+
+    pass
 
 
 @admin.register(AreaResidence)

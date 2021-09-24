@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework.views import APIView
-
+import datetime
 from .forms import *
 from .models import *
 from rest_framework import status, viewsets
@@ -351,7 +351,6 @@ def create_member(request):
     return render(request, 'create/membejr.html', context)
 
 
-
 @ensure_csrf_cookie
 @login_required(login_url='users:login')
 def new_member(request):
@@ -368,7 +367,6 @@ def new_member(request):
         'createdmember': createdmember
     }
     return render(request, 'create/member.html', context)
-
 
 
 #
@@ -791,11 +789,12 @@ def export_members_xls(request):
 
 @login_required(login_url='users:login')
 def export_shepherd_xls(request):
-    responses = HttpResponse(content_type='application/ms-excel')
-    responses['Content-Disposition'] = 'attachment; filename="Shepherds.xls"'
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="Shepherd' + \
+                                      str(datetime.datetime.now())+'.xls'
 
-    wba = xlwt.Workbook(encoding='utf-8')
-    wsa = wba.add_sheet('Shepherds')
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('Shepherd')
 
     # Sheet header, first row
     row_nums = 0
@@ -803,23 +802,26 @@ def export_shepherd_xls(request):
     font_style = xlwt.XFStyle()
     font_style.font.bold = True
 
-    columns = ['First Name', 'Second name', 'Last Name', 'Gender', 'type']
+    columns = ['First Name', 'Second name', 'Last Name', 'Email', 'Phone Number', 'GPS ADDRESS', 'Chapel', 'Ministry',
+               'Type']
 
     for col_num in range(len(columns)):
-        wsa.write(row_nums, col_num, columns[col_num], font_style)
+        ws.write(row_nums, col_num, columns[col_num], font_style)
 
     # Sheet body, remaining rows
     font_style = xlwt.XFStyle()
 
-    rows = Shepherd.objects.all().values_list('first_name', 'second_name', 'surname', 'sex', 'type')
-    row = []
+    rows = Shepherd.objects.all().values_list('first_name', 'second_name', 'surname', 'email_address', 'phone_number',
+                                              'gps_address',
+                                              'chapel', 'ministry', 'type')
+
     for row in rows:
         row_nums += 1
     for col_num in range(len(row)):
-        wsa.write(row_nums, col_num, row[col_num], font_style)
+        ws.write(row_nums, col_num, str(row[col_num]), font_style)
 
-    wba.save(responses)
-    return responses
+    wb.save(response)
+    return response
 
 
 @login_required(login_url='users:login')
