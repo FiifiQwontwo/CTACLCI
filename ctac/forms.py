@@ -58,23 +58,6 @@ class CreateChapelForm(forms.ModelForm):
 
 
 class CreateMemberForm(forms.ModelForm):
-    # dshepherds = {}
-    # list_shepherds = []
-    # for shepherd in Shepherd.objects.all():
-    #     if shepherd.chapel.chapel_name in dshepherds:
-    #         dshepherds[shepherd.chapel.chapel_name].append(shepherd.surname)
-    #     else:
-    #         dshepherds[shepherd.chapel.chapel_name] = [shepherd.surname]
-    #     list_shepherds.append((shepherd.surname, shepherd.surname))
-    #
-    # chapels = [str(chapel) for chapel in Chapel.objects.all()]
-
-    # chapel_select = forms.ChoiceField(choices=([(chapel, chapel) for chapel in chapels]))
-    # shepherd_select = forms.ChoiceField(choices=(list_shepherds))
-    #
-    # chapels = json.dumps(chapels)
-    # shepherd = json.dumps(dshepherds)
-
     class Meta:
         model = Member
         fields = ('first_name',

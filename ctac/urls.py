@@ -38,7 +38,7 @@ urlpatterns = [
     path('attendance_new/', attend_created, name='dance'),
     # path('chapel_add/', create_chapels, name='dont_dance_chapel'),
     path('chapelsadd/', new_chapel, name='new_url'),
-    path('memberadds/', new_member, name='new member'),
+    path('memberadds/', create_member, name='new member'),
 
     # update
     path('update_members/<slug:slug>', member_update, name='member_update_url'),

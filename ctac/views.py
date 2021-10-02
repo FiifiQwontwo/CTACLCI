@@ -119,7 +119,7 @@ def list_area(request):
 @login_required(login_url='users:login')
 def list_chapel_heads(request):
     heads = ChapelHeads.objects.all()
-    cheadpage = Paginator(heads, 10)
+    cheadpage = Paginator(heads, 100)
     page_num = request.GET.get('page', 1)
     try:
         page = cheadpage.page(page_num)
@@ -344,30 +344,30 @@ def create_member(request):
         instance.user = request.user
         instance.save()
         messages.success(request, "Member successfully Created")
-        return redirect('ctac:urls_list_member')
+        return redirect('ctac:urls_member_list')
     context = {
         'member_create': member_create
     }
-    return render(request, 'create/membejr.html', context)
-
-
-@ensure_csrf_cookie
-@login_required(login_url='users:login')
-def new_member(request):
-    if not request.user.is_staff or not request.user.is_superuser:
-        raise Http404
-    createdmember = CreateMemberForm(request.POST or None, request.FILES)
-    if createdmember.is_valid():
-        instance = createdmember.save(commit=False)
-        instance.user = request.user
-        instance.save()
-        messages.success(request, "Member successfully Created")
-        return redirect('ctac:urls_shepherd_list')
-    context = {
-        'createdmember': createdmember
-    }
     return render(request, 'create/member.html', context)
 
+#
+# @ensure_csrf_cookie
+# @login_required(login_url='users:login')
+# def new_member(request):
+#     if not request.user.is_staff or not request.user.is_superuser:
+#         raise Http404
+#     createdmember = CreateMemberForm(request.POST or None, request.FILES)
+#     if createdmember.is_valid():
+#         instance = createdmember.save(commit=False)
+#         instance.user = request.user
+#         instance.save()
+#         messages.success(request, "Member successfully Created")
+#         return redirect('ctac:urls_shepherd_list')
+#     context = {
+#         'createdmember': createdmember
+#     }
+#     return render(request, 'create/member.html', context)
+#
 
 #
 # @ensure_csrf_cookie
