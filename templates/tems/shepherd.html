@@ -138,7 +138,8 @@
                           <tr>
                             <td>{{ members.id }}</td>
                             <td>{{ members.first_name }}</td>
-                            <td>{{ members.surname|lower|capfirst }}</td>
+                            <td><a href="{% url 'ctac:member_details_url' members.slug %}"
+                               class="link-black text-sm">{{ members.surname|lower|capfirst }}</a></td>
                           </tr>
                         {% endfor %}
                         </tr>
