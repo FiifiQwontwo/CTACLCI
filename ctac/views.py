@@ -208,7 +208,7 @@ def pastor_details(request, slug):
 def shepherd_details(request, slug):
     shepdetails = get_object_or_404(Shepherd, slug=slug)
     members = Member.objects.filter(shepherd__slug=slug)
-    print(members)
+
     context = {'shepdetails': shepdetails,
                'members': members
                }
@@ -219,7 +219,13 @@ def shepherd_details(request, slug):
 @login_required(login_url='users:login')
 def ministry_details(request, slug):
     mindetails = get_object_or_404(Ministry, slug=slug)
-    return render(request, 'tems/ministry.html', {'mindetails': mindetails})
+    shepherd = Shepherd.objects.filter(ministry__slug=slug)
+    print(shepherd)
+    context = {'mindetails': mindetails,
+               'shepherd' :shepherd
+
+    }
+    return render(request, 'tems/ministry.html', context)
 
 
 @login_required(login_url='users:login')

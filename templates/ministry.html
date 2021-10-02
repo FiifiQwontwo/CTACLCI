@@ -44,7 +44,8 @@
                         {% for minlist in minlist %}
                           <tr>
                             <td>{{ minlist.id }}</td>
-                            <td>{{ minlist.ministry_name|lower|capfirst }}</td>
+                            <td> <a href="{% url 'ctac:ministries_details_url' minlist.slug %}"
+                               class="link-black text-sm"> {{ minlist.ministry_name|lower|capfirst }}</a></td>
 
                           </tr>
                         {% endfor %}
