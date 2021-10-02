@@ -215,6 +215,7 @@ def shepherd_details(request, slug):
     return render(request, 'tems/shepherd.html', context)
 
 
+
 @login_required(login_url='users:login')
 def ministry_details(request, slug):
     mindetails = get_object_or_404(Ministry, slug=slug)

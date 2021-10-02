@@ -23,7 +23,7 @@ urlpatterns = [
     # details
     path('pastors/<slug:slug>', pastor_details, name='pastor_details_url'),
     path('shepherds/<slug:slug>', shepherd_details, name='shepherd_details_url'),
-    path('ministries/<slug:slug>', member_details, name='ministries_details_url'),
+    path('ministries/<slug:slug>', ministry_details, name='ministries_details_url'),
     path('members/<slug:slug>', member_details, name='member_details_url'),
     path('chapels/<slug:slug>', chapel_details, name='chapel_details_urls'),
     # create
