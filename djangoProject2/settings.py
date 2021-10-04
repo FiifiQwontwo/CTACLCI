@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+
 # import sentry_sdk
 # from sentry_sdk.integrations.django import DjangoIntegration
 #
@@ -61,7 +62,7 @@ INSTALLED_APPS = [
     'import_export',
     'contact',
     'admin_honeypot',
-     # 'django_filters',
+    # 'django_filters',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
@@ -75,6 +76,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoProject2.urls'
@@ -178,4 +181,6 @@ REST_FRAMEWORK = {
     )
 }
 
+
+SESSION_EXPIRE_SECONDS = 120
 
