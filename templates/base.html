@@ -34,7 +34,7 @@ color: white;
 }
 </style>
 <div class="wrapper">
-  <nav class="main-header navbar navbar-expand navbar-light bg-kofi">
+  <nav class="main-header navbar navbar-expand navbar-dark bg-kofi">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -44,6 +44,10 @@ color: white;
         <a href="{% url 'ctac:contact' %}" class="nav-link">Contact Us </a>
         {#        add contact details #}
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{% url 'ctac:contact' %}" class="nav-link">{{ user.username }} </a>
+      </li>
+
 {#      <li class = "nav-item d-none d-sm-inline-block">#}
 {#        <button onclick="myFunction()"> <i class="fas fa-toggle-on"></i>#}
 {##}

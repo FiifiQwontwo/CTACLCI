@@ -46,7 +46,7 @@ def verify_view(request):
                 login(request, user)
                 return redirect('ctac:home')
             else:
-                return redirect()
+                return redirect('users:login')
     return render(request, 'verify.html', {'form': form})
 
 
