@@ -83,7 +83,7 @@
                 <section class="content">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title"> <b>Shepherds of &nbsp; {{chapdetail.chapel_name|lower|capfirst }} &nbsp;&nbsp; </b></h3>
+                      <h3 class="card-title"> <b>Shepherds of &nbsp; {{chapdetail.chapel_name|lower|capfirst }} Chapel &nbsp;&nbsp; </b></h3>
                     </div>
                     <div class="card-body">
                       <table id="example1" class="table table-bordered table-striped">
@@ -111,6 +111,38 @@
                     </div>
                   </div>
                 </section>
+
+
+             <section class="content">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title"> <b>Ministries Of &nbsp; {{chapdetail.chapel_name|lower|capfirst }} Chapel &nbsp; </b></h3>
+                    </div>
+                    <div class="card-body">
+                      <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                          <th style="background-color:#e67676">#</th>
+                          <th style="background-color:#e67676">Ministry Name</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for mini in mini %}
+                          <tr>
+                            <td>{{ mini.id }}</td>
+                            <td><a href="{% url 'ctac:ministries_details_url' mini.slug %}"
+                                   class="link-black text-sm"> {{ mini.ministry_name|lower|capfirst }}</a></td>
+
+                          </tr>
+                        {% endfor %}
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </section>
+
   </div>
 {% endblock %}
 
