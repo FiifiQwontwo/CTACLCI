@@ -242,9 +242,13 @@ def chapel_details(request, slug):
     chapdetail = get_object_or_404(Chapel, slug=slug)
     mini = Ministry.objects.filter(chapel__slug=slug)
     memb = Member.objects.filter(chapel__slug=slug)
+    shep = Shepherd.objects.filter(chapel__slug=slug)
     context = {
         'chapdetail': chapdetail,
         'mini': mini,
+        'memb': memb,
+        'shep': shep,
+
     }
     return render(request, 'tems/chap.html', context)
 

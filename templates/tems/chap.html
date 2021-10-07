@@ -48,7 +48,7 @@
                 <section class="content">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title"> <b>Shepherds Of &nbsp; {{ mindetails.ministry_name|lower|capfirst }} &nbsp;&nbsp; </b></h3>
+                      <h3 class="card-title"> <b>Members Of &nbsp; {{ chapdetail.chapel_name|lower|capfirst }} &nbsp;&nbsp; </b></h3>
                     </div>
                     <div class="card-body">
                       <table id="example1" class="table table-bordered table-striped">
@@ -58,16 +58,19 @@
                           <th style="background-color:#e67676">Firstname</th>
                           <th style="background-color:#e67676">Lastname</th>
                           <th style="background-color:#e67676">Phone Number</th>
+                          <th style="background-color:#e67676">Shepherd</th>
+
                         </tr>
                         </thead>
                         <tbody>
-                        {% for shepherd in shepherd %}
+                        {% for memb in memb %}
                           <tr>
-                            <td>{{ shepherd.id }}</td>
-                            <td>{{ shepherd.first_name }}</td>
-                            <td><a href="{% url 'ctac:shepherd_details_url' shepherd.slug %}"
-                                   class="link-black text-sm"> {{ shepherd.surname|lower|capfirst }}</a></td>
-                             <td>{{ shepherd.phone_number }}</td>
+                            <td>{{ memb.id }}</td>
+                            <td>{{ memb.first_name }}</td>
+                            <td><a href="{% url 'ctac:member_details_url' memb.slug %}"
+                                   class="link-black text-sm"> {{ memb.surname|lower|capfirst }}</a></td>
+                             <td>{{ memb.contact_number }}</td>
+                             <td>{{ memb.shepherd }}</td>
                           </tr>
                         {% endfor %}
                         </tr>
@@ -80,7 +83,7 @@
                 <section class="content">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title"> <b>Members of &nbsp; {{ mindetails.ministry_name|lower|capfirst }} &nbsp;&nbsp; </b></h3>
+                      <h3 class="card-title"> <b>Shepherds of &nbsp; {{chapdetail.chapel_name|lower|capfirst }} &nbsp;&nbsp; </b></h3>
                     </div>
                     <div class="card-body">
                       <table id="example1" class="table table-bordered table-striped">
@@ -90,20 +93,16 @@
                           <th style="background-color:#e67676">Firstname</th>
                           <th style="background-color:#e67676">Lastname</th>
                           <th style="background-color:#e67676">Phone Number</th>
-                          <th style="background-color:#e67676">Shepherd</th>
-                          <th style="background-color:#e67676">Chapel</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for members_in_ministry in members_in_ministry %}
+                        {% for shep in shep %}
                           <tr>
-                            <td>{{ members_in_ministry.id }}</td>
-                            <td>{{ members_in_ministry.first_name }}</td>
-                            <td><a href="{% url 'ctac:member_details_url' members_in_ministry.slug %}"
-                                   class="link-black text-sm"> {{ members_in_ministry.surname|lower|capfirst }}</a></td>
-                             <td>{{ members_in_ministry.contact_number }}</td>
-                          <td>{{ members_in_ministry.shepherd }}</td>
-                          <td>{{ members_in_ministry.chapel }}</td>
+                            <td>{{ shep.id }}</td>
+                            <td>{{ shep.first_name }}</td>
+                            <td><a href="{% url 'ctac:shepherd_details_url' shep.slug %}"
+                                   class="link-black text-sm"> {{ shep.surname|lower|capfirst }}</a></td>
+                             <td>{{ shep.phone_number }}</td>
                           </tr>
                         {% endfor %}
                         </tr>
