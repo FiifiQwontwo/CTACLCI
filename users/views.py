@@ -17,14 +17,12 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             request.session['pk'] = user.pk
-        return redirect('users:verify')
+            return redirect('users:verify')
 
-    # if 'next' in request.POST:
-    #  return redirect(request.POST.get('next'))
-    #  else:
-    #   return redirect('ctac:home')
-    #
-    # else:
+        if 'next' in request.POST:
+            return redirect(request.POST.get('next'))
+        else:
+            return render(request, "login.html", {})
     return render(request, "login.html", {})
 
 

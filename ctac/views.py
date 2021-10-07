@@ -215,16 +215,17 @@ def shepherd_details(request, slug):
     return render(request, 'tems/shepherd.html', context)
 
 
-
 @login_required(login_url='users:login')
 def ministry_details(request, slug):
     mindetails = get_object_or_404(Ministry, slug=slug)
     shepherd = Shepherd.objects.filter(ministry__slug=slug)
+    members_in_ministry = Member.objects.filter(ministries__slug=slug)
     print(shepherd)
     context = {'mindetails': mindetails,
-               'shepherd' :shepherd
+               'shepherd': shepherd,
+               'members_in_ministry': members_in_ministry,
 
-    }
+               }
     return render(request, 'tems/ministry.html', context)
 
 
@@ -239,8 +240,11 @@ def member_details(request, slug):
 @login_required(login_url='users:login')
 def chapel_details(request, slug):
     chapdetail = get_object_or_404(Chapel, slug=slug)
+    mini = Ministry.objects.filter(chapel__slug=slug)
+    memb = Member.objects.filter(chapel__slug=slug)
     context = {
-        'chapdetail': chapdetail
+        'chapdetail': chapdetail,
+        'mini': mini,
     }
     return render(request, 'tems/chap.html', context)
 
@@ -356,6 +360,7 @@ def create_member(request):
         'member_create': member_create
     }
     return render(request, 'create/member.html', context)
+
 
 #
 # @ensure_csrf_cookie
@@ -798,7 +803,7 @@ def export_members_xls(request):
 def export_shepherd_xls(request):
     response = HttpResponse(content_type='application/ms-excel')
     response['Content-Disposition'] = 'attachment; filename="Shepherd' + \
-                                      str(datetime.datetime.now())+'.xls'
+                                      str(datetime.datetime.now()) + '.xls'
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('Shepherd')

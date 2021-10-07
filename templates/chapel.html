@@ -38,7 +38,9 @@
                         {% for chap in chap %}
                           <tr>
                             <td>{{ chap.id }}</td>
-                            <td>{{ chap.chapel_name|lower|capfirst }}</td>
+                            <td><a href="{% url 'ctac:chapel_details_urls' chap.slug %}"
+                               class="link-black text-sm"> {{ chap.chapel_name|lower|capfirst }}</a></td>
+
                           </tr>
                         {% endfor %}
                         </tr>

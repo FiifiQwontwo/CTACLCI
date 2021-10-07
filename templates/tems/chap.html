@@ -6,14 +6,14 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1><b>{{ mindetails.ministry_name|lower|capfirst }} </b> &nbsp;Details
+            <h1><b>{{chapdetail.chapel_name |lower|capfirst }} Chapel </b> &nbsp;Details
             </h1>
           </div>
           <div class="col-sm-6">
 
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a></li>
-              <li class="breadcrumb-item active"><a href="{% url 'ctac:urls_ministry_list' %}"><i class="fas fa-church"></i><i class="fas fa-church"></i></a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'ctac:urls_chapel_list' %}"><i class="fas fa-church"></i><i class="fas fa-church"></i></a></li>
               <li class="breadcrumb-item active"><i class="fas fa-church"></i></li>
             </ol>
           </div><!-- /.col -->
@@ -21,29 +21,29 @@
         </div>
       </div>
     </section>
-    <section class="content">
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title"><b> MINISTRY DETAILS</b></h3>
-        </div>
-        <div class="card-body">
-          <table class="col-12">
-            <tbody>
-            <tr>
-              <td width="50%">Ministry Name</td>
-              <td width="50%" style="text-align: left; font-weight: bold;">{{ mindetails.ministry_name|lower|capfirst }}</td>
-            </tr>
-            <tr>
-              <td width="50%">Ministry Chapel</td>
-              <td width="50%"
-                  style="text-align: left; font-weight: bold;">{{ mindetails.chapel|lower|capfirst }}</td>
-            </tr>
-
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
+{#    <section class="content">#}
+{#      <div class="card">#}
+{#        <div class="card-header">#}
+{#          <h3 class="card-title"><b> {{ chapdetail.chapel_name }} DETAILS</b></h3>#}
+{#        </div>#}
+{#        <div class="card-body">#}
+{#          <table class="col-12">#}
+{#            <tbody>#}
+{#            <tr>#}
+{#              <td width="50%">Chapel Name</td>#}
+{#              <td width="50%" style="text-align: left; font-weight: bold;">{{ mindetails.chapel_name|lower|capfirst }}</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#              <td width="50%">Ministry Chapel</td>#}
+{#              <td width="50%"#}
+{#                  style="text-align: left; font-weight: bold;">{{ mindetails.chapel|lower|capfirst }}</td>#}
+{#            </tr>#}
+{##}
+{#            </tbody>#}
+{#          </table>#}
+{#        </div>#}
+{#      </div>#}
+{#    </section>#}
 
                 <section class="content">
                   <div class="card">
@@ -112,9 +112,8 @@
                     </div>
                   </div>
                 </section>
-
-
   </div>
 {% endblock %}
+
 
 
