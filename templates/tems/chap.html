@@ -6,14 +6,14 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1><b>{{chapdetail.chapel_name |lower|capfirst }} Chapel </b> &nbsp;Details
+            <h1><b>{{ chapdetail.chapel_name |lower|capfirst }} Chapel </b> &nbsp;Details
             </h1>
           </div>
           <div class="col-sm-6">
-
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{% url 'ctac:home' %}"> <i class="fas fa-home"></i></a></li>
-              <li class="breadcrumb-item active"><a href="{% url 'ctac:urls_chapel_list' %}"><i class="fas fa-church"></i><i class="fas fa-church"></i></a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'ctac:urls_chapel_list' %}"><i
+                class="fas fa-church"></i><i class="fas fa-church"></i></a></li>
               <li class="breadcrumb-item active"><i class="fas fa-church"></i></li>
             </ol>
           </div><!-- /.col -->
@@ -21,128 +21,122 @@
         </div>
       </div>
     </section>
-{#    <section class="content">#}
-{#      <div class="card">#}
-{#        <div class="card-header">#}
-{#          <h3 class="card-title"><b> {{ chapdetail.chapel_name }} DETAILS</b></h3>#}
-{#        </div>#}
-{#        <div class="card-body">#}
-{#          <table class="col-12">#}
-{#            <tbody>#}
-{#            <tr>#}
-{#              <td width="50%">Chapel Name</td>#}
-{#              <td width="50%" style="text-align: left; font-weight: bold;">{{ mindetails.chapel_name|lower|capfirst }}</td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#              <td width="50%">Ministry Chapel</td>#}
-{#              <td width="50%"#}
-{#                  style="text-align: left; font-weight: bold;">{{ mindetails.chapel|lower|capfirst }}</td>#}
-{#            </tr>#}
-{##}
-{#            </tbody>#}
-{#          </table>#}
-{#        </div>#}
-{#      </div>#}
-{#    </section>#}
-
-                <section class="content">
-                  <div class="card">
-                    <div class="card-header">
-                      <h3 class="card-title"> <b>Members Of &nbsp; {{ chapdetail.chapel_name|lower|capfirst }} &nbsp;&nbsp; </b></h3>
-                    </div>
-                    <div class="card-body">
-                      <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                          <th style="background-color:#e67676">#</th>
-                          <th style="background-color:#e67676">Firstname</th>
-                          <th style="background-color:#e67676">Lastname</th>
-                          <th style="background-color:#e67676">Phone Number</th>
-                          <th style="background-color:#e67676">Shepherd</th>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for memb in memb %}
-                          <tr>
-                            <td>{{ memb.id }}</td>
-                            <td>{{ memb.first_name }}</td>
-                            <td><a href="{% url 'ctac:member_details_url' memb.slug %}"
-                                   class="link-black text-sm"> {{ memb.surname|lower|capfirst }}</a></td>
-                             <td>{{ memb.contact_number }}</td>
-                             <td>{{ memb.shepherd }}</td>
-                          </tr>
-                        {% endfor %}
-                        </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </section>
-
-                <section class="content">
-                  <div class="card">
-                    <div class="card-header">
-                      <h3 class="card-title"> <b>Shepherds of &nbsp; {{chapdetail.chapel_name|lower|capfirst }} Chapel &nbsp;&nbsp; </b></h3>
-                    </div>
-                    <div class="card-body">
-                      <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                          <th style="background-color:#e67676">#</th>
-                          <th style="background-color:#e67676">Firstname</th>
-                          <th style="background-color:#e67676">Lastname</th>
-                          <th style="background-color:#e67676">Phone Number</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for shep in shep %}
-                          <tr>
-                            <td>{{ shep.id }}</td>
-                            <td>{{ shep.first_name }}</td>
-                            <td><a href="{% url 'ctac:shepherd_details_url' shep.slug %}"
-                                   class="link-black text-sm"> {{ shep.surname|lower|capfirst }}</a></td>
-                             <td>{{ shep.phone_number }}</td>
-                          </tr>
-                        {% endfor %}
-                        </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </section>
-
-
-             <section class="content">
-                  <div class="card">
-                    <div class="card-header">
-                      <h3 class="card-title"> <b>Ministries Of &nbsp; {{chapdetail.chapel_name|lower|capfirst }} Chapel &nbsp; </b></h3>
-                    </div>
-                    <div class="card-body">
-                      <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                          <th style="background-color:#e67676">#</th>
-                          <th style="background-color:#e67676">Ministry Name</th>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for mini in mini %}
-                          <tr>
-                            <td>{{ mini.id }}</td>
-                            <td><a href="{% url 'ctac:ministries_details_url' mini.slug %}"
-                                   class="link-black text-sm"> {{ mini.ministry_name|lower|capfirst }}</a></td>
-
-                          </tr>
-                        {% endfor %}
-                        </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </section>
-
+    {#    <section class="content">#}
+    {#      <div class="card">#}
+    {#        <div class="card-header">#}
+    {#          <h3 class="card-title"><b> {{ chapdetail.chapel_name }} DETAILS</b></h3>#}
+    {#        </div>#}
+    {#        <div class="card-body">#}
+    {#          <table class="col-12">#}
+    {#            <tbody>#}
+    {#            <tr>#}
+    {#              <td width="50%">Chapel Name</td>#}
+    {#              <td width="50%" style="text-align: left; font-weight: bold;">{{ mindetails.chapel_name|lower|capfirst }}</td>#}
+    {#            </tr>#}
+    {#            <tr>#}
+    {#              <td width="50%">Ministry Chapel</td>#}
+    {#              <td width="50%"#}
+    {#                  style="text-align: left; font-weight: bold;">{{ mindetails.chapel|lower|capfirst }}</td>#}
+    {#            </tr>#}
+    {##}
+    {#            </tbody>#}
+    {#          </table>#}
+    {#        </div>#}
+    {#      </div>#}
+    {#    </section>#}
+    <section class="content">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><b>Members Of &nbsp; {{ chapdetail.chapel_name|lower|capfirst }} &nbsp;&nbsp; </b></h3>
+        </div>
+        <div class="card-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th style="background-color:#e67676">#</th>
+              <th style="background-color:#e67676">Firstname</th>
+              <th style="background-color:#e67676">Lastname</th>
+              <th style="background-color:#e67676">Phone Number</th>
+              <th style="background-color:#e67676">Shepherd</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for memb in memb %}
+              <tr>
+                <td>{{ memb.id }}</td>
+                <td>{{ memb.first_name }}</td>
+                <td><a href="{% url 'ctac:member_details_url' memb.slug %}"
+                       class="link-black text-sm"> {{ memb.surname|lower|capfirst }}</a></td>
+                <td>{{ memb.contact_number }}</td>
+                <td>{{ memb.shepherd }}</td>
+              </tr>
+            {% endfor %}
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section class="content">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><b>Shepherds of &nbsp; {{ chapdetail.chapel_name|lower|capfirst }} Chapel
+            &nbsp;&nbsp; </b></h3>
+        </div>
+        <div class="card-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th style="background-color:#e67676">#</th>
+              <th style="background-color:#e67676">Firstname</th>
+              <th style="background-color:#e67676">Lastname</th>
+              <th style="background-color:#e67676">Phone Number</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for shep in shep %}
+              <tr>
+                <td>{{ shep.id }}</td>
+                <td>{{ shep.first_name }}</td>
+                <td><a href="{% url 'ctac:shepherd_details_url' shep.slug %}"
+                       class="link-black text-sm"> {{ shep.surname|lower|capfirst }}</a></td>
+                <td>{{ shep.phone_number }}</td>
+              </tr>
+            {% endfor %}
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section class="content">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><b>Ministries Of &nbsp; {{ chapdetail.chapel_name|lower|capfirst }} Chapel &nbsp; </b>
+          </h3>
+        </div>
+        <div class="card-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th style="background-color:#e67676">#</th>
+              <th style="background-color:#e67676">Ministry Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for mini in mini %}
+              <tr>
+                <td>{{ mini.id }}</td>
+                <td><a href="{% url 'ctac:ministries_details_url' mini.slug %}"
+                       class="link-black text-sm"> {{ mini.ministry_name|lower|capfirst }}</a></td>
+              </tr>
+            {% endfor %}
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
   </div>
 {% endblock %}
 
