@@ -181,6 +181,6 @@ REST_FRAMEWORK = {
     )
 }
 
-
-SESSION_EXPIRE_SECONDS = 9600
+#change this to 5 minutes
+SESSION_EXPIRE_SECONDS = 86400
 

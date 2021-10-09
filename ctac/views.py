@@ -202,6 +202,12 @@ def pastor_details(request, slug):
     context = {'pas_details': pas_details}
     return render(request, 'tems/pastor.html', context)
 
+#
+# @login_required(login_url='users:login')
+# def atendance_details(request, pk):
+#     at_details = get_object_or_404(Pastor, str(date=date))
+#     context = {'at_details': at_details}
+#     return render(request, 'tems/attendance.html', context)
 
 #
 @login_required(login_url='users:login')

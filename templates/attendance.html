@@ -49,7 +49,9 @@
                       <tr>
                         <td>{{ attd.id }}</td>
                         <td> {{ attd.member |lower|capfirst  }}</td>
-                        <td>  {{ attd.date }}</td>
+                        <a href="{% url 'ctac:attendane_details' attd.date %}"
+                       class="link-black text-sm"> {{ attd.date}}</a>
+{#                        <td>  {{ attd.date }}</td>#}
                         <td>{{ attd.services }}</td>
                         <td> {{ attd.present_in }}</td>
                         <td>{{ attd.shepherd }}</td>

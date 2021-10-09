@@ -45,7 +45,7 @@
                           <tr>
                             <td>{{ head.id}}</td>
                             <td> {{head.chapel_heads}}</td>
-                            <td>{{ head.chapel }}</td>
+                            <td> {{ head.chapel|lower|capfirst }}</td>
 
                           </tr>
                         {% endfor %}

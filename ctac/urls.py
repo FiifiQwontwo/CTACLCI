@@ -26,6 +26,7 @@ urlpatterns = [
     path('ministries/<slug:slug>', ministry_details, name='ministries_details_url'),
     path('members/<slug:slug>', member_details, name='member_details_url'),
     path('chapels/<slug:slug>', chapel_details, name='chapel_details_urls'),
+    # path('attendance/<date:date>', atendance_details, name='attendane_details' ),
     # create
     path('add_pastor/', create_pastor, name='new_pastor_url'),
     path('add_shepherd/', create_shepherd, name='new_shepherd_url'),
