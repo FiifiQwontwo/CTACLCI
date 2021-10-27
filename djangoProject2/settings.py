@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework.authtoken',
+  # 'rest_framework.authtoken',
     'ctac.apps.CtacConfig',
     'corsheaders',
     'import_export',
@@ -175,11 +175,11 @@ AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    )
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAuthenticated',
+#     )
+# }
 
 #change this to 5 minutes
 SESSION_EXPIRE_SECONDS = 86400
