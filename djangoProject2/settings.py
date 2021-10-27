@@ -115,8 +115,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ctac_lci',
-        'USER': 'new_user',
-        'PASSWORD': 'QTZ362@live',
+        'USER': 'root',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {

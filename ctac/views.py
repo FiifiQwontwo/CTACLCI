@@ -205,7 +205,7 @@ def pastor_details(request, slug):
 #
 # @login_required(login_url='users:login')
 # def atendance_details(request, pk):
-#     at_details = get_object_or_404(Pastor, str(date=date))
+#     at_details = get_object_or_404(Pastor,  )
 #     context = {'at_details': at_details}
 #     return render(request, 'tems/attendance.html', context)
 
