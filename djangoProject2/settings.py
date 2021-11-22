@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'ctac.apps.CtacConfig',
     'corsheaders',
     'import_export',
-    'contact',
+    # 'contact',
     'admin_honeypot',
     # 'django_filters',
 ]
@@ -114,7 +114,7 @@ WSGI_APPLICATION = 'djangoProject2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ctac_lci',
+        'NAME': 'jasper',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',

@@ -40,6 +40,8 @@ color: white;
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{% url 'ctac:contact' %}" class="nav-link">Contact Us </a>
         {#        add contact details #}
@@ -48,12 +50,7 @@ color: white;
         <a href="{% url 'ctac:contact' %}" class="nav-link">{{ user.username }} </a>
       </li>
 
-{#      <li class = "nav-item d-none d-sm-inline-block">#}
-{#        <button onclick="myFunction()"> <i class="fas fa-toggle-on"></i>#}
-{##}
-{#        </button>#}
-{##}
-{#      </li>#}
+
     </ul>
   </nav>
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
