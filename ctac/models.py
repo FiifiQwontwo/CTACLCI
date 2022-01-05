@@ -7,8 +7,6 @@ from django.core.exceptions import ValidationError
 from datetime import date
 from django.urls import reverse
 from users.models import CustomUser
-
-
 # from django.core.validators import RegexValidator
 
 
