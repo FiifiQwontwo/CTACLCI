@@ -48,6 +48,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
 
     'django_extensions',
+    # 'jet',
     'users',
     'django.contrib.admin',
     'django.contrib.auth',
