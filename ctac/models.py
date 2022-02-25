@@ -7,6 +7,8 @@ from django.core.exceptions import ValidationError
 from datetime import date
 from django.urls import reverse
 from users.models import CustomUser
+
+
 # from django.core.validators import RegexValidator
 
 
@@ -315,6 +317,7 @@ class Code(models.Model):
     def __str__(self):
         return str(self.number)
 
+    # function to generate 4 random numbers for verification to user
     def save(self, *args, **kwargs):
         number_list = [x for x in range(10)]
         code_items = []
